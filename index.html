@@ -19,7 +19,7 @@
     --red:#ff1f2d;
     --cyan:#19d6e8;
     --max:1480px;
-    --cardh:240px;
+    --cardh:168px;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{-webkit-text-size-adjust:100%}
@@ -35,7 +35,7 @@
 
   /* BANNER */
   .banner{display:block;width:100%;max-width:var(--max);margin:0 auto}
-  .banner img{display:block;width:100%;height:clamp(140px,16vw,230px);object-fit:cover}
+  .banner img{display:block;width:100%;height:auto}
 
   /* INTRO */
   .intro{padding:40px 0 0}
@@ -91,8 +91,8 @@
   .case{
     display:grid;
     grid-template-columns:calc(var(--cardh) * 16 / 9) 1fr;
-    gap:26px;
-    margin-bottom:30px;
+    gap:22px;
+    margin-bottom:24px;
     height:var(--cardh);
   }
   .case .thumb{display:block;overflow:hidden;background:#0d0d0d;height:var(--cardh)}
@@ -120,7 +120,7 @@
     padding-bottom:10px;
   }
   .case h3{
-    font-size:clamp(26px,2.6vw,38px);
+    font-size:clamp(22px,2.1vw,31px);
     font-weight:800;
     letter-spacing:.03em;
     text-transform:uppercase;
@@ -128,25 +128,25 @@
     color:#fff;
   }
   .case .date{
-    font-size:clamp(16px,1.25vw,20px);
+    font-size:clamp(14px,1.05vw,17px);
     letter-spacing:.16em;
     text-transform:uppercase;
     color:var(--red);
     font-weight:700;
     white-space:nowrap;
   }
-  .case .blurb{color:#c9c9c9;font-size:clamp(19px,1.5vw,23px);line-height:1.45}
-  .btns{display:grid;grid-template-columns:repeat(auto-fit,minmax(0,1fr));gap:16px}
+  .case .blurb{color:#c9c9c9;font-size:clamp(17px,1.3vw,21px);line-height:1.4}
+  .btns{display:grid;grid-template-columns:1fr 1fr;gap:16px}
   .btn{
     display:flex;
     align-items:center;
     justify-content:center;
     gap:16px;
-    padding:20px 18px;
+    padding:15px 18px;
     border:2px solid var(--red);
     color:#fff;
     text-decoration:none;
-    font-size:clamp(20px,1.75vw,26px);
+    font-size:clamp(16px,1.3vw,20px);
     font-weight:700;
     letter-spacing:.18em;
     text-transform:uppercase;
@@ -199,19 +199,7 @@
   <p class="howto">Open a case, click a file, then use the download button on the file page.</p>
 
   <!-- CASES:START -- do not edit between these markers, the build writes this -->
-  <article class="case">
-    <a class="thumb" href="Deleted%20Federal%20Records/"><img src="Deleted%20Federal%20Records/Federal%20Estimates.png" alt=""></a>
-    <div class="body">
-      <div class="head">
-        <h3>Deleted Federal Records</h3>
-        <div class="date">November 6, 2026</div>
-      </div>
-      <p class="blurb">The deleted federal estimates tables from 2019-2022 and the available tables up to 2026.</p>
-      <div class="btns">
-        <a class="btn" href="Deleted%20Federal%20Records/#files"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7z"/><path d="M14 2v5h5"/><path d="M9 13h6"/><path d="M9 17h6"/></svg><span>Files</span></a>
-      </div>
-    </div>
-  </article>
+  <p class="empty">No cases published yet.</p>
   <!-- CASES:END -->
 
   <footer>
