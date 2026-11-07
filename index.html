@@ -183,14 +183,44 @@
   .lb{position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;
     background:rgba(0,0,0,.92);padding:24px}
   .lb.open{display:flex}
-  .lb-inner{position:relative;width:min(1200px,94vw)}
+  .lb-inner{position:relative;width:min(1500px,96vw)}
   .lb-frame{position:relative;width:100%;padding-top:56.25%;background:#000;border:2px solid var(--red)}
   .lb-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
   .lb-close{position:absolute;top:-54px;right:0;background:none;border:2px solid #3a3a3a;
     color:#fff;font:inherit;font-size:18px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
     padding:8px 18px;cursor:pointer;transition:background .16s ease,color .16s ease,border-color .16s ease}
   .lb-close:hover{background:#fff;color:#000;border-color:#fff}
-  @media (max-width:640px){.lb-close{top:-46px;font-size:15px;padding:6px 14px}}
+
+  /* the list slides over the right side of the player */
+  .lb-side{position:absolute;top:2px;right:2px;bottom:2px;width:min(400px,46%);
+    z-index:4;background:rgba(5,5,5,.94);border-left:2px solid var(--red);
+    overflow-y:auto;transform:translateX(0);transition:transform .22s ease}
+  .lb-inner.solo .lb-side{transform:translateX(101%)}
+  .lb-side h4{position:sticky;top:0;z-index:1;background:rgba(5,5,5,.98);padding:12px 14px;
+    border-bottom:1px solid #2a2a2a;font-size:14px;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--red)}
+  .lb-side button{display:block;width:100%;background:none;border:0;padding:10px;
+    cursor:pointer;line-height:0}
+  .lb-side button img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;
+    background:#000;border:2px solid #2a2a2a;transition:border-color .16s ease,opacity .16s ease}
+  .lb-side button:hover img{border-color:#fff}
+  .lb-side button.on img{border-color:var(--red)}
+
+  /* tab rides the edge of the list */
+  .lb-toggle{position:absolute;top:50%;z-index:5;
+    right:min(400px,46%);transform:translate(0,-50%);
+    background:#0b0b0b;border:2px solid var(--red);border-right:0;
+    color:#fff;font:inherit;font-size:20px;line-height:1;cursor:pointer;
+    padding:22px 8px;transition:right .22s ease,background .16s ease}
+  .lb-inner.solo .lb-toggle{right:2px;border-right:2px solid var(--red);border-left:0}
+  .lb-toggle:hover{background:var(--red)}
+
+  @media (max-width:640px){
+    .lb-side{width:78%}
+    .lb-toggle{right:78%;padding:16px 6px;font-size:17px}
+    .lb-close{top:-46px;font-size:15px;padding:6px 14px}
+  }
 
   /* FOOTER */
   footer{
@@ -232,19 +262,7 @@
   <p class="howto">Open a case, click a file, then use the download button on the file page.</p>
 
   <!-- CASES:START -- do not edit between these markers, the build writes this -->
-  <article class="case">
-    <a class="thumb play" href="https://youtube.com/live/kFPYXB-KUts?feature=share" target="_blank" rel="noopener" data-embed="https://www.youtube.com/embed/kFPYXB-KUts?autoplay=1&amp;rel=0"><img src="Deleted%20Federal%20Records/Files_converted.webp" alt=""></a>
-    <div class="body">
-      <div class="head">
-        <h3><a href="Deleted%20Federal%20Records/">Deleted Federal Records</a></h3>
-        <div class="date">November 6, 2026</div>
-      </div>
-      <p class="blurb">The deleted federal estimates tables from 2019-2022 and the available tables up to 2026.</p>
-      <div class="btns">
-        <a class="btn" href="Deleted%20Federal%20Records/#files"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7z"/><path d="M14 2v5h5"/><path d="M9 13h6"/><path d="M9 17h6"/></svg><span>Files</span></a>
-      </div>
-    </div>
-  </article>
+  <p class="empty">No cases published yet.</p>
   <!-- CASES:END -->
 
   <footer>
@@ -254,28 +272,103 @@
 
 </div>
 <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Video">
-  <div class="lb-inner">
+  <div class="lb-inner solo" id="lbInner">
+    <button class="lb-toggle" id="lbToggle" type="button" aria-label="Show video list">&#8249;</button>
     <button class="lb-close" id="lbClose" type="button">Close &times;</button>
     <div class="lb-frame"><iframe id="lbFrame" src="" title="Video"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
       allowfullscreen></iframe></div>
+    <aside class="lb-side" id="lbSide"><h4>Latest videos</h4><div id="lbList"></div></aside>
   </div>
 </div>
 <script>
 (function(){
-  var lb=document.getElementById('lb'),fr=document.getElementById('lbFrame');
-  function close(){lb.classList.remove('open');fr.src='';document.body.style.overflow='';}
-  function open(src){fr.src=src;lb.classList.add('open');document.body.style.overflow='hidden';}
-  document.addEventListener('click',function(e){
-    var a=e.target.closest('a.thumb[data-embed]');
-    if(!a)return;
-    var src=a.getAttribute('data-embed');
-    if(!src)return;
-    e.preventDefault();open(src);
+  var lb     = document.getElementById('lb'),
+      fr     = document.getElementById('lbFrame'),
+      inner  = document.getElementById('lbInner'),
+      list   = document.getElementById('lbList'),
+      toggle = document.getElementById('lbToggle'),
+      loaded = false;
+
+  function embed(id){
+    return 'https://www.youtube.com/embed/' + id +
+           '?rel=0&cc_load_policy=0&modestbranding=1';
+  }
+
+  function mark(id){
+    [].forEach.call(list.querySelectorAll('button'), function(b){
+      b.classList.toggle('on', b.getAttribute('data-id') === id);
+    });
+  }
+
+  function esc(t){
+    return String(t).replace(/[<>&]/g, function(c){
+      return {'<':'&lt;','>':'&gt;','&':'&amp;'}[c];
+    });
+  }
+
+  function fill(videos){
+    list.innerHTML = '';
+    videos.forEach(function(v){
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.setAttribute('data-id', v.id);
+      b.title = v.title + (v.date ? '  \u2014  ' + v.date : '');
+      b.setAttribute('aria-label', v.title);
+      b.innerHTML =
+        '<img loading="lazy" alt="" src="https://i.ytimg.com/vi/' + esc(v.id) + '/mqdefault.jpg">';
+      b.addEventListener('click', function(){ fr.src = embed(v.id); mark(v.id); });
+      list.appendChild(b);
+    });
+  }
+
+  function hideSide(){
+    inner.classList.add('solo');
+    toggle.style.display = 'none';
+  }
+
+  function load(){
+    if (loaded) return;
+    loaded = true;
+    fetch('assets/videos.json', {cache:'no-cache'})
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(d){
+        if (d && d.videos && d.videos.length) { fill(d.videos); }
+        else { hideSide(); }
+      })
+      .catch(hideSide);
+  }
+
+  function openLb(src){
+    fr.src = src;
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    load();
+  }
+
+  function closeLb(){
+    lb.classList.remove('open');
+    fr.src = '';
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('click', function(e){
+    var a = e.target.closest('a.thumb[data-embed]');
+    if (!a) return;
+    var u = a.getAttribute('data-embed');
+    if (!u) return;
+    e.preventDefault();
+    openLb(u);
   });
-  document.getElementById('lbClose').addEventListener('click',close);
-  lb.addEventListener('click',function(e){if(e.target===lb)close();});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+
+  toggle.addEventListener('click', function(){
+    var closed = inner.classList.toggle('solo');
+    toggle.innerHTML = closed ? '\u2039' : '\u203A';
+    toggle.setAttribute('aria-label', closed ? 'Show video list' : 'Hide video list');
+  });
+
+  document.getElementById('lbClose').addEventListener('click', closeLb);
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeLb(); });
 })();
 </script>
 </body>
