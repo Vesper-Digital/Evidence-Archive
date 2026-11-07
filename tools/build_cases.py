@@ -187,12 +187,21 @@ CASE_PAGE = """<!doctype html>
   .sec{margin:46px 0 18px;display:flex;align-items:center;gap:18px}
   .sec h2{font-size:clamp(22px,2.4vw,30px);font-weight:800;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap}
   .sec:after{content:"";flex:1;height:1px;background:var(--line)}
-  ul.files{list-style:none}
-  ul.files li{border-bottom:1px solid var(--line)}
-  ul.files a{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px 4px;color:#fff;text-decoration:none;font-size:clamp(18px,1.4vw,23px)}
-  ul.files a:hover{background:#0d0d0d;color:var(--red)}
-  ul.files .nm{overflow-wrap:anywhere}
-  ul.files .sz{color:var(--muted);font-size:17px;white-space:nowrap;letter-spacing:.08em}
+  ul.files{list-style:none;display:grid;gap:14px}
+  ul.files a{display:grid;grid-template-columns:auto 1fr auto auto;align-items:center;gap:20px;
+    padding:22px 24px;border:1px solid #2a2a2a;background:#0b0b0b;color:#fff;text-decoration:none;
+    transition:border-color .16s ease,background .16s ease}
+  ul.files a:hover{border-color:var(--red);background:#120404}
+  ul.files svg{width:26px;height:26px;stroke:var(--red);fill:none;stroke-width:1.8;flex:none}
+  ul.files .nm{font-size:clamp(19px,1.5vw,25px);overflow-wrap:anywhere;line-height:1.3}
+  ul.files .sz{color:var(--muted);font-size:18px;white-space:nowrap;letter-spacing:.1em}
+  ul.files .dl{display:flex;align-items:center;gap:10px;color:var(--red);font-size:16px;
+    font-weight:700;letter-spacing:.18em;text-transform:uppercase;white-space:nowrap}
+  ul.files a:hover .dl{color:#fff}
+  @media (max-width:720px){
+    ul.files a{grid-template-columns:auto 1fr;row-gap:10px}
+    ul.files .sz,ul.files .dl{grid-column:2}
+  }
   .shots{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
   .shots a{display:block;background:#0d0d0d}
   .shots img{display:block;width:100%;height:auto}
@@ -218,6 +227,9 @@ __BODY__
 </body>
 </html>
 """
+
+
+DOWNLOAD_SVG = ('<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12"/><path d="M7 11l5 5 5-5"/><path d="M4 20h16"/></svg>')
 
 
 def human_size(n):
@@ -254,8 +266,10 @@ def write_case_page(case):
         for n, sz in files:
             body.append(
                 f'    <li><a href="Files/{quote(n)}" download>'
+                f'{DOWNLOAD_SVG}'
                 f'<span class="nm">{html.escape(n)}</span>'
-                f'<span class="sz">{human_size(sz)}</span></a></li>')
+                f'<span class="sz">{human_size(sz)}</span>'
+                f'<span class="dl">Download</span></a></li>')
         body.append("  </ul>")
     if images:
         body.append('  <div class="sec" id="images"><h2>Images</h2></div>')
