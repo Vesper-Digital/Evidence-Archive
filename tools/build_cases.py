@@ -99,7 +99,7 @@ YT_RE = re.compile(
 def youtube_embed(url):
     """Turn any YouTube link into an embeddable one. '' if not YouTube."""
     m = YT_RE.search(url or "")
-    return f"https://www.youtube.com/embed/{m.group(1)}?autoplay=1&rel=0" if m else ""
+    return f"https://www.youtube.com/embed/{m.group(1)}?rel=0&cc_load_policy=0&modestbranding=1" if m else ""
 
 
 def split_about(text):

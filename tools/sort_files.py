@@ -4,8 +4,7 @@
 Upload anything to the repo root. This runs before the site is built and
 moves whatever it recognises:
 
-  build_cases.py        -> tools/
-  sort_files.py         -> tools/
+  any .py file          -> tools/
   build-cases.yml       -> .github/workflows/
   any loose image       -> assets/
 
@@ -26,14 +25,19 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SYSTEM_DIRS = {".git", ".github", "tools", "assets", "_inbox"}
 
 # Files that belong at the root. Never moved.
-ROOT_FILES = {"index.html", "readme.md", ".gitignore", ".nojekyll", "cname"}
+ROOT_FILES = {"index.html", "readme.md", "channel.txt", ".gitignore",
+              ".nojekyll", "cname"}
 
 FILE_RULES = {
     "build_cases.py": "tools",
     "sort_files.py": "tools",
     "sort_inbox.py": "tools",
-    "build-cases.yml": ".github/workflows",
+    "fetch_videos.py": "tools",
 }
+
+# GitHub refuses to let an Action write to .github/workflows, so the workflow
+# file is never moved. Upload it straight to that folder when it changes.
+NEVER_MOVE = {"build-cases.yml"}
 
 IMAGE_EXT = (".jpg", ".jpeg", ".png", ".webp", ".gif", ".avif", ".svg", ".ico")
 
@@ -41,10 +45,12 @@ IMAGE_EXT = (".jpg", ".jpeg", ".png", ".webp", ".gif", ".avif", ".svg", ".ico")
 def destination(name):
     """Folder this file belongs in, or None to leave it where it is."""
     low = name.lower()
-    if low in ROOT_FILES:
+    if low in ROOT_FILES or low in NEVER_MOVE:
         return None
     if low in FILE_RULES:
         return FILE_RULES[low]
+    if low.endswith(".py"):
+        return "tools"
     if low.endswith(IMAGE_EXT):
         return "assets"
     return None
