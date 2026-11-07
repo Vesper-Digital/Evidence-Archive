@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vesper Digital — Evidence Archive</title>
+<meta name="description" content="The source documents behind every Vesper Digital video.">
+<meta property="og:title" content="Vesper Digital — Evidence Archive">
+<meta property="og:description" content="The source documents behind every Vesper Digital video.">
+<meta property="og:image" content="assets/banner.png">
+<link rel="icon" href="assets/banner.png">
+<style>
+  :root{
+    --bg:#000;
+    --panel:#0a0a0a;
+    --line:#1c1c1c;
+    --text:#e8e8e8;
+    --muted:#8a8a8a;
+    --red:#ff1f2d;
+    --cyan:#19d6e8;
+    --max:1240px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:"Barlow Condensed","Oswald","Archivo Narrow",Helvetica,Arial,sans-serif;
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+
+  /* BANNER */
+  .banner{display:block;width:100%;max-width:var(--max);margin:0 auto}
+  .banner img{display:block;width:100%;height:auto}
+
+  /* INTRO */
+  .intro{padding:48px 0 8px}
+  .intro h1{
+    font-size:clamp(30px,4.6vw,56px);
+    font-weight:800;
+    letter-spacing:.055em;
+    text-transform:uppercase;
+    line-height:1.05;
+  }
+  .rule{height:3px;background:var(--red);width:100%;margin:18px 0 26px}
+  .lede{
+    font-size:clamp(18px,2vw,23px);
+    font-weight:600;
+    letter-spacing:.02em;
+    text-transform:uppercase;
+    color:#fff;
+    margin-bottom:26px;
+  }
+  .intro p{max-width:72ch;margin-bottom:18px;color:#cfcfcf}
+  .intro p strong{color:#fff}
+  .note{
+    border-left:3px solid var(--red);
+    padding:12px 0 12px 16px;
+    margin-top:28px;
+    color:var(--muted);
+    font-size:15.5px;
+    max-width:72ch;
+  }
+
+  /* SECTION HEAD */
+  .sec{
+    margin:64px 0 28px;
+    display:flex;
+    align-items:center;
+    gap:18px;
+  }
+  .sec h2{
+    font-size:clamp(22px,2.6vw,32px);
+    font-weight:800;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    white-space:nowrap;
+  }
+  .sec:after{content:"";flex:1;height:1px;background:var(--line)}
+
+  /* CASE CARD */
+  .case{
+    display:grid;
+    grid-template-columns:300px 1fr;
+    gap:26px;
+    margin-bottom:26px;
+  }
+  .case .thumb{display:block;overflow:hidden;background:#000;align-self:start}
+  .case .thumb img{
+    display:block;
+    width:100%;
+    height:auto;
+    aspect-ratio:16/9;
+    object-fit:cover;
+    transition:transform .35s ease;
+  }
+  .case:hover .thumb img{transform:scale(1.04)}
+  .case .body{display:flex;flex-direction:column;gap:14px}
+  .case .head{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:20px;
+    border-bottom:1px solid var(--line);
+    padding-bottom:10px;
+  }
+  .case h3{
+    font-size:clamp(20px,2.1vw,28px);
+    font-weight:800;
+    letter-spacing:.03em;
+    text-transform:uppercase;
+    line-height:1.15;
+    color:#fff;
+  }
+  .case .date{
+    font-size:13px;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    color:var(--red);
+    font-weight:700;
+    white-space:nowrap;
+  }
+  .case .blurb{color:var(--muted);font-size:16px}
+  .btns{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:auto}
+  .btn{
+    display:block;
+    text-align:center;
+    padding:20px 16px;
+    border:1px solid var(--red);
+    color:#fff;
+    text-decoration:none;
+    font-size:15px;
+    font-weight:700;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    transition:background .16s ease,color .16s ease;
+  }
+  .btn:hover{background:var(--red);color:#fff}
+  .btn.alt{border-color:#3a3a3a;color:#cfcfcf}
+  .btn.alt:hover{background:#fff;color:#000;border-color:#fff}
+
+  /* FOOTER */
+  footer{
+    margin:80px 0 60px;
+    padding-top:26px;
+    border-top:1px solid var(--line);
+    color:var(--muted);
+    font-size:14.5px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px 26px;
+    justify-content:space-between;
+  }
+  footer a{color:var(--cyan);text-decoration:none}
+  footer a:hover{text-decoration:underline}
+
+  @media (max-width:860px){
+    .case{grid-template-columns:1fr}
+    .case .body{padding:22px}
+  }
+</style>
+</head>
+<body>
+
+<div class="banner"><img src="assets/banner.png" alt="Vesper Digital"></div>
+
+<div class="wrap">
+
+  <section class="intro">
+    <h1>Evidence Archive</h1>
+    <div class="rule"></div>
+    <p class="lede">The source documents behind every video.</p>
+
+    <p>This is the public record room for Vesper Digital. Every claim made in a video is backed by a document, and every one of those documents is here, in full, exactly as it was obtained.</p>
+
+    <p>Nothing here is summarized for you. There is no commentary in these folders, no highlighting, no editing. You get the original government records, filings, contracts, disclosures and correspondence so you can read them yourself and come to your own conclusion. If you disagree with the reading given in a video, this is where you go to prove it.</p>
+
+    <p><strong>Download anything. Share anything. Check the work.</strong></p>
+
+    <div class="note">Open a case, click a file, then use the download button on the file page. To take a whole case at once, download the full archive as a ZIP from the repository.</div>
+  </section>
+
+  <div class="sec"><h2>Cases</h2></div>
+
+  <!-- ===== CASE CARD. COPY THE WHOLE BLOCK BELOW TO ADD A NEW ONE. =====
+       Change: the folder name (3 places), the thumbnail file, the date, the title, the blurb. -->
+  <article class="case">
+    <a class="thumb" href="01-case-name/"><img src="assets/case-01.jpg" alt=""></a>
+    <div class="body">
+      <div class="head">
+        <h3>Case Title Goes Here</h3>
+        <div class="date">January 1, 2026</div>
+      </div>
+      <p class="blurb">One or two lines saying what this case covers and what the documents show.</p>
+      <div class="btns">
+        <a class="btn" href="01-case-name/Files">Files</a>
+        <a class="btn alt" href="01-case-name/Images">Images</a>
+      </div>
+    </div>
+  </article>
+  <!-- ===== END CASE CARD ===== -->
+
+  <footer>
+    <div>Vesper Digital — Media · Power · Accountability</div>
+    <div><a href="https://github.com/Vesper-Digital/Evidence-Archive">Repository</a></div>
+  </footer>
+
+</div>
+</body>
+</html>
