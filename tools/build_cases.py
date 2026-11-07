@@ -177,6 +177,7 @@ CASE_PAGE = """<!doctype html>
   *{box-sizing:border-box;margin:0;padding:0}
   body{background:var(--bg);color:var(--text);font-family:"Barlow Condensed","Oswald","Archivo Narrow",Helvetica,Arial,sans-serif;font-size:20px;line-height:1.6;-webkit-font-smoothing:antialiased}
   .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+  .banner{display:block;width:100%;max-width:var(--max);margin:0 auto}
   .banner img{display:block;width:100%;height:clamp(140px,16vw,230px);object-fit:cover}
   .back{display:inline-block;margin:28px 0 10px;color:var(--cyan);text-decoration:none;font-size:18px;letter-spacing:.1em;text-transform:uppercase}
   .back:hover{text-decoration:underline}
@@ -194,7 +195,7 @@ CASE_PAGE = """<!doctype html>
   ul.files a:hover{border-color:var(--red);background:#120404}
   ul.files svg{width:26px;height:26px;stroke:var(--red);fill:none;stroke-width:1.8;flex:none}
   ul.files .nm{font-size:clamp(19px,1.5vw,25px);overflow-wrap:anywhere;line-height:1.3}
-  ul.files .sz{color:var(--muted);font-size:18px;white-space:nowrap;letter-spacing:.1em}
+  ul.files .sz{color:#fff;font-size:18px;white-space:nowrap;letter-spacing:.1em}
   ul.files .dl{display:flex;align-items:center;gap:10px;color:var(--red);font-size:16px;
     font-weight:700;letter-spacing:.18em;text-transform:uppercase;white-space:nowrap}
   ul.files a:hover .dl{color:#fff}
