@@ -20,8 +20,8 @@ Download anything. Share anything. Check the work.
 
 <table>
 <tr>
-<td width="320"><img src="assets/case-01.jpg" width="320"></td>
-<td align="right" valign="top" width="100%">
+<td><img src="assets/case-01.jpg" width="320"></td>
+<td align="right" valign="top" width="1200">
 <h3>Case Title Goes Here</h3>
 <b>January 1, 2026</b><br><br>
 <a href="./01-case-name/Files"><b>▸ FILES</b></a> &nbsp;&nbsp;&nbsp; <a href="./01-case-name/Images"><b>▸ IMAGES</b></a>
