@@ -1,12 +1,2 @@
-# Case Name
-
-Date:
-Video:
-
-What this case is about, in a few lines.
-
-## Documents
-
-| File | What it is | Where it came from |
-|---|---|---|
-|  |  |  |
+Copy this folder, rename it to the case name, drop thumb.jpg in it,
+put documents in Files and screenshots in Images, then upload it.
