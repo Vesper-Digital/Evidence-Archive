@@ -181,7 +181,7 @@ def collect():
             "thumb": find_thumb(abs_path, name),
             "date": date,
             "has_files": os.path.isdir(os.path.join(abs_path, "Files")),
-            "has_images": os.path.isdir(os.path.join(abs_path, "Images")),
+            "has_images": bool(list_dir(os.path.join(abs_path, "Images"))),
             "zip": zip_case(name),
         })
 
@@ -398,27 +398,39 @@ ZIP_SVG = ('<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12"/><pat
 def write_case_page(case):
     folder = case["folder"]
     abs_folder = os.path.join(ROOT, folder)
-    files = list_dir(os.path.join(abs_folder, "Files"))
-    images = list_dir(os.path.join(abs_folder, "Images"))
 
-    body = []
-    if files:
-        body.append('  <div class="sec rz" data-rz="1180" id="files"><h2>Files</h2></div>')
-        body.append('  <ul class="files rz" data-rz="1400">')
-        for n, sz in files:
-            body.append(
-                f'    <li><a href="Files/{quote(n)}" download>'
+    files = list_dir(os.path.join(abs_folder, "Files"))
+    pics, extras = [], []
+    for n, sz in list_dir(os.path.join(abs_folder, "Images")):
+        (pics if n.lower().endswith(IMAGE_EXT) else extras).append((n, sz))
+
+    def rows(sub, items, delay):
+        out = [f'  <ul class="files rz" data-rz="{delay}">']
+        for n, sz in items:
+            out.append(
+                f'    <li><a href="{sub}/{quote(n)}" download>'
                 f'{DOWNLOAD_SVG}'
                 f'<span class="nm">{html.escape(n)}</span>'
                 f'<span class="sz">{human_size(sz)}</span>'
                 f'<span class="dl">Download</span></a></li>')
-        body.append("  </ul>")
-    if images:
+        out.append("  </ul>")
+        return out
+
+    body = []
+    if files:
+        body.append('  <div class="sec rz" data-rz="1180" id="files"><h2>Files</h2></div>')
+        body += rows("Files", files, 1400)
+
+    if pics or extras:
         body.append('  <div class="sec rz" data-rz="1640" id="images"><h2>Images</h2></div>')
-        body.append('  <div class="shots rz" data-rz="1860">')
-        for n, _sz in images:
-            body.append(f'    <a href="Images/{quote(n)}"><img src="Images/{quote(n)}" alt="" loading="lazy"></a>')
-        body.append("  </div>")
+        if pics:
+            body.append('  <div class="shots rz" data-rz="1860">')
+            for n, _sz in pics:
+                body.append(f'    <a href="Images/{quote(n)}"><img src="Images/{quote(n)}" alt="" loading="lazy"></a>')
+            body.append("  </div>")
+        if extras:
+            body += rows("Images", extras, 1860 if not pics else 2000)
+
     if not body:
         body.append('  <p class="blurb">No documents published for this case yet.</p>')
 
