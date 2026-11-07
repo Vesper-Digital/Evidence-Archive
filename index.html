@@ -26,7 +26,7 @@
     background:var(--bg);
     color:var(--text);
     font-family:"Barlow Condensed","Oswald","Archivo Narrow",Helvetica,Arial,sans-serif;
-    font-size:17px;
+    font-size:20px;
     line-height:1.6;
     -webkit-font-smoothing:antialiased;
   }
@@ -84,7 +84,7 @@
   }
   .sec:after{content:"";flex:1;height:1px;background:var(--line)}
 
-  .howto{color:var(--muted);font-size:16px;margin:-6px 0 22px}
+  .howto{color:#c4c4c4;font-size:clamp(24px,2.1vw,33px);margin:-2px 0 36px}
 
   /* CASE CARD */
   .case{
@@ -113,36 +113,39 @@
     padding-bottom:10px;
   }
   .case h3{
-    font-size:clamp(20px,2.1vw,28px);
+    font-size:clamp(26px,2.6vw,38px);
     font-weight:800;
     letter-spacing:.03em;
     text-transform:uppercase;
-    line-height:1.15;
+    line-height:1.1;
     color:#fff;
   }
   .case .date{
-    font-size:13px;
-    letter-spacing:.2em;
+    font-size:clamp(20px,1.7vw,27px);
+    letter-spacing:.14em;
     text-transform:uppercase;
     color:var(--red);
     font-weight:700;
     white-space:nowrap;
   }
-  .case .blurb{color:var(--muted);font-size:16px}
+  .case .blurb{color:#c9c9c9;font-size:clamp(23px,2vw,31px);line-height:1.4}
   .btns{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:auto}
   .btn{
-    display:block;
-    text-align:center;
-    padding:20px 16px;
-    border:1px solid var(--red);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:16px;
+    padding:26px 18px;
+    border:2px solid var(--red);
     color:#fff;
     text-decoration:none;
-    font-size:15px;
+    font-size:clamp(26px,2.3vw,35px);
     font-weight:700;
-    letter-spacing:.2em;
+    letter-spacing:.18em;
     text-transform:uppercase;
     transition:background .16s ease,color .16s ease;
   }
+  .btn svg{width:1.15em;height:1.15em;flex:none;stroke:currentColor;fill:none;stroke-width:1.9}
   .btn:hover{background:var(--red);color:#fff}
   .btn.alt{border-color:#3a3a3a;color:#cfcfcf}
   .btn.alt:hover{background:#fff;color:#000;border-color:#fff}
@@ -153,7 +156,7 @@
     padding-top:26px;
     border-top:1px solid var(--line);
     color:var(--muted);
-    font-size:14.5px;
+    font-size:18px;
     display:flex;
     flex-wrap:wrap;
     gap:10px 26px;
@@ -195,8 +198,8 @@
       </div>
       <p class="blurb">One or two lines saying what this case covers and what the documents show.</p>
       <div class="btns">
-        <a class="btn" href="01-case-name/Files">Files</a>
-        <a class="btn alt" href="01-case-name/Images">Images</a>
+        <a class="btn" href="01-case-name/Files"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7z"/><path d="M14 2v5h5"/><path d="M9 13h6"/><path d="M9 17h6"/></svg><span>Files</span></a>
+        <a class="btn alt" href="01-case-name/Images"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.8"/><path d="M21 16l-5-5-6 6-3-3-4 4"/></svg><span>Images</span></a>
       </div>
     </div>
   </article>
