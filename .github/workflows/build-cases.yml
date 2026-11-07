@@ -22,8 +22,8 @@ jobs:
           ref: main
           fetch-depth: 0
 
-      - name: Empty the inbox
-        run: python3 tools/sort_inbox.py
+      - name: File loose uploads
+        run: python3 tools/sort_files.py
 
       - name: Rebuild the cases list
         run: python3 tools/build_cases.py
