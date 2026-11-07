@@ -314,7 +314,7 @@ CASE_PAGE = """<!doctype html>
   /* ENTRANCE */
   @keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
   .rz{opacity:0}
-  .rz.in{animation:rise .55s cubic-bezier(.22,.7,.3,1) forwards}
+  .rz.in{animation:rise .7s cubic-bezier(.16,.72,.24,1) forwards}
   @media (prefers-reduced-motion:reduce){
     .rz{opacity:1}
     .rz.in{animation:none}
@@ -328,10 +328,12 @@ CASE_PAGE = """<!doctype html>
 <body>
 <div class="banner rz" data-rz="0"><img class="portrait" src="__UP__assets/portrait.jpg" alt=""><img src="__UP__assets/banner.png" alt="Vesper Digital"></div>
 <div class="wrap">
-  <a class="back rz" data-rz="80" href="__UP__">&larr; All cases</a>
-  <h1 class="rz" data-rz="130">__TITLE__</h1>
-  <div class="rule rz" data-rz="170"></div>
-  <div class="meta rz" data-rz="200">__DATE__</div>
+  <div class="rz" data-rz="140">
+    <a class="back" href="__UP__">&larr; All cases</a>
+    <h1>__TITLE__</h1>
+    <div class="rule"></div>
+    <div class="meta">__DATE__</div>
+  </div>
 __BLURB__
 __ACTIONS__
 __BODY__
@@ -404,8 +406,8 @@ def write_case_page(case):
 
     body = []
     if files:
-        body.append('  <div class="sec rz" id="files"><h2>Files</h2></div>')
-        body.append('  <ul class="files rz">')
+        body.append('  <div class="sec rz" data-rz="470" id="files"><h2>Files</h2></div>')
+        body.append('  <ul class="files rz" data-rz="550">')
         for n, sz in files:
             body.append(
                 f'    <li><a href="Files/{quote(n)}" download>'
@@ -415,15 +417,15 @@ def write_case_page(case):
                 f'<span class="dl">Download</span></a></li>')
         body.append("  </ul>")
     if images:
-        body.append('  <div class="sec rz" id="images"><h2>Images</h2></div>')
-        body.append('  <div class="shots rz">')
+        body.append('  <div class="sec rz" data-rz="640" id="images"><h2>Images</h2></div>')
+        body.append('  <div class="shots rz" data-rz="720">')
         for n, _sz in images:
             body.append(f'    <a href="Images/{quote(n)}"><img src="Images/{quote(n)}" alt="" loading="lazy"></a>')
         body.append("  </div>")
     if not body:
         body.append('  <p class="blurb">No documents published for this case yet.</p>')
 
-    blurb = (f'  <p class="blurb rz" data-rz="230">{html.escape(case["blurb"])}</p>'
+    blurb = (f'  <p class="blurb rz" data-rz="260">{html.escape(case["blurb"])}</p>'
              if case["blurb"] else "")
 
     acts = []
