@@ -91,6 +91,17 @@ def find_thumb(folder_abs, folder_rel):
 URL_RE = re.compile(r"^\s*(https?://\S+)\s*$")
 
 
+YT_RE = re.compile(
+    r"(?:youtu\.be/|youtube\.com/(?:watch\?v=|live/|shorts/|embed/))"
+    r"([A-Za-z0-9_-]{6,})")
+
+
+def youtube_embed(url):
+    """Turn any YouTube link into an embeddable one. '' if not YouTube."""
+    m = YT_RE.search(url or "")
+    return f"https://www.youtube.com/embed/{m.group(1)}?autoplay=1&rel=0" if m else ""
+
+
 def split_about(text):
     """about.txt: any line that is only a URL becomes the video link."""
     blurb, video = [], ""
@@ -190,6 +201,8 @@ def render(cases):
         thumb_href = html.escape(vid, quote=True) if vid else tree
         thumb_tgt = ' target="_blank" rel="noopener"' if vid else ""
         thumb_cls = " play" if vid else ""
+        emb = youtube_embed(vid)
+        thumb_data = f' data-embed="{html.escape(emb, quote=True)}"' if emb else ""
         title = html.escape(c["title"])
         date = c["date"].strftime("%B %-d, %Y") if c["date"] else ""
         thumb = html.escape(quote(c["thumb"]), quote=True) if c["thumb"] else ""
@@ -210,7 +223,7 @@ def render(cases):
 
         out.append(
             f'  <article class="case">\n'
-            f'    <a class="thumb{thumb_cls}" href="{thumb_href}"{thumb_tgt}>{img}</a>\n'
+            f'    <a class="thumb{thumb_cls}" href="{thumb_href}"{thumb_tgt}{thumb_data}>{img}</a>\n'
             f'    <div class="body">\n'
             f'      <div class="head">\n'
             f'        <h3><a href="{tree}">{title}</a></h3>\n'
