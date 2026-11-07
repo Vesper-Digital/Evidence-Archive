@@ -37,7 +37,7 @@
   .banner img{display:block;width:100%;height:clamp(140px,16vw,230px);object-fit:cover}
 
   /* INTRO */
-  .intro{padding:48px 0 8px}
+  .intro{padding:40px 0 0}
   .intro h1{
     font-size:clamp(30px,4.6vw,56px);
     font-weight:800;
@@ -54,7 +54,7 @@
     color:#fff;
     margin-bottom:26px;
   }
-  .intro p{margin-bottom:22px;color:#dcdcdc;font-size:clamp(19px,1.7vw,25px);line-height:1.55;max-width:66ch}
+  .intro p{margin-bottom:0;color:#dcdcdc;font-size:clamp(19px,1.7vw,25px);line-height:1.55;max-width:66ch}
   .intro p strong{color:#fff}
   .note{
     border-left:5px solid var(--red);
@@ -70,7 +70,7 @@
 
   /* SECTION HEAD */
   .sec{
-    margin:64px 0 28px;
+    margin:44px 0 24px;
     display:flex;
     align-items:center;
     gap:18px;
@@ -83,6 +83,8 @@
     white-space:nowrap;
   }
   .sec:after{content:"";flex:1;height:1px;background:var(--line)}
+
+  .howto{color:var(--muted);font-size:16px;margin:-6px 0 22px}
 
   /* CASE CARD */
   .case{
@@ -176,17 +178,11 @@
     <h1>Evidence Archive</h1>
     <div class="rule"></div>
     <p class="lede">The source documents behind every video.</p>
-
-    <p>This is the public record room for Vesper Digital. Every claim made in a video is backed by a document, and every one of those documents is here, in full, exactly as it was obtained.</p>
-
-    <p>Nothing here is summarized for you. There is no commentary in these folders, no highlighting, no editing. You get the original government records, filings, contracts, disclosures and correspondence so you can read them yourself and come to your own conclusion. If you disagree with the reading given in a video, this is where you go to prove it.</p>
-
-    <p><strong>Download anything. Share anything. Check the work.</strong></p>
-
-    <div class="note"><b>How to download</b>Open a case, click a file, then use the download button on the file page. To take a whole case at once, download the full archive as a ZIP from the repository.</div>
+    <p>Every claim in a Vesper Digital video is backed by a document. They are all here, in full, exactly as obtained, with no commentary and no editing, so you can read them and decide for yourself.</p>
   </section>
 
   <div class="sec"><h2>Cases</h2></div>
+  <p class="howto">Open a case, click a file, then use the download button on the file page.</p>
 
   <!-- ===== CASE CARD. COPY THE WHOLE BLOCK BELOW TO ADD A NEW ONE. =====
        Change: the folder name (3 places), the thumbnail file, the date, the title, the blurb. -->
