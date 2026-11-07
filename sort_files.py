@@ -4,8 +4,7 @@
 Upload anything to the repo root. This runs before the site is built and
 moves whatever it recognises:
 
-  build_cases.py        -> tools/
-  sort_files.py         -> tools/
+  any .py file          -> tools/
   build-cases.yml       -> .github/workflows/
   any loose image       -> assets/
 
@@ -50,6 +49,8 @@ def destination(name):
         return None
     if low in FILE_RULES:
         return FILE_RULES[low]
+    if low.endswith(".py"):
+        return "tools"
     if low.endswith(IMAGE_EXT):
         return "assets"
     return None
