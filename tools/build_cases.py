@@ -222,7 +222,7 @@ def render(cases):
                  if c["blurb"] else "")
 
         out.append(
-            f'  <article class="case">\n'
+            f'  <article class="case rz">\n'
             f'    <a class="thumb{thumb_cls}" href="{thumb_href}"{thumb_tgt}{thumb_data}>{img}</a>\n'
             f'    <div class="body">\n'
             f'      <div class="head">\n'
@@ -293,26 +293,58 @@ CASE_PAGE = """<!doctype html>
   .shots{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
   .shots a{display:block;background:#0d0d0d}
   .shots img{display:block;width:100%;height:auto}
+  /* ENTRANCE */
+  @keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+  .rz{opacity:0}
+  .rz.in{animation:rise .55s cubic-bezier(.22,.7,.3,1) forwards}
+  @media (prefers-reduced-motion:reduce){
+    .rz{opacity:1}
+    .rz.in{animation:none}
+  }
+
   footer{margin:70px 0 60px;padding-top:24px;border-top:1px solid var(--line);color:var(--muted);font-size:18px;display:flex;flex-wrap:wrap;gap:10px 26px;justify-content:space-between}
   footer a{color:var(--cyan);text-decoration:none}
   footer a:hover{text-decoration:underline}
 </style>
 </head>
 <body>
-<div class="banner"><img class="portrait" src="__UP__assets/portrait.jpg" alt=""><img src="__UP__assets/banner.png" alt="Vesper Digital"></div>
+<div class="banner rz" data-rz="0"><img class="portrait" src="__UP__assets/portrait.jpg" alt=""><img src="__UP__assets/banner.png" alt="Vesper Digital"></div>
 <div class="wrap">
-  <a class="back" href="__UP__">&larr; All cases</a>
-  <h1>__TITLE__</h1>
-  <div class="rule"></div>
-  <div class="meta">__DATE__</div>
+  <a class="back rz" data-rz="80" href="__UP__">&larr; All cases</a>
+  <h1 class="rz" data-rz="130">__TITLE__</h1>
+  <div class="rule rz" data-rz="170"></div>
+  <div class="meta rz" data-rz="200">__DATE__</div>
 __BLURB__
 __ACTIONS__
 __BODY__
-  <footer>
+  <footer class="rz" data-rz="0">
     <div>Vesper Digital — Media · Power · Accountability</div>
     <div><a href="__UP__">Evidence Archive</a></div>
   </footer>
 </div>
+<script>
+(function(){
+  var items = document.querySelectorAll('.rz');
+  if (!items.length) return;
+
+  if (!('IntersectionObserver' in window)) {
+    [].forEach.call(items, function(el){ el.classList.add('in'); });
+    return;
+  }
+
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (!e.isIntersecting) return;
+      var el = e.target;
+      var d = parseInt(el.getAttribute('data-rz') || '0', 10);
+      setTimeout(function(){ el.classList.add('in'); }, d);
+      io.unobserve(el);
+    });
+  }, {rootMargin:'0px 0px -8% 0px', threshold:0.05});
+
+  [].forEach.call(items, function(el){ io.observe(el); });
+})();
+</script>
 </body>
 </html>
 """
@@ -354,8 +386,8 @@ def write_case_page(case):
 
     body = []
     if files:
-        body.append('  <div class="sec" id="files"><h2>Files</h2></div>')
-        body.append('  <ul class="files">')
+        body.append('  <div class="sec rz" id="files"><h2>Files</h2></div>')
+        body.append('  <ul class="files rz">')
         for n, sz in files:
             body.append(
                 f'    <li><a href="Files/{quote(n)}" download>'
@@ -365,15 +397,15 @@ def write_case_page(case):
                 f'<span class="dl">Download</span></a></li>')
         body.append("  </ul>")
     if images:
-        body.append('  <div class="sec" id="images"><h2>Images</h2></div>')
-        body.append('  <div class="shots">')
+        body.append('  <div class="sec rz" id="images"><h2>Images</h2></div>')
+        body.append('  <div class="shots rz">')
         for n, _sz in images:
             body.append(f'    <a href="Images/{quote(n)}"><img src="Images/{quote(n)}" alt="" loading="lazy"></a>')
         body.append("  </div>")
     if not body:
         body.append('  <p class="blurb">No documents published for this case yet.</p>')
 
-    blurb = (f'  <p class="blurb">{html.escape(case["blurb"])}</p>'
+    blurb = (f'  <p class="blurb rz" data-rz="230">{html.escape(case["blurb"])}</p>'
              if case["blurb"] else "")
 
     acts = []
@@ -384,7 +416,7 @@ def write_case_page(case):
     if case.get("zip"):
         acts.append(f'    <a class="alt" href="../{case["zip"]}" download>'
                     f'{ZIP_SVG}<span>Download all</span></a>')
-    actions = ('  <div class="top">\n' + "\n".join(acts) + '\n  </div>') if acts else ""
+    actions = ('  <div class="top rz" data-rz="270">\n' + "\n".join(acts) + '\n  </div>') if acts else ""
     date = case["date"].strftime("%B %-d, %Y") if case["date"] else ""
 
     page = (CASE_PAGE

@@ -53,31 +53,63 @@
   .shots{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
   .shots a{display:block;background:#0d0d0d}
   .shots img{display:block;width:100%;height:auto}
+  /* ENTRANCE */
+  @keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+  .rz{opacity:0}
+  .rz.in{animation:rise .55s cubic-bezier(.22,.7,.3,1) forwards}
+  @media (prefers-reduced-motion:reduce){
+    .rz{opacity:1}
+    .rz.in{animation:none}
+  }
+
   footer{margin:70px 0 60px;padding-top:24px;border-top:1px solid var(--line);color:var(--muted);font-size:18px;display:flex;flex-wrap:wrap;gap:10px 26px;justify-content:space-between}
   footer a{color:var(--cyan);text-decoration:none}
   footer a:hover{text-decoration:underline}
 </style>
 </head>
 <body>
-<div class="banner"><img class="portrait" src="../assets/portrait.jpg" alt=""><img src="../assets/banner.png" alt="Vesper Digital"></div>
+<div class="banner rz" data-rz="0"><img class="portrait" src="../assets/portrait.jpg" alt=""><img src="../assets/banner.png" alt="Vesper Digital"></div>
 <div class="wrap">
-  <a class="back" href="../">&larr; All cases</a>
-  <h1>Deleted Federal Records</h1>
-  <div class="rule"></div>
-  <div class="meta">November 6, 2026</div>
-  <p class="blurb">The deleted federal estimates tables from 2019-2022 and the available tables up to 2026.</p>
-  <div class="top">
+  <a class="back rz" data-rz="80" href="../">&larr; All cases</a>
+  <h1 class="rz" data-rz="130">Deleted Federal Records</h1>
+  <div class="rule rz" data-rz="170"></div>
+  <div class="meta rz" data-rz="200">November 6, 2026</div>
+  <p class="blurb rz" data-rz="230">The deleted federal estimates tables from 2019-2022 and the available tables up to 2026.</p>
+  <div class="top rz" data-rz="270">
     <a href="https://youtube.com/live/kFPYXB-KUts?feature=share" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l6 3.5-6 3.5z"/></svg><span>Watch the video</span></a>
     <a class="alt" href="../assets/zips/Deleted-Federal-Records.zip" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12"/><path d="M7 11l5 5 5-5"/><path d="M4 20h16"/></svg><span>Download all</span></a>
   </div>
-  <div class="sec" id="files"><h2>Files</h2></div>
-  <ul class="files">
+  <div class="sec rz" id="files"><h2>Files</h2></div>
+  <ul class="files rz">
     <li><a href="Files/Federal%20Estimates%20Deleted.7z" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12"/><path d="M7 11l5 5 5-5"/><path d="M4 20h16"/></svg><span class="nm">Federal Estimates Deleted.7z</span><span class="sz">8 MB</span><span class="dl">Download</span></a></li>
   </ul>
-  <footer>
+  <footer class="rz" data-rz="0">
     <div>Vesper Digital — Media · Power · Accountability</div>
     <div><a href="../">Evidence Archive</a></div>
   </footer>
 </div>
+<script>
+(function(){
+  var items = document.querySelectorAll('.rz');
+  if (!items.length) return;
+
+  if (!('IntersectionObserver' in window)) {
+    [].forEach.call(items, function(el){ el.classList.add('in'); });
+    return;
+  }
+
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (!e.isIntersecting) return;
+      var el = e.target;
+      var d = parseInt(el.getAttribute('data-rz') || '0', 10);
+      setTimeout(function(){ el.classList.add('in'); }, d);
+      io.unobserve(el);
+    });
+  }, {rootMargin:'0px 0px -8% 0px', threshold:0.05});
+
+  [].forEach.call(items, function(el){ io.observe(el); });
+})();
+</script>
 </body>
 </html>
