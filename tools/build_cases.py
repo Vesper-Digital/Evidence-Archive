@@ -17,12 +17,15 @@ Everything else is worked out automatically.
 
 import html
 import os
+from urllib.parse import quote
 import re
 import subprocess
 import sys
 from datetime import datetime
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# GitHub Pages does not list folders, so folder links must point at the repo.
+REPO_TREE = "https://github.com/Vesper-Digital/Evidence-Archive/tree/main"
 INDEX = os.path.join(ROOT, "index.html")
 SKIP = {"assets", "tools", "node_modules", "docs"}
 IMAGE_EXT = (".jpg", ".jpeg", ".png", ".webp", ".gif", ".avif")
@@ -127,27 +130,28 @@ def render(cases):
     out = []
     for c in cases:
         folder = html.escape(c["folder"], quote=True)
+        tree = REPO_TREE + "/" + quote(c["folder"])
         title = html.escape(c["title"])
         date = c["date"].strftime("%B %-d, %Y") if c["date"] else ""
-        thumb = html.escape(c["thumb"], quote=True) if c["thumb"] else ""
+        thumb = html.escape(quote(c["thumb"]), quote=True) if c["thumb"] else ""
 
         img = (f'<img src="{thumb}" alt="">' if thumb
                else '<span class="noimg"></span>')
 
         btns = []
         if c["has_files"]:
-            btns.append(f'<a class="btn" href="{folder}/Files">{FILES_SVG}<span>Files</span></a>')
+            btns.append(f'<a class="btn" href="{tree}/Files">{FILES_SVG}<span>Files</span></a>')
         if c["has_images"]:
-            btns.append(f'<a class="btn alt" href="{folder}/Images">{IMAGES_SVG}<span>Images</span></a>')
+            btns.append(f'<a class="btn alt" href="{tree}/Images">{IMAGES_SVG}<span>Images</span></a>')
         if not btns:
-            btns.append(f'<a class="btn" href="{folder}/">{FILES_SVG}<span>Open</span></a>')
+            btns.append(f'<a class="btn" href="{tree}">{FILES_SVG}<span>Open</span></a>')
 
         blurb = (f'\n      <p class="blurb">{html.escape(c["blurb"])}</p>'
                  if c["blurb"] else "")
 
         out.append(
             f'  <article class="case">\n'
-            f'    <a class="thumb" href="{folder}/">{img}</a>\n'
+            f'    <a class="thumb" href="{tree}">{img}</a>\n'
             f'    <div class="body">\n'
             f'      <div class="head">\n'
             f'        <h3>{title}</h3>\n'
