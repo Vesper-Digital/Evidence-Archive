@@ -34,8 +34,11 @@ FILE_RULES = {
     "sort_files.py": "tools",
     "sort_inbox.py": "tools",
     "fetch_videos.py": "tools",
-    "build-cases.yml": ".github/workflows",
 }
+
+# GitHub refuses to let an Action write to .github/workflows, so the workflow
+# file is never moved. Upload it straight to that folder when it changes.
+NEVER_MOVE = {"build-cases.yml"}
 
 IMAGE_EXT = (".jpg", ".jpeg", ".png", ".webp", ".gif", ".avif", ".svg", ".ico")
 
@@ -43,7 +46,7 @@ IMAGE_EXT = (".jpg", ".jpeg", ".png", ".webp", ".gif", ".avif", ".svg", ".ico")
 def destination(name):
     """Folder this file belongs in, or None to leave it where it is."""
     low = name.lower()
-    if low in ROOT_FILES:
+    if low in ROOT_FILES or low in NEVER_MOVE:
         return None
     if low in FILE_RULES:
         return FILE_RULES[low]
