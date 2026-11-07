@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
     paths-ignore:
-      - 'index.html'
+      - '**/index.html'
       - '.github/**'
   workflow_dispatch:
 
@@ -28,10 +28,10 @@ jobs:
 
       - name: Commit if changed
         run: |
-          if [ -n "$(git status --porcelain index.html)" ]; then
+          if [ -n "$(git status --porcelain)" ]; then
             git config user.name  "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add index.html
+            git add -A
             git commit -m "Rebuild cases list"
             git push
           else
