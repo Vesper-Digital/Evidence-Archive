@@ -179,6 +179,19 @@
 
   .empty{color:var(--muted);font-size:20px;padding:30px 0}
 
+  /* VIDEO LIGHTBOX */
+  .lb{position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;
+    background:rgba(0,0,0,.92);padding:24px}
+  .lb.open{display:flex}
+  .lb-inner{position:relative;width:min(1200px,94vw)}
+  .lb-frame{position:relative;width:100%;padding-top:56.25%;background:#000;border:2px solid var(--red)}
+  .lb-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .lb-close{position:absolute;top:-54px;right:0;background:none;border:2px solid #3a3a3a;
+    color:#fff;font:inherit;font-size:18px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+    padding:8px 18px;cursor:pointer;transition:background .16s ease,color .16s ease,border-color .16s ease}
+  .lb-close:hover{background:#fff;color:#000;border-color:#fff}
+  @media (max-width:640px){.lb-close{top:-46px;font-size:15px;padding:6px 14px}}
+
   /* FOOTER */
   footer{
     margin:80px 0 60px;
@@ -219,19 +232,7 @@
   <p class="howto">Open a case, click a file, then use the download button on the file page.</p>
 
   <!-- CASES:START -- do not edit between these markers, the build writes this -->
-  <article class="case">
-    <a class="thumb play" href="https://youtube.com/live/kFPYXB-KUts?feature=share" target="_blank" rel="noopener"><img src="Deleted%20Federal%20Records/Files_converted.webp" alt=""></a>
-    <div class="body">
-      <div class="head">
-        <h3><a href="Deleted%20Federal%20Records/">Deleted Federal Records</a></h3>
-        <div class="date">November 6, 2026</div>
-      </div>
-      <p class="blurb">The deleted federal estimates tables from 2019-2022 and the available tables up to 2026.</p>
-      <div class="btns">
-        <a class="btn" href="Deleted%20Federal%20Records/#files"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7z"/><path d="M14 2v5h5"/><path d="M9 13h6"/><path d="M9 17h6"/></svg><span>Files</span></a>
-      </div>
-    </div>
-  </article>
+  <p class="empty">No cases published yet.</p>
   <!-- CASES:END -->
 
   <footer>
@@ -240,5 +241,30 @@
   </footer>
 
 </div>
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Video">
+  <div class="lb-inner">
+    <button class="lb-close" id="lbClose" type="button">Close &times;</button>
+    <div class="lb-frame"><iframe id="lbFrame" src="" title="Video"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen></iframe></div>
+  </div>
+</div>
+<script>
+(function(){
+  var lb=document.getElementById('lb'),fr=document.getElementById('lbFrame');
+  function close(){lb.classList.remove('open');fr.src='';document.body.style.overflow='';}
+  function open(src){fr.src=src;lb.classList.add('open');document.body.style.overflow='hidden';}
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('a.thumb[data-embed]');
+    if(!a)return;
+    var src=a.getAttribute('data-embed');
+    if(!src)return;
+    e.preventDefault();open(src);
+  });
+  document.getElementById('lbClose').addEventListener('click',close);
+  lb.addEventListener('click',function(e){if(e.target===lb)close();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+})();
+</script>
 </body>
 </html>
