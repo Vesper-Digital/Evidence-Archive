@@ -270,11 +270,15 @@ CASE_PAGE = """<!doctype html>
   .sec h2{font-size:clamp(22px,2.4vw,30px);font-weight:800;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap}
   .sec:after{content:"";flex:1;height:1px;background:var(--line)}
   ul.files{list-style:none;display:grid;gap:14px}
-  ul.files a{display:grid;grid-template-columns:auto 1fr auto auto;align-items:center;gap:20px;
-    padding:22px 24px;border:2px solid var(--red);background:#0b0b0b;color:#fff;text-decoration:none;
-    clip-path:polygon(22px 0, 100% 0, 100% 100%, 0 100%, 0 22px);
-    transition:background .16s ease,color .16s ease}
-  ul.files a:hover{background:var(--red);color:#fff}
+  ul.files a{position:relative;display:grid;grid-template-columns:auto 1fr auto auto;
+    align-items:center;gap:20px;padding:22px 24px;border:0;background:var(--red);
+    color:#fff;text-decoration:none;
+    clip-path:polygon(22px 0, 100% 0, 100% 100%, 0 100%, 0 22px)}
+  ul.files a::before{content:"";position:absolute;inset:2px;background:#0b0b0b;
+    clip-path:polygon(20px 0, 100% 0, 100% 100%, 0 100%, 0 20px);
+    transition:background .16s ease}
+  ul.files a > *{position:relative;z-index:1}
+  ul.files a:hover::before{background:var(--red)}
   ul.files a:hover svg{stroke:#fff}
   ul.files a:hover .sz,ul.files a:hover .dl{color:#fff}
   ul.files svg{width:26px;height:26px;stroke:var(--red);fill:none;stroke-width:1.8;flex:none}
@@ -288,14 +292,20 @@ CASE_PAGE = """<!doctype html>
     ul.files .sz,ul.files .dl{grid-column:2}
   }
   .top{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:26px 0 6px;max-width:760px}
-  .top a{display:flex;align-items:center;justify-content:center;gap:14px;padding:18px;
-    border:2px solid var(--red);color:#fff;text-decoration:none;font-size:clamp(16px,1.3vw,20px);
+  .top a{position:relative;display:flex;align-items:center;justify-content:center;gap:14px;
+    padding:18px;border:0;background:var(--red);color:#fff;text-decoration:none;
+    font-size:clamp(16px,1.3vw,20px);
     clip-path:polygon(18px 0, 100% 0, 100% 100%, 0 100%, 0 18px);
     font-weight:700;letter-spacing:.18em;text-transform:uppercase;
-    transition:background .16s ease,color .16s ease}
-  .top a:hover{background:var(--red);color:#fff}
-  .top a.alt{border-color:#3a3a3a;color:#cfcfcf}
-  .top a.alt:hover{background:#fff;color:#000;border-color:#fff}
+    transition:color .16s ease}
+  .top a::before{content:"";position:absolute;inset:2px;background:#000;
+    clip-path:polygon(16px 0, 100% 0, 100% 100%, 0 100%, 0 16px);
+    transition:background .16s ease}
+  .top a > *{position:relative;z-index:1}
+  .top a:hover::before{background:var(--red)}
+  .top a.alt{background:#3a3a3a;color:#cfcfcf}
+  .top a.alt:hover{color:#000}
+  .top a.alt:hover::before{background:#fff}
   .top svg{width:1.15em;height:1.15em;flex:none;stroke:currentColor;fill:none;stroke-width:1.9}
   @media (max-width:640px){.top{grid-template-columns:1fr}}
   .shots{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
