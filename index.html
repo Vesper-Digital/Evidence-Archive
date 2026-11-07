@@ -89,21 +89,22 @@
   /* CASE CARD */
   .case{
     display:grid;
-    grid-template-columns:300px 1fr;
+    grid-template-columns:340px 1fr;
     gap:26px;
-    margin-bottom:26px;
+    margin-bottom:30px;
+    align-items:stretch;
   }
-  .case .thumb{display:block;overflow:hidden;background:#000;align-self:start}
+  .case .thumb{display:block;overflow:hidden;background:#0d0d0d;align-self:start}
   .case .thumb img{
     display:block;
     width:100%;
     height:auto;
     aspect-ratio:16/9;
-    object-fit:cover;
+    object-fit:contain;
     transition:transform .35s ease;
   }
   .case:hover .thumb img{transform:scale(1.04)}
-  .case .body{display:flex;flex-direction:column;gap:14px}
+  .case .body{display:flex;flex-direction:column;gap:14px;height:100%}
   .case .head{
     display:flex;
     align-items:baseline;
