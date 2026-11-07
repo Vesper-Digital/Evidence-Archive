@@ -186,6 +186,10 @@ def render(cases):
     for c in cases:
         folder = html.escape(c["folder"], quote=True)
         tree = quote(c["folder"]) + "/"
+        vid = c.get("video") or ""
+        thumb_href = html.escape(vid, quote=True) if vid else tree
+        thumb_tgt = ' target="_blank" rel="noopener"' if vid else ""
+        thumb_cls = " play" if vid else ""
         title = html.escape(c["title"])
         date = c["date"].strftime("%B %-d, %Y") if c["date"] else ""
         thumb = html.escape(quote(c["thumb"]), quote=True) if c["thumb"] else ""
@@ -206,10 +210,10 @@ def render(cases):
 
         out.append(
             f'  <article class="case">\n'
-            f'    <a class="thumb" href="{tree}">{img}</a>\n'
+            f'    <a class="thumb{thumb_cls}" href="{thumb_href}"{thumb_tgt}>{img}</a>\n'
             f'    <div class="body">\n'
             f'      <div class="head">\n'
-            f'        <h3>{title}</h3>\n'
+            f'        <h3><a href="{tree}">{title}</a></h3>\n'
             f'        <div class="date">{date}</div>\n'
             f'      </div>{blurb}\n'
             f'      <div class="btns">\n'
