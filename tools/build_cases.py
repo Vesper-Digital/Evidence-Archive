@@ -177,8 +177,13 @@ CASE_PAGE = """<!doctype html>
   *{box-sizing:border-box;margin:0;padding:0}
   body{background:var(--bg);color:var(--text);font-family:"Barlow Condensed","Oswald","Archivo Narrow",Helvetica,Arial,sans-serif;font-size:20px;line-height:1.6;-webkit-font-smoothing:antialiased}
   .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
-  .banner{display:block;width:100%;max-width:var(--max);margin:0 auto}
+  .banner{display:grid;grid-template-columns:auto 1fr;width:100%;max-width:var(--max);margin:0 auto;background:#000}
   .banner img{display:block;width:100%;height:clamp(140px,16vw,230px);object-fit:cover}
+  .banner .portrait{height:clamp(140px,16vw,230px);width:clamp(140px,16vw,230px);object-fit:cover}
+  @media (max-width:640px){
+    .banner{grid-template-columns:1fr}
+    .banner .portrait{display:none}
+  }
   .back{display:inline-block;margin:28px 0 10px;color:var(--cyan);text-decoration:none;font-size:18px;letter-spacing:.1em;text-transform:uppercase}
   .back:hover{text-decoration:underline}
   h1{font-size:clamp(30px,4.2vw,52px);font-weight:800;letter-spacing:.045em;text-transform:uppercase;line-height:1.05}
@@ -212,7 +217,7 @@ CASE_PAGE = """<!doctype html>
 </style>
 </head>
 <body>
-<div class="banner"><img src="__UP__assets/banner.png" alt="Vesper Digital"></div>
+<div class="banner"><img class="portrait" src="__UP__assets/portrait.jpg" alt=""><img src="__UP__assets/banner.png" alt="Vesper Digital"></div>
 <div class="wrap">
   <a class="back" href="__UP__">&larr; All cases</a>
   <h1>__TITLE__</h1>
