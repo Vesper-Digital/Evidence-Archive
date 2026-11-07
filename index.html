@@ -100,7 +100,22 @@
     margin-bottom:24px;
     height:var(--cardh);
   }
-  .case .thumb{display:block;overflow:hidden;background:#0d0d0d;height:var(--cardh)}
+  .case .thumb{display:block;overflow:hidden;background:#0d0d0d;height:var(--cardh);position:relative}
+  .case .thumb.play:after{
+    content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(circle at 50% 50%, rgba(0,0,0,.45) 0 44px, transparent 45px);
+  }
+  .case .thumb.play:before{
+    content:"";position:absolute;left:50%;top:50%;z-index:2;
+    transform:translate(-42%,-50%);
+    border-style:solid;border-width:16px 0 16px 26px;
+    border-color:transparent transparent transparent #fff;
+    filter:drop-shadow(0 0 8px rgba(0,0,0,.8));
+  }
+  .case .thumb.play:hover:before{border-left-color:var(--red)}
+  .case h3 a{color:inherit;text-decoration:none}
+  .case h3 a:hover{color:var(--red)}
   .case .thumb img{
     display:block;
     width:100%;
@@ -204,19 +219,7 @@
   <p class="howto">Open a case, click a file, then use the download button on the file page.</p>
 
   <!-- CASES:START -- do not edit between these markers, the build writes this -->
-  <article class="case">
-    <a class="thumb" href="Deleted%20Federal%20Records/"><img src="Deleted%20Federal%20Records/Files_converted.webp" alt=""></a>
-    <div class="body">
-      <div class="head">
-        <h3>Deleted Federal Records</h3>
-        <div class="date">November 6, 2026</div>
-      </div>
-      <p class="blurb">The deleted federal estimates tables from 2019-2022 and the available tables up to 2026.</p>
-      <div class="btns">
-        <a class="btn" href="Deleted%20Federal%20Records/#files"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7z"/><path d="M14 2v5h5"/><path d="M9 13h6"/><path d="M9 17h6"/></svg><span>Files</span></a>
-      </div>
-    </div>
-  </article>
+  <p class="empty">No cases published yet.</p>
   <!-- CASES:END -->
 
   <footer>
