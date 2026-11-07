@@ -194,8 +194,9 @@ def render(cases):
         return '  <p class="empty">No cases published yet.</p>'
 
     out = []
-    for c in cases:
+    for i, c in enumerate(cases):
         folder = html.escape(c["folder"], quote=True)
+        base = 1080 + i * 320
         tree = quote(c["folder"]) + "/"
         vid = c.get("video") or ""
         thumb_href = html.escape(vid, quote=True) if vid else tree
@@ -226,9 +227,9 @@ def render(cases):
                  if c["blurb"] else "")
 
         out.append(
-            f'  <article class="case rz">\n'
-            f'    <a class="thumb{thumb_cls}" href="{thumb_href}"{thumb_tgt}{thumb_data}>{img}</a>\n'
-            f'    <div class="body">\n'
+            f'  <article class="case">\n'
+            f'    <a class="thumb{thumb_cls} rz" data-rz="{base}" href="{thumb_href}"{thumb_tgt}{thumb_data}>{img}</a>\n'
+            f'    <div class="body rz" data-rz="{base + 200}">\n'
             f'      <div class="head">\n'
             f'        <h3><a href="{tree}">{title}</a></h3>\n'
             f'        <div class="date">{date}</div>\n'
@@ -314,7 +315,7 @@ CASE_PAGE = """<!doctype html>
   /* ENTRANCE */
   @keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
   .rz{opacity:0}
-  .rz.in{animation:rise .7s cubic-bezier(.16,.72,.24,1) forwards}
+  .rz.in{animation:rise .9s cubic-bezier(.16,.72,.24,1) forwards}
 
   footer{margin:70px 0 60px;padding-top:24px;border-top:1px solid var(--line);color:var(--muted);font-size:18px;display:flex;flex-wrap:wrap;gap:10px 26px;justify-content:space-between}
   footer a{color:var(--cyan);text-decoration:none}
@@ -324,7 +325,7 @@ CASE_PAGE = """<!doctype html>
 <body>
 <div class="banner rz" data-rz="0"><img class="portrait" src="__UP__assets/portrait.jpg" alt=""><img src="__UP__assets/banner.png" alt="Vesper Digital"></div>
 <div class="wrap">
-  <div class="rz" data-rz="140">
+  <div class="rz" data-rz="320">
     <a class="back" href="__UP__">&larr; All cases</a>
     <h1>__TITLE__</h1>
     <div class="rule"></div>
@@ -333,7 +334,7 @@ CASE_PAGE = """<!doctype html>
 __BLURB__
 __ACTIONS__
 __BODY__
-  <footer class="rz" data-rz="0">
+  <footer class="rz" data-rz="260">
     <div>Vesper Digital — Media · Power · Accountability</div>
     <div><a href="__UP__">Evidence Archive</a></div>
   </footer>
@@ -402,8 +403,8 @@ def write_case_page(case):
 
     body = []
     if files:
-        body.append('  <div class="sec rz" data-rz="470" id="files"><h2>Files</h2></div>')
-        body.append('  <ul class="files rz" data-rz="550">')
+        body.append('  <div class="sec rz" data-rz="1180" id="files"><h2>Files</h2></div>')
+        body.append('  <ul class="files rz" data-rz="1400">')
         for n, sz in files:
             body.append(
                 f'    <li><a href="Files/{quote(n)}" download>'
@@ -413,15 +414,15 @@ def write_case_page(case):
                 f'<span class="dl">Download</span></a></li>')
         body.append("  </ul>")
     if images:
-        body.append('  <div class="sec rz" data-rz="640" id="images"><h2>Images</h2></div>')
-        body.append('  <div class="shots rz" data-rz="720">')
+        body.append('  <div class="sec rz" data-rz="1640" id="images"><h2>Images</h2></div>')
+        body.append('  <div class="shots rz" data-rz="1860">')
         for n, _sz in images:
             body.append(f'    <a href="Images/{quote(n)}"><img src="Images/{quote(n)}" alt="" loading="lazy"></a>')
         body.append("  </div>")
     if not body:
         body.append('  <p class="blurb">No documents published for this case yet.</p>')
 
-    blurb = (f'  <p class="blurb rz" data-rz="260">{html.escape(case["blurb"])}</p>'
+    blurb = (f'  <p class="blurb rz" data-rz="640">{html.escape(case["blurb"])}</p>'
              if case["blurb"] else "")
 
     acts = []
@@ -432,7 +433,7 @@ def write_case_page(case):
     if case.get("zip"):
         acts.append(f'    <a class="alt" href="../{case["zip"]}" download>'
                     f'{ZIP_SVG}<span>Download all</span></a>')
-    actions = ('  <div class="top rz" data-rz="270">\n' + "\n".join(acts) + '\n  </div>') if acts else ""
+    actions = ('  <div class="top rz" data-rz="900">\n' + "\n".join(acts) + '\n  </div>') if acts else ""
     date = case["date"].strftime("%B %-d, %Y") if case["date"] else ""
 
     page = (CASE_PAGE
