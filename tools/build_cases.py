@@ -315,10 +315,6 @@ CASE_PAGE = """<!doctype html>
   @keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
   .rz{opacity:0}
   .rz.in{animation:rise .7s cubic-bezier(.16,.72,.24,1) forwards}
-  @media (prefers-reduced-motion:reduce){
-    .rz{opacity:1}
-    .rz.in{animation:none}
-  }
 
   footer{margin:70px 0 60px;padding-top:24px;border-top:1px solid var(--line);color:var(--muted);font-size:18px;display:flex;flex-wrap:wrap;gap:10px 26px;justify-content:space-between}
   footer a{color:var(--cyan);text-decoration:none}
