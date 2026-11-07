@@ -48,14 +48,3 @@ Change 4 things: the thumbnail name, the title, the date, and the folder name in
 ---
 ===== COPY TO HERE ===== -->
 
-## ADDING A CASE
-
-1. Copy the `_TEMPLATE-CASE` folder on your computer, rename it `02-case-name`.
-2. Put the documents in `Files`, the screenshots in `Images`.
-3. Drag the folder into this repo with **Add file ▸ Upload files**.
-4. Put the YouTube thumbnail in `assets` named `case-02.jpg`.
-5. Edit this README, paste the block above, change the four things.
-
-## CONTACT
-
-Corrections and document tips: makhloel@gmail.com
