@@ -130,7 +130,7 @@ def render(cases):
     out = []
     for c in cases:
         folder = html.escape(c["folder"], quote=True)
-        tree = REPO_TREE + "/" + quote(c["folder"])
+        tree = quote(c["folder"]) + "/"
         title = html.escape(c["title"])
         date = c["date"].strftime("%B %-d, %Y") if c["date"] else ""
         thumb = html.escape(quote(c["thumb"]), quote=True) if c["thumb"] else ""
@@ -140,9 +140,9 @@ def render(cases):
 
         btns = []
         if c["has_files"]:
-            btns.append(f'<a class="btn" href="{tree}/Files">{FILES_SVG}<span>Files</span></a>')
+            btns.append(f'<a class="btn" href="{tree}#files">{FILES_SVG}<span>Files</span></a>')
         if c["has_images"]:
-            btns.append(f'<a class="btn alt" href="{tree}/Images">{IMAGES_SVG}<span>Images</span></a>')
+            btns.append(f'<a class="btn alt" href="{tree}#images">{IMAGES_SVG}<span>Images</span></a>')
         if not btns:
             btns.append(f'<a class="btn" href="{tree}">{FILES_SVG}<span>Open</span></a>')
 
@@ -166,9 +166,136 @@ def render(cases):
     return "\n".join(out)
 
 
+CASE_PAGE = """<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>__TITLE__ — Vesper Digital Evidence Archive</title>
+<style>
+  :root{--bg:#000;--line:#1c1c1c;--text:#e8e8e8;--muted:#8a8a8a;--red:#ff1f2d;--cyan:#19d6e8;--max:1480px}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--text);font-family:"Barlow Condensed","Oswald","Archivo Narrow",Helvetica,Arial,sans-serif;font-size:20px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+  .banner img{display:block;width:100%;height:clamp(140px,16vw,230px);object-fit:cover}
+  .back{display:inline-block;margin:28px 0 10px;color:var(--cyan);text-decoration:none;font-size:18px;letter-spacing:.1em;text-transform:uppercase}
+  .back:hover{text-decoration:underline}
+  h1{font-size:clamp(30px,4.2vw,52px);font-weight:800;letter-spacing:.045em;text-transform:uppercase;line-height:1.05}
+  .rule{height:3px;background:var(--red);margin:16px 0 22px}
+  .meta{color:var(--red);font-size:clamp(16px,1.25vw,20px);letter-spacing:.16em;text-transform:uppercase;font-weight:700;margin-bottom:14px}
+  .blurb{color:#d2d2d2;font-size:clamp(19px,1.5vw,25px);max-width:80ch;margin-bottom:12px}
+  .sec{margin:46px 0 18px;display:flex;align-items:center;gap:18px}
+  .sec h2{font-size:clamp(22px,2.4vw,30px);font-weight:800;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap}
+  .sec:after{content:"";flex:1;height:1px;background:var(--line)}
+  ul.files{list-style:none}
+  ul.files li{border-bottom:1px solid var(--line)}
+  ul.files a{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px 4px;color:#fff;text-decoration:none;font-size:clamp(18px,1.4vw,23px)}
+  ul.files a:hover{background:#0d0d0d;color:var(--red)}
+  ul.files .nm{overflow-wrap:anywhere}
+  ul.files .sz{color:var(--muted);font-size:17px;white-space:nowrap;letter-spacing:.08em}
+  .shots{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
+  .shots a{display:block;background:#0d0d0d}
+  .shots img{display:block;width:100%;height:auto}
+  footer{margin:70px 0 60px;padding-top:24px;border-top:1px solid var(--line);color:var(--muted);font-size:18px;display:flex;flex-wrap:wrap;gap:10px 26px;justify-content:space-between}
+  footer a{color:var(--cyan);text-decoration:none}
+  footer a:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+<div class="banner"><img src="__UP__assets/banner.png" alt="Vesper Digital"></div>
+<div class="wrap">
+  <a class="back" href="__UP__">&larr; All cases</a>
+  <h1>__TITLE__</h1>
+  <div class="rule"></div>
+  <div class="meta">__DATE__</div>
+__BLURB__
+__BODY__
+  <footer>
+    <div>Vesper Digital — Media · Power · Accountability</div>
+    <div><a href="__UP__">Evidence Archive</a></div>
+  </footer>
+</div>
+</body>
+</html>
+"""
+
+
+def human_size(n):
+    for unit in ("B", "KB", "MB", "GB"):
+        if n < 1024 or unit == "GB":
+            return f"{n:.0f} {unit}" if unit == "B" else f"{n:,.0f} {unit}"
+        n /= 1024.0
+
+
+def list_dir(abs_dir):
+    if not os.path.isdir(abs_dir):
+        return []
+    out = []
+    for n in sorted(os.listdir(abs_dir)):
+        full = os.path.join(abs_dir, n)
+        if n.startswith(".") or not os.path.isfile(full):
+            continue
+        if n.lower() in ("readme.md", "index.html"):
+            continue
+        out.append((n, os.path.getsize(full)))
+    return out
+
+
+def write_case_page(case):
+    folder = case["folder"]
+    abs_folder = os.path.join(ROOT, folder)
+    files = list_dir(os.path.join(abs_folder, "Files"))
+    images = list_dir(os.path.join(abs_folder, "Images"))
+
+    body = []
+    if files:
+        body.append('  <div class="sec" id="files"><h2>Files</h2></div>')
+        body.append('  <ul class="files">')
+        for n, sz in files:
+            body.append(
+                f'    <li><a href="Files/{quote(n)}" download>'
+                f'<span class="nm">{html.escape(n)}</span>'
+                f'<span class="sz">{human_size(sz)}</span></a></li>')
+        body.append("  </ul>")
+    if images:
+        body.append('  <div class="sec" id="images"><h2>Images</h2></div>')
+        body.append('  <div class="shots">')
+        for n, _sz in images:
+            body.append(f'    <a href="Images/{quote(n)}"><img src="Images/{quote(n)}" alt="" loading="lazy"></a>')
+        body.append("  </div>")
+    if not body:
+        body.append('  <p class="blurb">No documents published for this case yet.</p>')
+
+    blurb = (f'  <p class="blurb">{html.escape(case["blurb"])}</p>'
+             if case["blurb"] else "")
+    date = case["date"].strftime("%B %-d, %Y") if case["date"] else ""
+
+    page = (CASE_PAGE
+            .replace("__TITLE__", html.escape(case["title"]))
+            .replace("__DATE__", date)
+            .replace("__BLURB__", blurb)
+            .replace("__BODY__", "\n".join(body))
+            .replace("__UP__", "../"))
+
+    target = os.path.join(abs_folder, "index.html")
+    old = ""
+    if os.path.exists(target):
+        with open(target, encoding="utf-8") as f:
+            old = f.read()
+    if old != page:
+        with open(target, "w", encoding="utf-8") as f:
+            f.write(page)
+        return True
+    return False
+
+
 def main():
     with open(INDEX, encoding="utf-8") as f:
         page = f.read()
+
+    cases = collect()
+    for c in cases:
+        write_case_page(c)
 
     start = page.find("<!-- CASES:START")
     end = page.find("<!-- CASES:END -->")
@@ -176,7 +303,7 @@ def main():
         sys.exit("index.html is missing the CASES:START / CASES:END markers.")
 
     start_line_end = page.index("\n", start) + 1
-    new_body = render(collect()) + "\n  "
+    new_body = render(cases) + "\n  "
     updated = page[:start_line_end] + new_body + page[end:]
 
     if updated == page:
