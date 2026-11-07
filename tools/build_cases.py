@@ -99,7 +99,7 @@ YT_RE = re.compile(
 def youtube_embed(url):
     """Turn any YouTube link into an embeddable one. '' if not YouTube."""
     m = YT_RE.search(url or "")
-    return f"https://www.youtube.com/embed/{m.group(1)}?rel=0&cc_load_policy=0&modestbranding=1" if m else ""
+    return f"https://www.youtube.com/embed/{m.group(1)}?autoplay=1&rel=0&cc_load_policy=0&modestbranding=1" if m else ""
 
 
 def split_about(text):
@@ -215,8 +215,12 @@ def render(cases):
             btns.append(f'<a class="btn" href="{tree}#files">{FILES_SVG}<span>Files</span></a>')
         if c["has_images"]:
             btns.append(f'<a class="btn alt" href="{tree}#images">{IMAGES_SVG}<span>Images</span></a>')
+        if c.get("zip"):
+            btns.append(f'<a class="btn alt" href="{c["zip"]}" download>'
+                        f'{ZIP_SVG}<span>Download all</span></a>')
         if not btns:
             btns.append(f'<a class="btn" href="{tree}">{FILES_SVG}<span>Open</span></a>')
+        ncls = f' n{len(btns)}'
 
         blurb = (f'\n      <p class="blurb">{html.escape(c["blurb"])}</p>'
                  if c["blurb"] else "")
@@ -229,7 +233,7 @@ def render(cases):
             f'        <h3><a href="{tree}">{title}</a></h3>\n'
             f'        <div class="date">{date}</div>\n'
             f'      </div>{blurb}\n'
-            f'      <div class="btns">\n'
+            f'      <div class="btns{ncls}">\n'
             f'        ' + "\n        ".join(btns) + '\n'
             f'      </div>\n'
             f'    </div>\n'
@@ -267,9 +271,12 @@ CASE_PAGE = """<!doctype html>
   .sec:after{content:"";flex:1;height:1px;background:var(--line)}
   ul.files{list-style:none;display:grid;gap:14px}
   ul.files a{display:grid;grid-template-columns:auto 1fr auto auto;align-items:center;gap:20px;
-    padding:22px 24px;border:1px solid #2a2a2a;background:#0b0b0b;color:#fff;text-decoration:none;
-    transition:border-color .16s ease,background .16s ease}
-  ul.files a:hover{border-color:var(--red);background:#120404}
+    padding:22px 24px;border:2px solid var(--red);background:#0b0b0b;color:#fff;text-decoration:none;
+    clip-path:polygon(22px 0, 100% 0, 100% 100%, 0 100%, 0 22px);
+    transition:background .16s ease,color .16s ease}
+  ul.files a:hover{background:var(--red);color:#fff}
+  ul.files a:hover svg{stroke:#fff}
+  ul.files a:hover .sz,ul.files a:hover .dl{color:#fff}
   ul.files svg{width:26px;height:26px;stroke:var(--red);fill:none;stroke-width:1.8;flex:none}
   ul.files .nm{font-size:clamp(19px,1.5vw,25px);overflow-wrap:anywhere;line-height:1.3}
   ul.files .sz{color:#fff;font-size:18px;white-space:nowrap;letter-spacing:.1em}
@@ -283,6 +290,7 @@ CASE_PAGE = """<!doctype html>
   .top{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:26px 0 6px;max-width:760px}
   .top a{display:flex;align-items:center;justify-content:center;gap:14px;padding:18px;
     border:2px solid var(--red);color:#fff;text-decoration:none;font-size:clamp(16px,1.3vw,20px);
+    clip-path:polygon(18px 0, 100% 0, 100% 100%, 0 100%, 0 18px);
     font-weight:700;letter-spacing:.18em;text-transform:uppercase;
     transition:background .16s ease,color .16s ease}
   .top a:hover{background:var(--red);color:#fff}
