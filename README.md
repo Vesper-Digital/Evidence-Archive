@@ -18,17 +18,16 @@ Download anything. Share anything. Check the work.
 
 ## CASES
 
-<table>
+<table width="100%">
 <tr>
-<td width="300"><img src="assets/case-01.jpg" width="300"></td>
-<td>
+<td width="320"><img src="assets/case-01.jpg" width="320"></td>
+<td align="right" valign="top">
 <h3>Case Title Goes Here</h3>
 <b>January 1, 2026</b><br><br>
 <a href="./01-case-name/Files"><b>▸ FILES</b></a> &nbsp;&nbsp;&nbsp; <a href="./01-case-name/Images"><b>▸ IMAGES</b></a>
 </td>
 </tr>
 </table>
-
 ---
 
 <!-- ===== COPY FROM HERE DOWN TO ADD A NEW CASE =====
