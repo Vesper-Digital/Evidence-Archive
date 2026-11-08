@@ -348,6 +348,23 @@ __BODY__
 </div>
 <script>
 (function(){
+  // the Files / Images buttons each show only their own section
+  function apply(){
+    var h = location.hash.replace('#','').toLowerCase(),
+        f = document.getElementById('files'),
+        i = document.getElementById('images');
+    if (!f || !i) return;
+    if (h === 'files')  { f.style.display = ''; i.style.display = 'none'; }
+    else if (h === 'images') { f.style.display = 'none'; i.style.display = ''; }
+    else { f.style.display = ''; i.style.display = ''; }
+    window.scrollTo(0, 0);
+  }
+  apply();
+  window.addEventListener('hashchange', apply);
+})();
+</script>
+<script>
+(function(){
   var items = document.querySelectorAll('.rz');
   if (!items.length) return;
 
