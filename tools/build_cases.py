@@ -29,7 +29,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # GitHub Pages does not list folders, so folder links must point at the repo.
 REPO_TREE = "https://github.com/Vesper-Digital/Evidence-Archive/tree/main"
 INDEX = os.path.join(ROOT, "index.html")
-SKIP = {"assets", "tools", "node_modules", "docs"}
+SKIP = {"assets", "tools", "node_modules", "docs", "Tables", "Gallery"}
 IMAGE_EXT = (".jpg", ".jpeg", ".png", ".webp", ".gif", ".avif")
 
 FILES_SVG = ('<svg viewBox="0 0 24 24" aria-hidden="true">'

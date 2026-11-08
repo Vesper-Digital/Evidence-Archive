@@ -22,7 +22,8 @@ import shutil
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Folders that are part of the site, not cases. Never touched.
-SYSTEM_DIRS = {".git", ".github", "tools", "assets", "_inbox"}
+SYSTEM_DIRS = {".git", ".github", "tools", "assets", "_inbox",
+               "Tables", "Gallery"}
 
 # Files that belong at the root. Never moved.
 ROOT_FILES = {"index.html", "readme.md", "channel.txt", ".gitignore",
@@ -40,6 +41,7 @@ FILE_RULES = {
 NEVER_MOVE = {"build-cases.yml"}
 
 IMAGE_EXT = (".jpg", ".jpeg", ".png", ".webp", ".gif", ".avif", ".svg", ".ico")
+SHEET_EXT = (".xlsx", ".xlsm", ".csv", ".tsv")
 
 
 def destination(name):
@@ -51,6 +53,8 @@ def destination(name):
         return FILE_RULES[low]
     if low.endswith(".py"):
         return "tools"
+    if low.endswith(SHEET_EXT):
+        return "Tables"
     if low.endswith(IMAGE_EXT):
         return "assets"
     return None
