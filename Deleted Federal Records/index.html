@@ -22,7 +22,14 @@
   .rule{height:3px;background:var(--red);margin:16px 0 22px}
   .meta{color:var(--red);font-size:clamp(16px,1.25vw,20px);letter-spacing:.16em;text-transform:uppercase;font-weight:700;margin-bottom:14px}
   .blurb{color:#d2d2d2;font-size:clamp(19px,1.5vw,25px);max-width:80ch;margin-bottom:12px}
-  .sec{margin:46px 0 18px;display:flex;align-items:center;gap:18px}
+  .panel{
+    margin:56px 0 0;
+    padding:4px 26px 30px;
+    border:1px solid #1f1f1f;
+    background:linear-gradient(180deg, rgba(255,255,255,.022), rgba(255,255,255,0) 160px);
+    clip-path:polygon(26px 0, 100% 0, 100% 100%, 0 100%, 0 26px);
+  }
+  .sec{margin:26px 0 20px;display:flex;align-items:center;gap:18px}
   .sec h2{font-size:clamp(22px,2.4vw,30px);font-weight:800;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap}
   .sec:after{content:"";flex:1;height:1px;background:var(--line)}
   ul.files{list-style:none;display:grid;gap:14px}
@@ -64,7 +71,7 @@
   .top a.alt:hover::before{background:#fff}
   .top svg{width:1.15em;height:1.15em;flex:none;stroke:currentColor;fill:none;stroke-width:1.9}
   @media (max-width:640px){.top{grid-template-columns:1fr}}
-  .shots{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
+  .shots{margin-top:22px;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
   .shots a{display:block;background:#0d0d0d}
   .shots img{display:block;width:100%;height:auto}
   /* ENTRANCE */
@@ -91,10 +98,12 @@
     <a href="https://youtube.com/live/kFPYXB-KUts?feature=share" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l6 3.5-6 3.5z"/></svg><span>Watch the video</span></a>
     <a class="alt" href="../assets/zips/Deleted-Federal-Records.zip" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12"/><path d="M7 11l5 5 5-5"/><path d="M4 20h16"/></svg><span>Download all</span></a>
   </div>
-  <div class="sec rz" data-rz="1180" id="files"><h2>Files</h2></div>
+  <section class="panel rz" data-rz="1180" id="files">
+    <div class="sec"><h2>Files</h2></div>
   <ul class="files rz" data-rz="1400">
     <li><a href="Files/Federal%20Estimates%20Deleted.7z" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12"/><path d="M7 11l5 5 5-5"/><path d="M4 20h16"/></svg><span class="nm">Federal Estimates Deleted.7z</span><span class="sz">8 MB</span><span class="dl">Download</span></a></li>
   </ul>
+  </section>
   <footer class="rz" data-rz="260">
     <div>Vesper Digital — Media · Power · Accountability</div>
     <div><a href="../">Evidence Archive</a></div>

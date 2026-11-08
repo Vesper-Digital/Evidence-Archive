@@ -267,7 +267,14 @@ CASE_PAGE = """<!doctype html>
   .rule{height:3px;background:var(--red);margin:16px 0 22px}
   .meta{color:var(--red);font-size:clamp(16px,1.25vw,20px);letter-spacing:.16em;text-transform:uppercase;font-weight:700;margin-bottom:14px}
   .blurb{color:#d2d2d2;font-size:clamp(19px,1.5vw,25px);max-width:80ch;margin-bottom:12px}
-  .sec{margin:46px 0 18px;display:flex;align-items:center;gap:18px}
+  .panel{
+    margin:56px 0 0;
+    padding:4px 26px 30px;
+    border:1px solid #1f1f1f;
+    background:linear-gradient(180deg, rgba(255,255,255,.022), rgba(255,255,255,0) 160px);
+    clip-path:polygon(26px 0, 100% 0, 100% 100%, 0 100%, 0 26px);
+  }
+  .sec{margin:26px 0 20px;display:flex;align-items:center;gap:18px}
   .sec h2{font-size:clamp(22px,2.4vw,30px);font-weight:800;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap}
   .sec:after{content:"";flex:1;height:1px;background:var(--line)}
   ul.files{list-style:none;display:grid;gap:14px}
@@ -309,7 +316,7 @@ CASE_PAGE = """<!doctype html>
   .top a.alt:hover::before{background:#fff}
   .top svg{width:1.15em;height:1.15em;flex:none;stroke:currentColor;fill:none;stroke-width:1.9}
   @media (max-width:640px){.top{grid-template-columns:1fr}}
-  .shots{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
+  .shots{margin-top:22px;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
   .shots a{display:block;background:#0d0d0d}
   .shots img{display:block;width:100%;height:auto}
   /* ENTRANCE */
@@ -418,18 +425,22 @@ def write_case_page(case):
 
     body = []
     if files:
-        body.append('  <div class="sec rz" data-rz="1180" id="files"><h2>Files</h2></div>')
+        body.append('  <section class="panel rz" data-rz="1180" id="files">')
+        body.append('    <div class="sec"><h2>Files</h2></div>')
         body += rows("Files", files, 1400)
+        body.append('  </section>')
 
     if pics or extras:
-        body.append('  <div class="sec rz" data-rz="1640" id="images"><h2>Images</h2></div>')
+        body.append('  <section class="panel rz" data-rz="1640" id="images">')
+        body.append('    <div class="sec"><h2>Images</h2></div>')
+        if extras:
+            body += rows("Images", extras, 1860)
         if pics:
-            body.append('  <div class="shots rz" data-rz="1860">')
+            body.append('  <div class="shots rz" data-rz="1960">')
             for n, _sz in pics:
                 body.append(f'    <a href="Images/{quote(n)}"><img src="Images/{quote(n)}" alt="" loading="lazy"></a>')
             body.append("  </div>")
-        if extras:
-            body += rows("Images", extras, 1860 if not pics else 2000)
+        body.append('  </section>')
 
     if not body:
         body.append('  <p class="blurb">No documents published for this case yet.</p>')
