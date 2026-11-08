@@ -44,17 +44,29 @@ def year_from(text):
     return m.group(0) if m else ""
 
 
-def save_logo(ws, stem):
-    """Pull the sheet's own logo out of the workbook so the page can show it."""
-    imgs = getattr(ws, "_images", [])
-    if not imgs:
-        return ""
-    img = imgs[0]
+def save_logo(path, stem):
+    """Pull the sheet's own logo out of the workbook so the page can show it.
+
+    An .xlsx is a zip; its pictures live in xl/media. Reading them there works
+    the same on every openpyxl version.
+    """
+    import zipfile
     try:
-        data = img._data()
-    except Exception:                                # noqa: BLE001
+        with zipfile.ZipFile(path) as z:
+            media = [n for n in z.namelist()
+                     if n.startswith("xl/media/")
+                     and n.lower().endswith((".png", ".jpg", ".jpeg", ".gif"))]
+            if not media:
+                print("    no logo found in the workbook")
+                return ""
+            media.sort()
+            pick = media[0]
+            data = z.read(pick)
+    except Exception as e:                            # noqa: BLE001
+        print(f"    could not read the logo: {e}")
         return ""
-    ext = (getattr(img, "format", "") or "png").lower()
+
+    ext = os.path.splitext(pick)[1].lower().lstrip(".")
     if ext == "jpeg":
         ext = "jpg"
     os.makedirs(LOGOS, exist_ok=True)
@@ -106,7 +118,7 @@ def read_xlsx(path):
         if any(row):
             rows.append(row)
 
-    logo = save_logo(ws, os.path.splitext(os.path.basename(path))[0])
+    logo = save_logo(path, os.path.splitext(os.path.basename(path))[0])
 
     return {
         "logo": logo,
