@@ -1,0 +1,136 @@
+{
+ "tables": [
+  {
+   "subject": "TELESAT",
+   "kind": "LOBBYING REGISTRY",
+   "date_range": "JANUARY 1, 2026 - DECEMBER 31, 2026",
+   "year": "2026",
+   "note": "LOBBYING REGISTRY • 15 matching records • November 08, 2026 01:00",
+   "head": [
+    "Date",
+    "Client / Organization",
+    "Record Type",
+    "Government Institutions",
+    "Description",
+    "Registrant / Lobbyist"
+   ],
+   "rows": [
+    [
+     "2026-09-16",
+     "Ligado Networks Corp.",
+     "Lobbying Registration",
+     "27 institutions VIEW ALL",
+     "Discussions with federal government… VIEW FULL",
+     "Liam O'Toole"
+    ],
+    [
+     "2026-08-17",
+     "Ligado Networks Corp.",
+     "Lobbying Registration",
+     "25 institutions VIEW ALL",
+     "Engaging in discussions with governm… VIEW FULL",
+     "Laurel Sallie"
+    ],
+    [
+     "2026-06-16",
+     "Telesat Corporation",
+     "Lobbying Registration",
+     "14 institutions VIEW ALL",
+     "Work with Government of Canada to pr… VIEW FULL",
+     "Adam Bolek"
+    ],
+    [
+     "2026-06-01",
+     "Ligado Networks Corp",
+     "Lobbying Registration",
+     "25 institutions VIEW ALL",
+     "Engaging in discussions with governm… VIEW FULL",
+     "Belinda Hewitt"
+    ],
+    [
+     "2026-06-01",
+     "Ligado Networks Corp.",
+     "Lobbying Registration",
+     "27 institutions VIEW ALL",
+     "Engaging in discussions with governm… VIEW FULL",
+     "Sabrina Grover"
+    ],
+    [
+     "2026-05-14",
+     "Ligado Networks Corp.",
+     "Lobbying Registration",
+     "27 institutions VIEW ALL",
+     "Discussions with federal government… VIEW FULL",
+     "Greg MacNeil"
+    ],
+    [
+     "2026-05-10",
+     "Telesat Corporation",
+     "Lobbying Registration",
+     "28 institutions VIEW ALL",
+     "Work with Government of Canada to pr… VIEW FULL",
+     "Hugo Delorme"
+    ],
+    [
+     "2026-05-06",
+     "Telesat Corporation",
+     "Lobbying Registration",
+     "11 institutions VIEW ALL",
+     "Work with the Government of Canada t… VIEW FULL",
+     "Colin Keiver"
+    ],
+    [
+     "2026-05-04",
+     "Telesat Corporation",
+     "Lobbying Registration",
+     "11 institutions VIEW ALL",
+     "Work with the Government of Canada t… VIEW FULL",
+     "PETER STUDER"
+    ],
+    [
+     "2026-05-01",
+     "Ligado Networks Corp.",
+     "Lobbying Registration",
+     "25 institutions VIEW ALL",
+     "Engaging in discussions with governm… VIEW FULL",
+     "Sabrina Grover"
+    ],
+    [
+     "2026-04-27",
+     "Telesat Corporation",
+     "Lobbying Registration",
+     "37 institutions VIEW ALL",
+     "Work with the Government of Canada o… VIEW FULL",
+     "Daniel Goldberg"
+    ],
+    [
+     "2026-04-01",
+     "Telesat Canada",
+     "Lobbying Registration",
+     "11 institutions VIEW ALL",
+     "Work with the Government of Canada t… VIEW FULL",
+     "Colin Keiver"
+    ],
+    [
+     "2026-02-22",
+     "TELESAT Canada",
+     "Lobbying Registration",
+     "28 institutions VIEW ALL",
+     "Work with Government of Canada to pr… VIEW FULL",
+     "Hugo Delorme"
+    ],
+    [
+     "2026-01-09",
+     "Telesat Canada",
+     "Lobbying Registration",
+     "11 institutions VIEW ALL",
+     "Work with the Government of Canada t… VIEW FULL",
+     "PETER STUDER"
+    ]
+   ],
+   "total_rows": 15,
+   "file": "Lobbying Registry - Telesat - 2026.xlsx",
+   "size": "23 KB"
+  }
+ ]
+}
