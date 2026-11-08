@@ -7,6 +7,8 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 concurrency:
   group: build-cases
@@ -43,3 +45,25 @@ jobs:
           else
             echo "Nothing to commit."
           fi
+
+      - name: Gather the site
+        run: |
+          mkdir -p _site
+          tar -cf - --exclude=./.git --exclude=./.github \
+                    --exclude=./tools --exclude=./_site . \
+            | (cd _site && tar -xf -)
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
