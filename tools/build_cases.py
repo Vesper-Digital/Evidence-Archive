@@ -419,44 +419,149 @@ PLAY_SVG = ('<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12"
 ZIP_SVG = ('<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12"/><path d="M7 11l5 5 5-5"/><path d="M4 20h16"/></svg>')
 
 
+FOLDER_SVG = ('<svg viewBox="0 0 24 24" aria-hidden="true">'
+              '<path d="M3 7a2 2 0 0 1 2-2h4l2 2.5h8a2 2 0 0 1 2 2V18a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>'
+              '</svg>')
+
+
+def scan(abs_dir):
+    """One level: (folders, files). Hidden entries and generated pages skipped."""
+    folders, files = [], []
+    if not os.path.isdir(abs_dir):
+        return folders, files
+    for n in sorted(os.listdir(abs_dir), key=lambda x: x.lower()):
+        if n.startswith("."):
+            continue
+        full = os.path.join(abs_dir, n)
+        if os.path.isdir(full):
+            folders.append(n)
+        elif os.path.isfile(full):
+            if n.lower() in ("readme.md", "index.html"):
+                continue
+            files.append((n, os.path.getsize(full)))
+    return folders, files
+
+
+def count_items(abs_dir):
+    """How many files sit anywhere under this folder."""
+    total = 0
+    for _root, dirs, names in os.walk(abs_dir):
+        dirs[:] = [d for d in dirs if not d.startswith(".")]
+        total += len([n for n in names
+                      if not n.startswith(".") and n.lower() != "index.html"])
+    return total
+
+
+def folder_row(prefix, name, abs_sub):
+    n = count_items(abs_sub)
+    href = (prefix + "/" if prefix else "") + quote(name) + "/"
+    return (f'    <li><a href="{href}">'
+            f'{FOLDER_SVG}'
+            f'<span class="nm">{html.escape(name)}</span>'
+            f'<span class="sz">{n} item{"" if n == 1 else "s"}</span>'
+            f'<span class="dl">Open</span></a></li>')
+
+
+def file_row(prefix, name, size):
+    href = (prefix + "/" if prefix else "") + quote(name)
+    return (f'    <li><a href="{href}" download>'
+            f'{DOWNLOAD_SVG}'
+            f'<span class="nm">{html.escape(name)}</span>'
+            f'<span class="sz">{human_size(size)}</span>'
+            f'<span class="dl">Download</span></a></li>')
+
+
+def listing(abs_dir, prefix, delay, gallery=False):
+    """Folders first, then files. Pictures become a grid when gallery is on."""
+    folders, files = scan(abs_dir)
+    pics  = [f for f in files if f[0].lower().endswith(IMAGE_EXT)] if gallery else []
+    plain = [f for f in files if f not in pics]
+
+    out = []
+    if folders or plain:
+        out.append(f'  <ul class="files rz" data-rz="{delay}">')
+        for d in folders:
+            out.append(folder_row(prefix, d, os.path.join(abs_dir, d)))
+        for n, sz in plain:
+            out.append(file_row(prefix, n, sz))
+        out.append("  </ul>")
+    if pics:
+        out.append(f'  <div class="shots rz" data-rz="{delay + 100}">')
+        for n, _sz in pics:
+            href = (prefix + "/" if prefix else "") + quote(n)
+            out.append(f'    <a href="{href}"><img src="{href}" alt="" loading="lazy"></a>')
+        out.append("  </div>")
+    return out
+
+
+def render_page(title, date, blurb, actions, body, up, back_label, back_href):
+    return (CASE_PAGE
+            .replace("__TITLE__", html.escape(title))
+            .replace("__DATE__", date)
+            .replace("__BLURB__", blurb)
+            .replace("__ACTIONS__", actions)
+            .replace("__BODY__", "\n".join(body))
+            .replace('<a class="back" href="__UP__">&larr; All cases</a>',
+                     f'<a class="back" href="{back_href}">&larr; {html.escape(back_label)}</a>')
+            .replace("__UP__", up))
+
+
+def save(target, page):
+    old = ""
+    if os.path.exists(target):
+        with open(target, encoding="utf-8") as f:
+            old = f.read()
+    if old != page:
+        with open(target, "w", encoding="utf-8") as f:
+            f.write(page)
+
+
+def write_folder_pages(case_abs, rel_parts, case_title, depth_from_root):
+    """A page for this folder and, recursively, for every folder inside it."""
+    abs_dir = os.path.join(case_abs, *rel_parts)
+    name = rel_parts[-1]
+    gallery = rel_parts[0].lower() == "images"
+
+    body = ['  <section class="panel rz" data-rz="320">',
+            f'    <div class="sec"><h2>{html.escape(name)}</h2></div>']
+    rendered = listing(abs_dir, "", 520, gallery=gallery)
+    body += rendered if rendered else ['  <p class="blurb">This folder is empty.</p>']
+    body.append('  </section>')
+
+    back_label = rel_parts[-2] if len(rel_parts) > 1 else case_title
+    page = render_page(
+        title=name,
+        date="",
+        blurb="",
+        actions="",
+        body=body,
+        up="../" * depth_from_root,
+        back_label=back_label,
+        back_href="../",
+    )
+    save(os.path.join(abs_dir, "index.html"), page)
+
+    for d in scan(abs_dir)[0]:
+        write_folder_pages(case_abs, rel_parts + [d], case_title, depth_from_root + 1)
+
+
 def write_case_page(case):
     folder = case["folder"]
     abs_folder = os.path.join(ROOT, folder)
 
-    files = list_dir(os.path.join(abs_folder, "Files"))
-    pics, extras = [], []
-    for n, sz in list_dir(os.path.join(abs_folder, "Images")):
-        (pics if n.lower().endswith(IMAGE_EXT) else extras).append((n, sz))
-
-    def rows(sub, items, delay):
-        out = [f'  <ul class="files rz" data-rz="{delay}">']
-        for n, sz in items:
-            out.append(
-                f'    <li><a href="{sub}/{quote(n)}" download>'
-                f'{DOWNLOAD_SVG}'
-                f'<span class="nm">{html.escape(n)}</span>'
-                f'<span class="sz">{human_size(sz)}</span>'
-                f'<span class="dl">Download</span></a></li>')
-        out.append("  </ul>")
-        return out
-
     body = []
-    if files:
-        body.append('  <section class="panel rz" data-rz="1180" id="files">')
-        body.append('    <div class="sec"><h2>Files</h2></div>')
-        body += rows("Files", files, 1400)
-        body.append('  </section>')
-
-    if pics or extras:
-        body.append('  <section class="panel rz" data-rz="1640" id="images">')
-        body.append('    <div class="sec"><h2>Images</h2></div>')
-        if extras:
-            body += rows("Images", extras, 1860)
-        if pics:
-            body.append('  <div class="shots rz" data-rz="1960">')
-            for n, _sz in pics:
-                body.append(f'    <a href="Images/{quote(n)}"><img src="Images/{quote(n)}" alt="" loading="lazy"></a>')
-            body.append("  </div>")
+    for sub, anchor, head, delay in (("Files", "files", "Files", 1180),
+                                     ("Images", "images", "Images", 1640)):
+        abs_sub = os.path.join(abs_folder, sub)
+        if not os.path.isdir(abs_sub):
+            continue
+        rendered = listing(abs_sub, sub, delay + 220,
+                           gallery=(sub == "Images"))
+        if not rendered:
+            continue
+        body.append(f'  <section class="panel rz" data-rz="{delay}" id="{anchor}">')
+        body.append(f'    <div class="sec"><h2>{head}</h2></div>')
+        body += rendered
         body.append('  </section>')
 
     if not body:
@@ -476,24 +581,15 @@ def write_case_page(case):
     actions = ('  <div class="top rz" data-rz="900">\n' + "\n".join(acts) + '\n  </div>') if acts else ""
     date = case["date"].strftime("%B %-d, %Y") if case["date"] else ""
 
-    page = (CASE_PAGE
-            .replace("__TITLE__", html.escape(case["title"]))
-            .replace("__DATE__", date)
-            .replace("__BLURB__", blurb)
-            .replace("__ACTIONS__", actions)
-            .replace("__BODY__", "\n".join(body))
-            .replace("__UP__", "../"))
+    save(os.path.join(abs_folder, "index.html"),
+         render_page(case["title"], date, blurb, actions, body,
+                     up="../", back_label="All cases", back_href="../"))
 
-    target = os.path.join(abs_folder, "index.html")
-    old = ""
-    if os.path.exists(target):
-        with open(target, encoding="utf-8") as f:
-            old = f.read()
-    if old != page:
-        with open(target, "w", encoding="utf-8") as f:
-            f.write(page)
-        return True
-    return False
+    for sub in ("Files", "Images"):
+        if os.path.isdir(os.path.join(abs_folder, sub)):
+            for d in scan(os.path.join(abs_folder, sub))[0]:
+                write_folder_pages(abs_folder, [sub, d], case["title"], 3)
+    return True
 
 
 def main():
