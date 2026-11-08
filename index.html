@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Vesper Digital — Evidence Archive</title>
+<title>Vesper Digital — Investigative Archive</title>
 <meta name="description" content="The source documents behind every Vesper Digital video.">
 <meta property="og:title" content="Vesper Digital — Evidence Archive">
 <meta property="og:description" content="The source documents behind every Vesper Digital video.">
@@ -254,6 +254,127 @@
     .lb-full{right:118px}
   }
 
+  /* TABS — folder look */
+  .tabs{display:flex;gap:10px;margin:44px 0 0;align-items:flex-end}
+  .tab{
+    position:relative;
+    background:#0d0d0d;
+    border:1px solid #262626;
+    border-bottom:0;
+    color:#9a9a9a;
+    font:inherit;
+    font-size:clamp(16px,1.5vw,22px);
+    font-weight:800;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    padding:15px 30px 13px;
+    cursor:pointer;
+    clip-path:polygon(20px 0, 100% 0, 100% 100%, 0 100%, 0 20px);
+    transition:color .16s ease,background .16s ease,transform .16s ease;
+  }
+  .tab:hover{color:#fff;background:#141414}
+  .tab.on{
+    color:#fff;
+    background:#0b0b0b;
+    border-color:var(--red);
+    transform:translateY(1px);
+  }
+  .tab.on::after{
+    content:"";position:absolute;left:0;right:0;bottom:-1px;height:3px;background:var(--red);
+  }
+  .tabwrap{
+    border:1px solid #262626;
+    border-top:1px solid var(--red);
+    background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0) 220px);
+    padding:30px 28px 34px;
+  }
+  .tp{display:none;animation:tabin .45s cubic-bezier(.16,.72,.24,1)}
+  .tp.on{display:block}
+  @keyframes tabin{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
+  /* DSX TABLES */
+  .tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  @media (max-width:1100px){.tgrid{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:700px){.tgrid{grid-template-columns:1fr}}
+  .tcard{
+    position:relative;background:var(--red);padding:2px;text-align:left;
+    border:0;cursor:pointer;font:inherit;color:inherit;display:block;
+    clip-path:polygon(22px 0, 100% 0, 100% 100%, 0 100%, 0 22px);
+  }
+  .tcard > .inner{
+    display:block;
+    background:#0b0b0b;padding:20px 20px 18px;
+    clip-path:polygon(20px 0, 100% 0, 100% 100%, 0 100%, 0 20px);
+  }
+  .tcard h3{
+    font-size:clamp(17px,1.35vw,21px);font-weight:800;letter-spacing:.04em;
+    text-transform:uppercase;color:#fff;line-height:1.2;
+  }
+  .tcard .yr{color:var(--red);font-size:14px;letter-spacing:.18em;font-weight:700;
+    text-transform:uppercase;margin-top:6px}
+  .tcard .shot{
+    margin-top:14px;height:190px;overflow:hidden;background:#fff;position:relative;
+    border:1px solid #2a2a2a;
+  }
+  .tcard .shot .mini{
+    transform-origin:top left;
+    position:absolute;top:0;left:0;
+  }
+  .tcard .shot::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,.55));
+  }
+  .tcard .foot{display:flex;justify-content:space-between;align-items:center;
+    margin-top:14px;color:var(--muted);font-size:14px;letter-spacing:.1em;
+    text-transform:uppercase}
+  .tcard .foot b{color:var(--red)}
+  .tcard:hover .inner{background:#140505}
+
+  /* the spreadsheet drawn as a real table */
+  .sheet{border-collapse:collapse;font-family:Helvetica,Arial,sans-serif;background:#fff;color:#111}
+  .sheet .hd td{background:#193b65;color:#fff;font-weight:700;font-size:12px;
+    padding:7px 9px;white-space:nowrap}
+  .sheet .ttl td{background:#193b65;color:#fff;font-weight:700;font-size:19px;padding:10px 9px 2px}
+  .sheet .sub td{background:#193b65;color:#bad6f2;font-size:11px;padding:0 9px 9px}
+  .sheet .meta td{background:#e6eff8;color:#000;font-size:11px;padding:5px 9px;font-weight:700}
+  .sheet td{border:1px solid #d7e2ee;font-size:11.5px;padding:6px 9px;vertical-align:top;
+    color:#173b68;max-width:260px}
+  .sheet tr:nth-child(even) td{background:#f6f9fc}
+
+  /* GALLERY */
+  .ggrid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+  @media (max-width:1100px){.ggrid{grid-template-columns:repeat(3,1fr)}}
+  @media (max-width:700px){.ggrid{grid-template-columns:repeat(2,1fr)}}
+  .gcard{
+    position:relative;display:block;background:var(--red);padding:2px;cursor:pointer;
+    border:0;font:inherit;color:inherit;
+    clip-path:polygon(22px 0, 100% 0, 100% 100%, 0 100%, 0 22px);
+  }
+  .gcard .inner{display:block;background:#0b0b0b;
+    clip-path:polygon(20px 0, 100% 0, 100% 100%, 0 100%, 0 20px);}
+  .gcard img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover}
+  .gcard .cap{display:block;padding:12px 14px;color:#dcdcdc;font-size:15px;
+    line-height:1.3;overflow-wrap:anywhere;text-align:left}
+  .gcard:hover .cap{color:#fff}
+  .gcard:hover .inner{background:#140505}
+
+  /* SHARED VIEWER for tables and gallery */
+  .vw{position:fixed;inset:0;z-index:9998;display:none;align-items:center;justify-content:center;
+    background:rgba(0,0,0,.94);padding:70px 20px 20px}
+  .vw.open{display:flex}
+  .vw-shell{position:relative;width:min(1500px,94vw)}
+  .vw-inner{width:100%;max-height:84vh;overflow:auto;
+    background:#0b0b0b;border:2px solid var(--red);padding:22px}
+  .vw-bar{position:absolute;top:-56px;right:0;display:flex;gap:12px}
+  .vw-bar a,.vw-bar button{
+    background:none;border:2px solid #3a3a3a;color:#fff;font:inherit;font-size:17px;
+    font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:7px 16px;
+    cursor:pointer;text-decoration:none;
+    transition:background .16s ease,color .16s ease,border-color .16s ease}
+  .vw-bar a{border-color:var(--red)}
+  .vw-bar a:hover,.vw-bar button:hover{background:#fff;color:#000;border-color:#fff}
+  .vw-inner img{display:block;max-width:100%;height:auto;margin:0 auto}
+
   /* ENTRANCE */
   @keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
   .rz{opacity:0}
@@ -289,61 +410,39 @@
 <div class="wrap">
 
   <section class="intro rz" data-rz="320">
-    <h1>Evidence Archive</h1>
+    <h1>Investigative Archive</h1>
     <div class="rule"></div>
     <p class="lede">The source documents behind every video.</p>
     <p>Every claim in a Vesper Digital video is backed by a document. They are all here, in full, exactly as obtained, with no commentary and no editing, so you can read them and decide for yourself.</p>
   </section>
 
-  <div class="sec rz" data-rz="640"><h2>Cases</h2></div>
-  <p class="howto rz" data-rz="860">Open a case, click a file, then use the download button on the file page.</p>
+  <div class="tabs rz" data-rz="640" role="tablist">
+    <button class="tab on" type="button" data-t="cases">Cases</button>
+    <button class="tab" type="button" data-t="tables">DSX Tables</button>
+    <button class="tab" type="button" data-t="gallery">Gallery</button>
+  </div>
+
+  <div class="tabwrap rz" data-rz="800">
+
+    <section class="tp on" id="t-cases">
+      <p class="howto">Open a case, click a file, then use the download button on the file page.</p>
 
   <!-- CASES:START -- do not edit between these markers, the build writes this -->
-  <article class="case">
-    <a class="thumb play rz" data-rz="1080" href="https://youtu.be/fUz8WYtfVbc" target="_blank" rel="noopener" data-embed="https://www.youtube.com/embed/fUz8WYtfVbc?autoplay=1&amp;rel=0&amp;cc_load_policy=0&amp;modestbranding=1"><img src="Immigration%20Policy-The%20U.N%20Agenda-%20IRCC%20Spending%20Billions/Agents.jpg" alt=""></a>
-    <div class="body rz" data-rz="1280">
-      <div class="head">
-        <h3><a href="Immigration%20Policy-The%20U.N%20Agenda-%20IRCC%20Spending%20Billions/">Canada&#x27;s Immigration Policy | The U.N Agenda | IRCC Spending Billions</a></h3>
-        <div class="date">November 7, 2026</div>
-      </div>
-      <p class="blurb">CARNEY&#x27;S MIGRANT AGENDA | The UN, The Money &amp; The Connections EXPOSED!</p>
-      <div class="btns n3">
-        <a class="btn" href="Immigration%20Policy-The%20U.N%20Agenda-%20IRCC%20Spending%20Billions/#files"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7z"/><path d="M14 2v5h5"/><path d="M9 13h6"/><path d="M9 17h6"/></svg><span>Files</span></a>
-        <a class="btn alt" href="Immigration%20Policy-The%20U.N%20Agenda-%20IRCC%20Spending%20Billions/#images"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.8"/><path d="M21 16l-5-5-6 6-3-3-4 4"/></svg><span>Images</span></a>
-        <a class="btn alt" href="assets/zips/Immigration-Policy-The-U.N-Agenda--IRCC-Spending-Billions.zip" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12"/><path d="M7 11l5 5 5-5"/><path d="M4 20h16"/></svg><span>Download all</span></a>
-      </div>
-    </div>
-  </article>
-  <article class="case">
-    <a class="thumb play rz" data-rz="1400" href="https://youtu.be/ww2Jk5mrvro" target="_blank" rel="noopener" data-embed="https://www.youtube.com/embed/ww2Jk5mrvro?autoplay=1&amp;rel=0&amp;cc_load_policy=0&amp;modestbranding=1"><img src="Tim%20Caulfied%20%20Government%20Funded%20Misinformation%20Guru%20Who%20Got%20It%20Wrong/Tim.jpg" alt=""></a>
-    <div class="body rz" data-rz="1600">
-      <div class="head">
-        <h3><a href="Tim%20Caulfied%20%20Government%20Funded%20Misinformation%20Guru%20Who%20Got%20It%20Wrong/">Tim Caulfied Government Funded Misinformation Guru</a></h3>
-        <div class="date">November 7, 2026</div>
-      </div>
-      <p class="blurb">CANADA&#x27;S MISINFORMATION EXPERT | $3.38M in Federal Grants &amp; The His Stats Don&#x27;t Add Up!</p>
-      <div class="btns n3">
-        <a class="btn" href="Tim%20Caulfied%20%20Government%20Funded%20Misinformation%20Guru%20Who%20Got%20It%20Wrong/#files"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7z"/><path d="M14 2v5h5"/><path d="M9 13h6"/><path d="M9 17h6"/></svg><span>Files</span></a>
-        <a class="btn alt" href="Tim%20Caulfied%20%20Government%20Funded%20Misinformation%20Guru%20Who%20Got%20It%20Wrong/#images"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.8"/><path d="M21 16l-5-5-6 6-3-3-4 4"/></svg><span>Images</span></a>
-        <a class="btn alt" href="assets/zips/Tim-Caulfied-Government-Funded-Misinformation-Guru-Who-Got-It-Wrong.zip" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12"/><path d="M7 11l5 5 5-5"/><path d="M4 20h16"/></svg><span>Download all</span></a>
-      </div>
-    </div>
-  </article>
-  <article class="case">
-    <a class="thumb play rz" data-rz="1720" href="https://youtube.com/live/kFPYXB-KUts?feature=share" target="_blank" rel="noopener" data-embed="https://www.youtube.com/embed/kFPYXB-KUts?autoplay=1&amp;rel=0&amp;cc_load_policy=0&amp;modestbranding=1"><img src="Deleted%20Federal%20Records/Files_converted.webp" alt=""></a>
-    <div class="body rz" data-rz="1920">
-      <div class="head">
-        <h3><a href="Deleted%20Federal%20Records/">Deleted COVID Federal Estimate Records | I Recovered Them!</a></h3>
-        <div class="date">November 6, 2026</div>
-      </div>
-      <p class="blurb">The deleted federal estimates tables from 2019-2022 and the available tables up to 2026.</p>
-      <div class="btns n2">
-        <a class="btn" href="Deleted%20Federal%20Records/#files"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7z"/><path d="M14 2v5h5"/><path d="M9 13h6"/><path d="M9 17h6"/></svg><span>Files</span></a>
-        <a class="btn alt" href="assets/zips/Deleted-Federal-Records.zip" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12"/><path d="M7 11l5 5 5-5"/><path d="M4 20h16"/></svg><span>Download all</span></a>
-      </div>
-    </div>
-  </article>
+  <p class="empty">No cases published yet.</p>
   <!-- CASES:END -->
+    </section>
+
+    <section class="tp" id="t-tables">
+      <p class="howto">Click a table to open it full size, then download the spreadsheet.</p>
+      <div class="tgrid" id="tgrid"></div>
+    </section>
+
+    <section class="tp" id="t-gallery">
+      <p class="howto">Click an image to open it full size.</p>
+      <div class="ggrid" id="ggrid"></div>
+    </section>
+
+  </div>
 
   <footer class="rz" data-rz="260">
     <div>Vesper Digital — Media · Power · Accountability</div>
@@ -351,6 +450,16 @@
   </footer>
 
 </div>
+<div class="vw" id="vw" role="dialog" aria-modal="true">
+  <div class="vw-shell">
+    <div class="vw-bar">
+      <a id="vwDl" href="#" download>Download</a>
+      <button id="vwClose" type="button">Close &times;</button>
+    </div>
+    <div class="vw-inner" id="vwBody"></div>
+  </div>
+</div>
+
 <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Video">
   <div class="lb-inner solo" id="lbInner">
     <button class="lb-full" id="lbFull" type="button">Full screen</button>
@@ -485,6 +594,142 @@
   }, {rootMargin:'0px 0px -8% 0px', threshold:0.05});
 
   [].forEach.call(items, function(el){ io.observe(el); });
+})();
+</script>
+<script>
+(function(){
+  var vw = document.getElementById('vw'),
+      vwBody = document.getElementById('vwBody'),
+      vwDl = document.getElementById('vwDl'),
+      tgrid = document.getElementById('tgrid'),
+      ggrid = document.getElementById('ggrid'),
+      loaded = {};
+
+  function esc(t){
+    return String(t == null ? '' : t)
+      .replace(/[<>&"]/g, function(c){
+        return {'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c];
+      });
+  }
+
+  function openViewer(html, href, name){
+    vwBody.innerHTML = html;
+    if (href){ vwDl.href = href; vwDl.setAttribute('download', name || ''); vwDl.style.display=''; }
+    else { vwDl.style.display='none'; }
+    vw.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeViewer(){
+    vw.classList.remove('open');
+    vwBody.innerHTML = '';
+    document.body.style.overflow = '';
+  }
+  document.getElementById('vwClose').addEventListener('click', closeViewer);
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeViewer(); });
+
+  // ---- the spreadsheet drawn as a table -------------------------------
+  function sheetHtml(t){
+    var cols = (t.head || []).length || 1, out = [];
+    out.push('<table class="sheet">');
+    out.push('<tr class="ttl"><td colspan="'+cols+'">'+esc(t.subject)+'</td></tr>');
+    if (t.note) out.push('<tr class="sub"><td colspan="'+cols+'">'+esc(t.note)+'</td></tr>');
+    if (t.date_range) out.push('<tr class="meta"><td colspan="'+cols+'">'+esc(t.date_range)+'</td></tr>');
+    out.push('<tr class="hd">');
+    (t.head||[]).forEach(function(h){ out.push('<td>'+esc(h)+'</td>'); });
+    out.push('</tr>');
+    (t.rows||[]).forEach(function(r){
+      out.push('<tr>');
+      r.forEach(function(c){ out.push('<td>'+esc(c)+'</td>'); });
+      out.push('</tr>');
+    });
+    out.push('</table>');
+    return out.join('');
+  }
+
+  function fitMini(card){
+    var shot = card.querySelector('.shot'),
+        mini = card.querySelector('.mini');
+    if (!shot || !mini) return;
+    var w = mini.scrollWidth || 1;
+    var scale = shot.clientWidth / w;
+    mini.style.transform = 'scale(' + scale + ')';
+  }
+
+  function drawTables(list){
+    if (!list.length){ tgrid.innerHTML = '<p class="empty">No tables published yet.</p>'; return; }
+    tgrid.innerHTML = '';
+    list.forEach(function(t){
+      var title = t.kind ? (t.subject + ' | ' + t.kind) : t.subject;
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'tcard';
+      b.innerHTML =
+        '<span class="inner">' +
+          '<h3>' + esc(title) + '</h3>' +
+          (t.year ? '<div class="yr">Calendar year: ' + esc(t.year) + '</div>' : '') +
+          '<div class="shot"><div class="mini">' + sheetHtml(t) + '</div></div>' +
+          '<div class="foot"><span>' + esc(t.total_rows) + ' rows</span>' +
+          '<b>Open</b></div>' +
+        '</span>';
+      b.addEventListener('click', function(){
+        openViewer(sheetHtml(t), 'Tables/' + encodeURIComponent(t.file), t.file);
+      });
+      tgrid.appendChild(b);
+      fitMini(b);
+    });
+    window.addEventListener('resize', function(){
+      [].forEach.call(tgrid.querySelectorAll('.tcard'), fitMini);
+    });
+  }
+
+  function drawGallery(list){
+    if (!list.length){ ggrid.innerHTML = '<p class="empty">Nothing in the gallery yet.</p>'; return; }
+    ggrid.innerHTML = '';
+    list.forEach(function(g){
+      var href = 'Gallery/' + encodeURIComponent(g.file);
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'gcard';
+      b.innerHTML = '<span class="inner">' +
+        '<img loading="lazy" src="' + href + '" alt="">' +
+        '<span class="cap">' + esc(g.name) + '</span></span>';
+      b.addEventListener('click', function(){
+        openViewer('<img src="' + href + '" alt="">', href, g.file);
+      });
+      ggrid.appendChild(b);
+    });
+  }
+
+  function load(which){
+    if (loaded[which]) return;
+    loaded[which] = true;
+    var src = which === 'tables' ? 'assets/tables.json' : 'assets/gallery.json';
+    fetch(src, {cache:'no-cache'})
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(d){
+        if (which === 'tables') drawTables((d && d.tables) || []);
+        else drawGallery((d && d.images) || []);
+      })
+      .catch(function(){
+        if (which === 'tables') drawTables([]); else drawGallery([]);
+      });
+  }
+
+  // ---- tabs ------------------------------------------------------------
+  var tabs = document.querySelectorAll('.tab');
+  function show(name){
+    [].forEach.call(tabs, function(t){ t.classList.toggle('on', t.dataset.t === name); });
+    [].forEach.call(document.querySelectorAll('.tp'), function(p){
+      p.classList.toggle('on', p.id === 't-' + name);
+    });
+    if (name !== 'cases') load(name);
+    if (history.replaceState) history.replaceState(null, '', '#' + name);
+  }
+  [].forEach.call(tabs, function(t){
+    t.addEventListener('click', function(){ show(t.dataset.t); });
+  });
+  var start = (location.hash || '').replace('#','');
+  if (start === 'tables' || start === 'gallery') show(start);
 })();
 </script>
 </body>
