@@ -18,6 +18,7 @@ TABLES = os.path.join(ROOT, "Tables")
 GALLERY = os.path.join(ROOT, "Gallery")
 OUT = os.path.join(ROOT, "assets", "tables.json")
 GOUT = os.path.join(ROOT, "assets", "gallery.json")
+LOGOS = os.path.join(ROOT, "assets", "tablelogos")
 
 PREVIEW_ROWS = 14      # rows of data kept for the small preview
 PREVIEW_COLS = 6
@@ -41,6 +42,32 @@ def clean(v):
 def year_from(text):
     m = re.search(r"(19|20)\d{2}", text or "")
     return m.group(0) if m else ""
+
+
+def save_logo(ws, stem):
+    """Pull the sheet's own logo out of the workbook so the page can show it."""
+    imgs = getattr(ws, "_images", [])
+    if not imgs:
+        return ""
+    img = imgs[0]
+    try:
+        data = img._data()
+    except Exception:                                # noqa: BLE001
+        return ""
+    ext = (getattr(img, "format", "") or "png").lower()
+    if ext == "jpeg":
+        ext = "jpg"
+    os.makedirs(LOGOS, exist_ok=True)
+    name = re.sub(r"[^A-Za-z0-9._-]+", "-", stem).strip("-") + "." + ext
+    out = os.path.join(LOGOS, name)
+    old = b""
+    if os.path.exists(out):
+        with open(out, "rb") as f:
+            old = f.read()
+    if old != data:
+        with open(out, "wb") as f:
+            f.write(data)
+    return "assets/tablelogos/" + name
 
 
 def read_xlsx(path):
@@ -79,7 +106,10 @@ def read_xlsx(path):
         if any(row):
             rows.append(row)
 
+    logo = save_logo(ws, os.path.splitext(os.path.basename(path))[0])
+
     return {
+        "logo": logo,
         "subject": subject,
         "kind": kind,
         "date_range": date_range,
@@ -101,6 +131,7 @@ def read_csv(path):
             for r in reader[1:PREVIEW_ROWS + 1] if any(r)]
     name = os.path.splitext(os.path.basename(path))[0]
     return {
+        "logo": "",
         "subject": name,
         "kind": "",
         "date_range": "",
