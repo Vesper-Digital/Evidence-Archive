@@ -261,8 +261,18 @@ CASE_PAGE = """<!doctype html>
     .banner{grid-template-columns:1fr}
     .banner .portrait{display:none}
   }
-  .back{display:inline-block;margin:28px 0 10px;color:var(--cyan);text-decoration:none;font-size:18px;letter-spacing:.1em;text-transform:uppercase}
-  .back:hover{text-decoration:underline}
+  .back{position:relative;display:inline-flex;align-items:center;gap:14px;
+    margin:30px 0 24px;padding:14px 26px 14px 22px;border:0;background:var(--red);
+    color:#fff;text-decoration:none;font-size:clamp(16px,1.25vw,19px);font-weight:700;
+    letter-spacing:.2em;text-transform:uppercase;
+    clip-path:polygon(16px 0, 100% 0, 100% 100%, 0 100%, 0 16px);
+    transition:color .16s ease}
+  .back::before{content:"";position:absolute;inset:2px;background:#000;
+    clip-path:polygon(14px 0, 100% 0, 100% 100%, 0 100%, 0 14px);
+    transition:background .16s ease}
+  .back > *{position:relative;z-index:1}
+  .back:hover::before{background:var(--red)}
+  .back svg{width:22px;height:22px;flex:none;stroke:currentColor;fill:none;stroke-width:2.2}
   h1{font-size:clamp(30px,4.2vw,52px);font-weight:800;letter-spacing:.045em;text-transform:uppercase;line-height:1.05}
   .rule{height:3px;background:var(--red);margin:16px 0 22px}
   .meta{color:var(--red);font-size:clamp(16px,1.25vw,20px);letter-spacing:.16em;text-transform:uppercase;font-weight:700;margin-bottom:14px}
@@ -333,7 +343,7 @@ CASE_PAGE = """<!doctype html>
 <div class="banner rz" data-rz="0"><img class="portrait" src="__UP__assets/portrait.jpg" alt=""><img src="__UP__assets/banner.png" alt="Vesper Digital"></div>
 <div class="wrap">
   <div class="rz" data-rz="320">
-    <a class="back" href="__UP__">&larr; All cases</a>
+    <a class="back" href="__UP__"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H4M10 6l-6 6 6 6"/></svg><span>All cases</span></a>
     <h1>__TITLE__</h1>
     <div class="rule"></div>
     <div class="meta">__DATE__</div>
@@ -419,6 +429,8 @@ PLAY_SVG = ('<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12"
 ZIP_SVG = ('<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12"/><path d="M7 11l5 5 5-5"/><path d="M4 20h16"/></svg>')
 
 
+BACK_SVG = ('<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H4M10 6l-6 6 6 6"/></svg>')
+
 FOLDER_SVG = ('<svg viewBox="0 0 24 24" aria-hidden="true">'
               '<path d="M3 7a2 2 0 0 1 2-2h4l2 2.5h8a2 2 0 0 1 2 2V18a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>'
               '</svg>')
@@ -501,8 +513,9 @@ def render_page(title, date, blurb, actions, body, up, back_label, back_href):
             .replace("__BLURB__", blurb)
             .replace("__ACTIONS__", actions)
             .replace("__BODY__", "\n".join(body))
-            .replace('<a class="back" href="__UP__">&larr; All cases</a>',
-                     f'<a class="back" href="{back_href}">&larr; {html.escape(back_label)}</a>')
+            .replace('<a class="back" href="__UP__"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H4M10 6l-6 6 6 6"/></svg><span>All cases</span></a>',
+                     f'<a class="back" href="{back_href}">{BACK_SVG}'
+                     f'<span>{html.escape(back_label)}</span></a>')
             .replace("__UP__", up))
 
 
