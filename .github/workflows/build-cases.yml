@@ -30,6 +30,11 @@ jobs:
       - name: Refresh the video list
         run: python3 tools/fetch_videos.py
 
+      - name: Read the DSX tables and gallery
+        run: |
+          pip install --quiet openpyxl
+          python3 tools/build_tables.py
+
       - name: Rebuild the cases list
         run: python3 tools/build_cases.py
 
