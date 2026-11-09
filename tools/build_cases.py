@@ -222,6 +222,8 @@ def render(cases):
         if not btns:
             btns.append(f'<a class="btn" href="{tree}">{FILES_SVG}<span>Open</span></a>')
         ncls = f' n{len(btns)}'
+        share = (f'<button class="share casehare" type="button" title="Copy link" '
+                 f'data-share="{tree}">{SHARE_SVG}</button>')
 
         blurb = (f'\n      <p class="blurb">{html.escape(c["blurb"])}</p>'
                  if c["blurb"] else "")
@@ -232,7 +234,7 @@ def render(cases):
             f'    <div class="body rz" data-rz="{base + 200}">\n'
             f'      <div class="head">\n'
             f'        <h3><a href="{tree}">{title}</a></h3>\n'
-            f'        <div class="date">{date}</div>\n'
+            f'        <div class="date">{date}{share}</div>\n'
             f'      </div>{blurb}\n'
             f'      <div class="btns{ncls}">\n'
             f'        ' + "\n        ".join(btns) + '\n'
@@ -428,6 +430,8 @@ def list_dir(abs_dir):
 PLAY_SVG = ('<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l6 3.5-6 3.5z"/></svg>')
 ZIP_SVG = ('<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12"/><path d="M7 11l5 5 5-5"/><path d="M4 20h16"/></svg>')
 
+
+SHARE_SVG = ('<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="19" r="2.6"/><path d="M8.3 10.8l7.4-4.3M8.3 13.2l7.4 4.3"/></svg>')
 
 BACK_SVG = ('<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H4M10 6l-6 6 6 6"/></svg>')
 
