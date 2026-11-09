@@ -150,6 +150,13 @@
     line-height:1.1;
     color:#fff;
   }
+  .case .date{display:flex;align-items:center;gap:14px}
+  .case .casehare{width:38px;height:34px;border:2px solid #3a3a3a;background:none;
+    color:#cfcfcf;cursor:pointer;display:flex;align-items:center;justify-content:center;
+    padding:0;transition:background .16s ease,color .16s ease,border-color .16s ease}
+  .case .casehare:hover{background:#fff;color:#000;border-color:#fff}
+  .case .casehare.done{background:var(--red);border-color:var(--red);color:#fff}
+  .case .casehare svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:2}
   .case .date{
     font-size:clamp(14px,1.05vw,17px);
     letter-spacing:.16em;
@@ -372,6 +379,22 @@
   .gcard:hover .cap{color:#fff}
   .gcard:hover .inner{background:#140505}
 
+  /* SHARE */
+  .share{
+    display:flex;align-items:center;justify-content:center;
+    width:46px;height:42px;border:2px solid #3a3a3a;color:#cfcfcf;background:none;
+    cursor:pointer;padding:0;
+    transition:background .16s ease,color .16s ease,border-color .16s ease}
+  .share:hover{background:#fff;color:#000;border-color:#fff}
+  .share.done{background:var(--red);border-color:var(--red);color:#fff}
+  .share svg{width:21px;height:21px;stroke:currentColor;fill:none;stroke-width:2}
+  .gcard .bar{display:flex;gap:10px;padding:0 14px 14px}
+  .gcard .bar .share,.gcard .bar a{
+    display:flex;align-items:center;justify-content:center;
+    width:44px;height:40px;border:2px solid #3a3a3a;color:#cfcfcf}
+  .gcard .bar a:hover{background:#fff;color:#000;border-color:#fff}
+  .gcard .bar svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2}
+
   /* SHARED VIEWER for tables and gallery */
   .vw{position:fixed;inset:0;z-index:9998;display:none;align-items:center;justify-content:center;
     background:rgba(0,0,0,.94);padding:70px 20px 20px}
@@ -454,65 +477,7 @@
       <p class="howto">Open a case, click a file, then use the download button on the file page.</p>
 
   <!-- CASES:START -- do not edit between these markers, the build writes this -->
-  <article class="case">
-    <a class="thumb play rz" data-rz="1080" href="https://www.youtube.com/live/zCGAcQUOpS0" target="_blank" rel="noopener" data-embed="https://www.youtube.com/embed/zCGAcQUOpS0?autoplay=1&amp;rel=0&amp;cc_load_policy=0&amp;modestbranding=1"><img src="The%20Rules%20That%20Vanished%20_%20Dangerous%20A.I%20Military%20Drones/DRONES_converted.webp" alt=""></a>
-    <div class="body rz" data-rz="1280">
-      <div class="head">
-        <h3><a href="The%20Rules%20That%20Vanished%20_%20Dangerous%20A.I%20Military%20Drones/">The Rules That Vanished Dangerous A.I Military Drones</a></h3>
-        <div class="date">November 8, 2026</div>
-      </div>
-      <p class="blurb">A.I Military Drones &amp; Canada Voted For Less Security Rules At UN</p>
-      <div class="btns n3">
-        <a class="btn" href="The%20Rules%20That%20Vanished%20_%20Dangerous%20A.I%20Military%20Drones/#files"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7z"/><path d="M14 2v5h5"/><path d="M9 13h6"/><path d="M9 17h6"/></svg><span>Files</span></a>
-        <a class="btn alt" href="The%20Rules%20That%20Vanished%20_%20Dangerous%20A.I%20Military%20Drones/#images"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.8"/><path d="M21 16l-5-5-6 6-3-3-4 4"/></svg><span>Images</span></a>
-        <a class="btn alt" href="assets/zips/The-Rules-That-Vanished-_-Dangerous-A.I-Military-Drones.zip" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12"/><path d="M7 11l5 5 5-5"/><path d="M4 20h16"/></svg><span>Download all</span></a>
-      </div>
-    </div>
-  </article>
-  <article class="case">
-    <a class="thumb play rz" data-rz="1400" href="https://youtube.com/live/zCGAcQUOpS0?feature=share" target="_blank" rel="noopener" data-embed="https://www.youtube.com/embed/zCGAcQUOpS0?autoplay=1&amp;rel=0&amp;cc_load_policy=0&amp;modestbranding=1"><img src="Immigration%20Policy-The%20U.N%20Agenda-%20IRCC%20Spending%20Billions/Agents.jpg" alt=""></a>
-    <div class="body rz" data-rz="1600">
-      <div class="head">
-        <h3><a href="Immigration%20Policy-The%20U.N%20Agenda-%20IRCC%20Spending%20Billions/">Canada&#x27;s Immigration Policy | The U.N Agenda | IRCC Spending Billions</a></h3>
-        <div class="date">November 7, 2026</div>
-      </div>
-      <p class="blurb">CARNEY&#x27;S MIGRANT AGENDA | The UN, The Money &amp; The Connections EXPOSED!</p>
-      <div class="btns n3">
-        <a class="btn" href="Immigration%20Policy-The%20U.N%20Agenda-%20IRCC%20Spending%20Billions/#files"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7z"/><path d="M14 2v5h5"/><path d="M9 13h6"/><path d="M9 17h6"/></svg><span>Files</span></a>
-        <a class="btn alt" href="Immigration%20Policy-The%20U.N%20Agenda-%20IRCC%20Spending%20Billions/#images"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.8"/><path d="M21 16l-5-5-6 6-3-3-4 4"/></svg><span>Images</span></a>
-        <a class="btn alt" href="assets/zips/Immigration-Policy-The-U.N-Agenda--IRCC-Spending-Billions.zip" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12"/><path d="M7 11l5 5 5-5"/><path d="M4 20h16"/></svg><span>Download all</span></a>
-      </div>
-    </div>
-  </article>
-  <article class="case">
-    <a class="thumb play rz" data-rz="1720" href="https://youtu.be/ww2Jk5mrvro" target="_blank" rel="noopener" data-embed="https://www.youtube.com/embed/ww2Jk5mrvro?autoplay=1&amp;rel=0&amp;cc_load_policy=0&amp;modestbranding=1"><img src="Tim%20Caulfied%20%20Government%20Funded%20Misinformation%20Guru%20Who%20Got%20It%20Wrong/Tim.jpg" alt=""></a>
-    <div class="body rz" data-rz="1920">
-      <div class="head">
-        <h3><a href="Tim%20Caulfied%20%20Government%20Funded%20Misinformation%20Guru%20Who%20Got%20It%20Wrong/">Tim Caulfied Government Funded Misinformation Guru</a></h3>
-        <div class="date">November 7, 2026</div>
-      </div>
-      <p class="blurb">CANADA&#x27;S MISINFORMATION EXPERT | $3.38M in Federal Grants &amp; The His Stats Don&#x27;t Add Up!</p>
-      <div class="btns n3">
-        <a class="btn" href="Tim%20Caulfied%20%20Government%20Funded%20Misinformation%20Guru%20Who%20Got%20It%20Wrong/#files"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7z"/><path d="M14 2v5h5"/><path d="M9 13h6"/><path d="M9 17h6"/></svg><span>Files</span></a>
-        <a class="btn alt" href="Tim%20Caulfied%20%20Government%20Funded%20Misinformation%20Guru%20Who%20Got%20It%20Wrong/#images"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.8"/><path d="M21 16l-5-5-6 6-3-3-4 4"/></svg><span>Images</span></a>
-        <a class="btn alt" href="assets/zips/Tim-Caulfied-Government-Funded-Misinformation-Guru-Who-Got-It-Wrong.zip" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12"/><path d="M7 11l5 5 5-5"/><path d="M4 20h16"/></svg><span>Download all</span></a>
-      </div>
-    </div>
-  </article>
-  <article class="case">
-    <a class="thumb play rz" data-rz="2040" href="https://youtube.com/live/kFPYXB-KUts?feature=share" target="_blank" rel="noopener" data-embed="https://www.youtube.com/embed/kFPYXB-KUts?autoplay=1&amp;rel=0&amp;cc_load_policy=0&amp;modestbranding=1"><img src="Deleted%20Federal%20Records/Files_converted.webp" alt=""></a>
-    <div class="body rz" data-rz="2240">
-      <div class="head">
-        <h3><a href="Deleted%20Federal%20Records/">Deleted COVID Federal Estimate Records | I Recovered Them!</a></h3>
-        <div class="date">November 6, 2026</div>
-      </div>
-      <p class="blurb">The deleted federal estimates tables from 2019-2022 and the available tables up to 2026.</p>
-      <div class="btns n2">
-        <a class="btn" href="Deleted%20Federal%20Records/#files"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7z"/><path d="M14 2v5h5"/><path d="M9 13h6"/><path d="M9 17h6"/></svg><span>Files</span></a>
-        <a class="btn alt" href="assets/zips/Deleted-Federal-Records.zip" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12"/><path d="M7 11l5 5 5-5"/><path d="M4 20h16"/></svg><span>Download all</span></a>
-      </div>
-    </div>
-  </article>
+  <p class="empty">No cases published yet.</p>
   <!-- CASES:END -->
     </section>
 
@@ -575,6 +540,9 @@
     });
   }
 
+  var SHARE = '<svg viewBox="0 0 24 24" aria-hidden="true">'
+      + '<circle cx="18" cy="5" r="2.6"/><circle cx="6" cy="12" r="2.6"/>'
+      + '<circle cx="18" cy="19" r="2.6"/><path d="M8.3 10.8l7.4-4.3M8.3 13.2l7.4 4.3"/></svg>';
   var EXPAND = '<svg viewBox="0 0 24 24" aria-hidden="true">'
       + '<path d="M9 3H3v6M15 21h6v-6M3 3l7 7M21 21l-7-7"/></svg>';
   var DOWN = '<svg viewBox="0 0 24 24" aria-hidden="true">'
@@ -692,6 +660,9 @@
       ggrid = document.getElementById('ggrid'),
       loaded = {};
 
+  var SHARE = '<svg viewBox="0 0 24 24" aria-hidden="true">'
+      + '<circle cx="18" cy="5" r="2.6"/><circle cx="6" cy="12" r="2.6"/>'
+      + '<circle cx="18" cy="19" r="2.6"/><path d="M8.3 10.8l7.4-4.3M8.3 13.2l7.4 4.3"/></svg>';
   var EXPAND = '<svg viewBox="0 0 24 24" aria-hidden="true">'
       + '<path d="M9 3H3v6M15 21h6v-6M3 3l7 7M21 21l-7-7"/></svg>';
   var DOWN = '<svg viewBox="0 0 24 24" aria-hidden="true">'
@@ -702,6 +673,33 @@
       .replace(/[<>&"]/g, function(c){
         return {'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c];
       });
+  }
+
+  function shareLink(hash){
+    return location.origin + location.pathname + hash;
+  }
+
+  function copy(text, btn){
+    function done(){
+      if (!btn) return;
+      btn.classList.add('done');
+      setTimeout(function(){ btn.classList.remove('done'); }, 1400);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, function(){ fallback(text, done); });
+    } else {
+      fallback(text, done);
+    }
+  }
+  function fallback(text, done){
+    var a = document.createElement('textarea');
+    a.value = text;
+    a.style.position = 'fixed';
+    a.style.opacity = '0';
+    document.body.appendChild(a);
+    a.select();
+    try { document.execCommand('copy'); done(); } catch (e) { window.prompt('Copy this link', text); }
+    document.body.removeChild(a);
   }
 
   function openViewer(html, href, name){
@@ -763,7 +761,10 @@
     shot.style.height = Math.round(mini.scrollHeight * scale) + 'px';
   }
 
+  var TABLES = [], IMAGES = [];
+
   function drawTables(list){
+    TABLES = list;
     if (!list.length){ tgrid.innerHTML = '<p class="empty">No tables published yet.</p>'; return; }
     tgrid.innerHTML = '';
     list.forEach(function(t){
@@ -780,6 +781,7 @@
             '<span class="acts">' +
               '<span class="x" title="Open">' + EXPAND + '</span>' +
               '<a href="Tables/' + encodeURIComponent(t.file) + '" download title="Download">' + DOWN + '</a>' +
+              '<span class="share" title="Copy link">' + SHARE + '</span>' +
             '</span>' +
           '</div>' +
         '</span>';
@@ -788,9 +790,15 @@
                    'Tables/' + encodeURIComponent(t.file), t.file);
       }
       b.addEventListener('click', function(e){
+        var sh = e.target.closest('.share');
+        if (sh){
+          copy(shareLink('#tables=' + encodeURIComponent(t.file)), sh);
+          return;
+        }
         if (e.target.closest('a')) return;
         open();
       });
+      t._open = open;
       tgrid.appendChild(b);
       fitMini(b);
     });
@@ -800,6 +808,7 @@
   }
 
   function drawGallery(list){
+    IMAGES = list;
     if (!list.length){ ggrid.innerHTML = '<p class="empty">Nothing in the gallery yet.</p>'; return; }
     ggrid.innerHTML = '';
     list.forEach(function(g){
@@ -809,10 +818,24 @@
       b.className = 'gcard';
       b.innerHTML = '<span class="inner">' +
         '<img loading="lazy" src="' + href + '" alt="">' +
-        '<span class="cap">' + esc(g.name) + '</span></span>';
-      b.addEventListener('click', function(){
+        '<span class="cap">' + esc(g.name) + '</span>' +
+        '<span class="bar">' +
+          '<a href="' + href + '" download title="Download">' + DOWN + '</a>' +
+          '<span class="share" title="Copy link">' + SHARE + '</span>' +
+        '</span></span>';
+      function openImg(){
         openViewer('<img src="' + href + '" alt="">', href, g.file);
+      }
+      b.addEventListener('click', function(e){
+        var sh = e.target.closest('.share');
+        if (sh){
+          copy(shareLink('#gallery=' + encodeURIComponent(g.file)), sh);
+          return;
+        }
+        if (e.target.closest('a')) return;
+        openImg();
       });
+      g._open = openImg;
       ggrid.appendChild(b);
     });
   }
@@ -826,6 +849,7 @@
       .then(function(d){
         if (which === 'tables') drawTables((d && d.tables) || []);
         else drawGallery((d && d.images) || []);
+        openFromHash();
       })
       .catch(function(){
         if (which === 'tables') drawTables([]); else drawGallery([]);
@@ -840,12 +864,40 @@
       p.classList.toggle('on', p.id === 't-' + name);
     });
     if (name !== 'cases') load(name);
-    if (history.replaceState) history.replaceState(null, '', '#' + name);
+    if (history.replaceState && (location.hash || '').indexOf('=') < 0) {
+      history.replaceState(null, '', '#' + name);
+    }
   }
   [].forEach.call(tabs, function(t){
     t.addEventListener('click', function(){ show(t.dataset.t); });
   });
+
+  document.addEventListener('click', function(e){
+    var sh = e.target.closest('.casehare');
+    if (!sh) return;
+    e.preventDefault();
+    copy(location.origin + location.pathname + sh.getAttribute('data-share'), sh);
+  });
+  function openFromHash(){
+    var h = (location.hash || '').replace('#','');
+    var eq = h.indexOf('=');
+    if (eq < 0) return;
+    var kind = h.slice(0, eq), want = decodeURIComponent(h.slice(eq + 1));
+    var hit = null;
+    if (kind === 'tables') hit = TABLES.filter(function(t){ return t.file === want; })[0];
+    if (kind === 'gallery') hit = IMAGES.filter(function(g){ return g.file === want; })[0];
+    if (hit && hit._open) setTimeout(hit._open, 120);
+  }
+
+  window.addEventListener('hashchange', function(){
+    var h = (location.hash || '').replace('#','');
+    var k = h.indexOf('=') > -1 ? h.slice(0, h.indexOf('=')) : h;
+    if (k === 'tables' || k === 'gallery') { show(k); openFromHash(); }
+  });
+
   var start = (location.hash || '').replace('#','');
+  var eq = start.indexOf('=');
+  if (eq > -1) start = start.slice(0, eq);
   if (start === 'tables' || start === 'gallery') show(start);
 })();
 </script>
