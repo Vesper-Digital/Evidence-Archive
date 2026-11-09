@@ -1,6 +1,139 @@
 {
  "tables": [
   {
+   "logo": "assets/tablelogos/Lobbying-Registry---Drones---2026.jpg",
+   "subject": "DRONES",
+   "kind": "LOBBYING REGISTRY",
+   "date_range": "MAY 1, 2026 - NOVEMBER 30, 2026",
+   "year": "2026",
+   "note": "LOBBYING REGISTRY • 45 matching records • November 09, 2026 00:07",
+   "head": [
+    "Date",
+    "Client / Organization",
+    "Record Type",
+    "Government Institutions",
+    "Public Office Holders",
+    "Description"
+   ],
+   "rows": [
+    [
+     "2026-10-13",
+     "Jaunt Air Mobility Canada",
+     "Lobbying Registration",
+     "7 institutions VIEW ALL",
+     "",
+     "Seeking a government contract to pro… VIEW FULL"
+    ],
+    [
+     "2026-09-30",
+     "Volatus Aerospace Corp.",
+     "Lobbying Registration",
+     "17 institutions VIEW ALL",
+     "",
+     "Communicating with government offici… VIEW FULL"
+    ],
+    [
+     "2026-09-24",
+     "SkyCan Systems Inc.",
+     "Monthly Communication",
+     "House of Commons",
+     "John Brassard, Member of Parliament",
+     "High-level discussions to advise on… VIEW FULL"
+    ],
+    [
+     "2026-09-23",
+     "Jaunt Air Mobility Canada",
+     "Monthly Communication",
+     "National Research Council (NRC)",
+     "Kevin Hayes, Military liaison - Automotive Research NRC",
+     "Seeking a government contract to pro… VIEW FULL"
+    ],
+    [
+     "2026-09-23",
+     "Jaunt Air Mobility Canada",
+     "Monthly Communication",
+     "House of Commons",
+     "Tim Watchorn, Member of Parliament",
+     "Seeking a government contract to pro… VIEW FULL"
+    ],
+    [
+     "2026-09-22",
+     "Jaunt Air Mobility Canada",
+     "Monthly Communication",
+     "Public Safety Canada (PS)",
+     "Dan Lussier, Director of Policy",
+     "Seeking a government contract to pro… VIEW FULL"
+    ],
+    [
+     "2026-09-22",
+     "Jaunt Air Mobility Canada",
+     "Monthly Communication",
+     "House of Commons",
+     "Jean-Denis Garon, MP; Xavier Barsalou-Duval, MP",
+     "Seeking a government contract to pro… VIEW FULL"
+    ],
+    [
+     "2026-09-22",
+     "Jaunt Air Mobility Canada",
+     "Lobbying Registration",
+     "10 institutions VIEW ALL",
+     "",
+     "Help the company to secure federal a… VIEW FULL"
+    ],
+    [
+     "2026-09-19",
+     "Jaunt Air Mobility Canada",
+     "Lobbying Registration",
+     "7 institutions VIEW ALL",
+     "",
+     "Engage with federal government on de… VIEW FULL"
+    ],
+    [
+     "2026-09-10",
+     "SkyCan Systems Inc.",
+     "Lobbying Registration",
+     "12 institutions VIEW ALL",
+     "",
+     "FedDev Ontario funding under the Reg… VIEW FULL"
+    ],
+    [
+     "2026-09-03",
+     "Volatus Aerospace Corp.",
+     "Lobbying Registration",
+     "16 institutions VIEW ALL",
+     "",
+     "Communicating with government offici… VIEW FULL"
+    ],
+    [
+     "2026-08-28",
+     "Robotics Centre, Inc.",
+     "Monthly Communication",
+     "Public Services and Procurement Canada (PSPC)",
+     "James Cudmore, Chief of Staff",
+     "Defence Industrial Strategy and Capa… VIEW FULL"
+    ],
+    [
+     "2026-08-21",
+     "Volatus Aerospace Corp.",
+     "Lobbying Registration",
+     "16 institutions VIEW ALL",
+     "",
+     "Communicating with government offici… VIEW FULL"
+    ],
+    [
+     "2026-08-18",
+     "Jaunt Air Mobility Canada",
+     "Monthly Communication",
+     "Innovation, Science and Economic Development Canada (ISED)",
+     "Kendal Hembroff, Sous-ministre adjoint(e) délégué(e)",
+     "Seeking a government contract to pro… VIEW FULL"
+    ]
+   ],
+   "total_rows": 45,
+   "file": "Lobbying Registry - Drones - 2026.xlsx",
+   "size": "29 KB"
+  },
+  {
    "logo": "assets/tablelogos/Lobbying-Registry---Telesat---2026.jpg",
    "subject": "TELESAT",
    "kind": "LOBBYING REGISTRY",
