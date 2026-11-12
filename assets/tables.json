@@ -2,7 +2,7 @@
  "tables": [
   {
    "logo": "",
-   "shot": "assets/tableshots/BROOKFIELD_CORPORATION_Corp.pdf.jpg",
+   "shot": "assets/tableshots/BROOKFIELD_CORPORATION.jpg",
    "pdf": true,
    "subject": "BROOKFIELD CORPORATION",
    "kind": "Corp & Finance | Inter-Corporate Ownership",
@@ -13,7 +13,7 @@
    "rows": [],
    "total_rows": 43,
    "unit": "pages",
-   "file": "BROOKFIELD_CORPORATION_Corp.pdf.pdf",
+   "file": "BROOKFIELD_CORPORATION.pdf",
    "size": "579 KB"
   },
   {
