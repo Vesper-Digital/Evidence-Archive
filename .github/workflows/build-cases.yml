@@ -32,7 +32,7 @@ jobs:
 
       - name: Read the DSX tables and gallery
         run: |
-          pip install --quiet openpyxl
+          pip install --quiet openpyxl pymupdf
           python3 tools/build_tables.py
 
       - name: Rebuild the cases list
