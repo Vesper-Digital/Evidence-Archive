@@ -2,6 +2,9 @@
  "tables": [
   {
    "logo": "assets/tablelogos/Lobbying-Registry---Drones---2026.jpg",
+   "shot": "",
+   "pdf": false,
+   "unit": "rows",
    "subject": "DRONES",
    "kind": "LOBBYING REGISTRY",
    "date_range": "MAY 1, 2026 - NOVEMBER 30, 2026",
@@ -135,6 +138,9 @@
   },
   {
    "logo": "assets/tablelogos/Lobbying-Registry---Telesat---2026.jpg",
+   "shot": "",
+   "pdf": false,
+   "unit": "rows",
    "subject": "TELESAT",
    "kind": "LOBBYING REGISTRY",
    "date_range": "JANUARY 1, 2026 - DECEMBER 31, 2026",

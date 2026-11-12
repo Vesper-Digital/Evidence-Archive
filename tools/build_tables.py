@@ -19,6 +19,7 @@ GALLERY = os.path.join(ROOT, "Gallery")
 OUT = os.path.join(ROOT, "assets", "tables.json")
 GOUT = os.path.join(ROOT, "assets", "gallery.json")
 LOGOS = os.path.join(ROOT, "assets", "tablelogos")
+SHOTS = os.path.join(ROOT, "assets", "tableshots")
 
 PREVIEW_ROWS = 14      # rows of data kept for the small preview
 PREVIEW_COLS = 6
@@ -122,6 +123,9 @@ def read_xlsx(path):
 
     return {
         "logo": logo,
+        "shot": "",
+        "pdf": False,
+        "unit": "rows",
         "subject": subject,
         "kind": kind,
         "date_range": date_range,
@@ -131,6 +135,60 @@ def read_xlsx(path):
         "rows": rows,
         "total_rows": max(ws.max_row - start, 0),
     }
+
+
+def read_pdf(path):
+    """A PDF table: first page becomes the preview, its text gives the title."""
+    try:
+        import pymupdf
+    except ImportError:
+        try:
+            import fitz as pymupdf
+        except ImportError:
+            print("    pymupdf is not installed, skipping")
+            return None
+
+    doc = pymupdf.open(path)
+    try:
+        page = doc[0]
+        lines = [l.strip() for l in page.get_text().splitlines() if l.strip()]
+
+        # the DSX layout: record line, section line, subject, then a strap
+        subject = lines[2] if len(lines) > 2 else os.path.splitext(os.path.basename(path))[0]
+        kind = lines[1] if len(lines) > 1 else ""
+        strap = lines[3] if len(lines) > 3 else ""
+        kind = re.sub(r"\s*\|\s*", " | ", kind).title()
+
+        stem = os.path.splitext(os.path.basename(path))[0]
+        name = re.sub(r"[^A-Za-z0-9._-]+", "-", stem).strip("-") + ".jpg"
+        os.makedirs(SHOTS, exist_ok=True)
+        out = os.path.join(SHOTS, name)
+        pix = page.get_pixmap(dpi=110)
+        data = pix.tobytes("jpeg", jpg_quality=82)
+        old = b""
+        if os.path.exists(out):
+            with open(out, "rb") as f:
+                old = f.read()
+        if old != data:
+            with open(out, "wb") as f:
+                f.write(data)
+
+        return {
+            "logo": "",
+            "shot": "assets/tableshots/" + name,
+            "pdf": True,
+            "subject": subject,
+            "kind": kind,
+            "date_range": strap,
+            "year": year_from(strap) or year_from(stem),
+            "note": strap,
+            "head": [],
+            "rows": [],
+            "total_rows": doc.page_count,
+            "unit": "pages",
+        }
+    finally:
+        doc.close()
 
 
 def read_csv(path):
@@ -144,6 +202,9 @@ def read_csv(path):
     name = os.path.splitext(os.path.basename(path))[0]
     return {
         "logo": "",
+        "shot": "",
+        "pdf": False,
+        "unit": "rows",
         "subject": name,
         "kind": "",
         "date_range": "",
@@ -169,6 +230,8 @@ def collect():
         try:
             if low.endswith((".xlsx", ".xlsm")):
                 t = read_xlsx(path)
+            elif low.endswith(".pdf"):
+                t = read_pdf(path)
             elif low.endswith((".csv", ".tsv")):
                 t = read_csv(path)
             else:
