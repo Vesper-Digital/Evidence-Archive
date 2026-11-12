@@ -1,6 +1,22 @@
 {
  "tables": [
   {
+   "logo": "",
+   "shot": "assets/tableshots/BROOKFIELD_CORPORATION_Corp.pdf.jpg",
+   "pdf": true,
+   "subject": "BROOKFIELD CORPORATION",
+   "kind": "Corp & Finance | Inter-Corporate Ownership",
+   "date_range": "Corporate ownership structure  |  Reference year 2025",
+   "year": "2025",
+   "note": "Corporate ownership structure  |  Reference year 2025",
+   "head": [],
+   "rows": [],
+   "total_rows": 43,
+   "unit": "pages",
+   "file": "BROOKFIELD_CORPORATION_Corp.pdf.pdf",
+   "size": "579 KB"
+  },
+  {
    "logo": "assets/tablelogos/Lobbying-Registry---Drones---2026.jpg",
    "shot": "",
    "pdf": false,
