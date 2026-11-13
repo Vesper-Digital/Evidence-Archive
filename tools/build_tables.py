@@ -9,9 +9,11 @@ Nothing here is invented: every value comes from the sheet itself.
 """
 
 import csv
+import datetime
 import json
 import os
 import re
+import subprocess
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TABLES = os.path.join(ROOT, "Tables")
@@ -23,6 +25,37 @@ SHOTS = os.path.join(ROOT, "assets", "tableshots")
 
 PREVIEW_ROWS = 14      # rows of data kept for the small preview
 PREVIEW_COLS = 6
+
+
+def added_on(path):
+    """When this file first appeared in the repo, so the page can sort by newest.
+
+    The checkout gives every file the same timestamp, so the real date comes
+    from the commit that added it. A file with no commit yet counts as today.
+    """
+    rel = os.path.relpath(path, ROOT)
+    for args in (["--diff-filter=A", "--format=%cI", "-1", "--", rel],
+                 ["--format=%cI", "-1", "--", rel]):
+        try:
+            r = subprocess.run(["git", "log"] + args, cwd=ROOT,
+                               capture_output=True, text=True, timeout=20)
+            line = r.stdout.strip().splitlines()
+            if line and line[0].strip():
+                return line[0].strip()
+        except Exception:                                 # noqa: BLE001
+            pass
+    return datetime.datetime.now(datetime.timezone.utc).isoformat()
+
+
+def ensure_gallery():
+    """Make the Gallery folder the first time, so there is somewhere to drop images."""
+    if os.path.isdir(GALLERY):
+        return
+    os.makedirs(GALLERY, exist_ok=True)
+    with open(os.path.join(GALLERY, "README.md"), "w", encoding="utf-8") as f:
+        f.write("# Gallery\n\nDrop images in this folder. They show up on the "
+                "Gallery tab of the site, named after the file.\n")
+    print("Made the Gallery folder.")
 
 
 def human_size(n):
@@ -244,6 +277,7 @@ def collect():
             continue
         t["file"] = n
         t["size"] = human_size(os.path.getsize(path))
+        t["added"] = added_on(path)
         out.append(t)
         print(f"  read {n}")
     return out
@@ -265,6 +299,7 @@ def collect_gallery():
                 "file": n,
                 "name": os.path.splitext(n)[0],
                 "size": human_size(os.path.getsize(path)),
+                "added": added_on(path),
             })
     return out
 
@@ -285,6 +320,7 @@ def write_json(path, payload, label):
 
 
 def main():
+    ensure_gallery()
     tables = collect()
     write_json(OUT, {"tables": tables}, f"tables.json ({len(tables)})")
     gallery = collect_gallery()
