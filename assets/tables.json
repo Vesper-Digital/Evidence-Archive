@@ -287,6 +287,142 @@
    "total_rows": 15,
    "file": "Lobbying Registry - Telesat - 2026.xlsx",
    "size": "23 KB"
+  },
+  {
+   "logo": "assets/tablelogos/Roshel---2026--Lobbying-Records.jpg",
+   "shot": "",
+   "pdf": false,
+   "unit": "rows",
+   "subject": "ROSHEL",
+   "kind": "LOBBYING REGISTRY",
+   "date_range": "FROM JANUARY 1, 2026",
+   "year": "2026",
+   "note": "LOBBYING REGISTRY • 30 matching records • November 12, 2026 22:37",
+   "head": [
+    "Date",
+    "Client / Organization",
+    "Government Institutions",
+    "Record Type",
+    "Registration ID",
+    "Source URL"
+   ],
+   "rows": [
+    [
+     "2026-09-22",
+     "Roshel",
+     "House of Commons",
+     "Monthly Communication",
+     "",
+     "https://www.lobbycanada.gc.ca…"
+    ],
+    [
+     "2026-09-22",
+     "Roshel",
+     "12 institutions VIEW ALL",
+     "Lobbying Registration",
+     "966718-388232-1",
+     "https://www.lobbycanada.gc.ca…"
+    ],
+    [
+     "2026-09-02",
+     "Roshel",
+     "Innovation, Science and Economic Development Canada (ISED)",
+     "Monthly Communication",
+     "",
+     "https://www.lobbycanada.gc.ca…"
+    ],
+    [
+     "2026-08-25",
+     "Roshel",
+     "House of Commons",
+     "Monthly Communication",
+     "",
+     "https://www.lobbycanada.gc.ca…"
+    ],
+    [
+     "2026-08-21",
+     "Roshel",
+     "Innovation, Science and Economic Development Canada (ISED)",
+     "Monthly Communication",
+     "",
+     "https://www.lobbycanada.gc.ca…"
+    ],
+    [
+     "2026-08-15",
+     "Roshel",
+     "15 institutions VIEW ALL",
+     "Lobbying Registration",
+     "933292-380869-12",
+     "https://www.lobbycanada.gc.ca…"
+    ],
+    [
+     "2026-08-13",
+     "Roshel",
+     "Global Affairs Canada (GAC)",
+     "Monthly Communication",
+     "",
+     "https://www.lobbycanada.gc.ca…"
+    ],
+    [
+     "2026-07-10",
+     "Roshel",
+     "15 institutions VIEW ALL",
+     "Lobbying Registration",
+     "963555-387026-1",
+     "https://www.lobbycanada.gc.ca…"
+    ],
+    [
+     "2026-07-02",
+     "Roshel",
+     "3 institutions VIEW ALL",
+     "Monthly Communication",
+     "",
+     "https://www.lobbycanada.gc.ca…"
+    ],
+    [
+     "2026-06-15",
+     "Roshel",
+     "15 institutions VIEW ALL",
+     "Lobbying Registration",
+     "933292-380869-11",
+     "https://www.lobbycanada.gc.ca…"
+    ],
+    [
+     "2026-06-08",
+     "Roshel",
+     "Innovation, Science and Economic Development Canada (ISED)",
+     "Monthly Communication",
+     "",
+     "https://www.lobbycanada.gc.ca…"
+    ],
+    [
+     "2026-05-15",
+     "Roshel",
+     "Global Affairs Canada (GAC)",
+     "Monthly Communication",
+     "",
+     "https://www.lobbycanada.gc.ca…"
+    ],
+    [
+     "2026-05-13",
+     "Roshel",
+     "National Defence (DND)",
+     "Monthly Communication",
+     "",
+     "https://www.lobbycanada.gc.ca…"
+    ],
+    [
+     "2026-05-13",
+     "Roshel",
+     "National Defence (DND)",
+     "Monthly Communication",
+     "",
+     "https://www.lobbycanada.gc.ca…"
+    ]
+   ],
+   "total_rows": 30,
+   "file": "Roshel - 2026- Lobbying Records.xlsx",
+   "size": "21 KB"
   }
  ]
 }
