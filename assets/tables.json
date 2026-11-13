@@ -423,6 +423,142 @@
    "total_rows": 30,
    "file": "Roshel - 2026- Lobbying Records.xlsx",
    "size": "21 KB"
+  },
+  {
+   "logo": "assets/tablelogos/Stelco---2026---Lobbying-Records.jpg",
+   "shot": "",
+   "pdf": false,
+   "unit": "rows",
+   "subject": "STELCO",
+   "kind": "LOBBYING REGISTRY",
+   "date_range": "FROM JANUARY 1, 2026",
+   "year": "2026",
+   "note": "LOBBYING REGISTRY • 15 matching records • November 12, 2026 22:40",
+   "head": [
+    "Date",
+    "Client / Organization",
+    "Government Institutions",
+    "Record Type",
+    "Registration ID",
+    "Source URL"
+   ],
+   "rows": [
+    [
+     "2026-09-29",
+     "UNITED STEEL, PAPER AND FORESTRY, RUBBER, MANUFACTURING, ENERGY, ALLIED INDUSTRIAL AND SERVICE WORKERS INTERNATIONAL UNION",
+     "Employment and Social Development Canada (ESDC)",
+     "Monthly Communication",
+     "",
+     "https://www.lobbycanada.gc.ca…"
+    ],
+    [
+     "2026-09-24",
+     "UNITED STEEL, PAPER AND FORESTRY, RUBBER, MANUFACTURING, ENERGY, ALLIED INDUSTRIAL AND SERVICE WORKERS INTERNATIONAL UNION",
+     "Innovation, Science and Economic Development Canada (ISED)",
+     "Monthly Communication",
+     "",
+     "https://www.lobbycanada.gc.ca…"
+    ],
+    [
+     "2026-09-23",
+     "UNITED STEEL, PAPER AND FORESTRY, RUBBER, MANUFACTURING, ENERGY, ALLIED INDUSTRIAL AND SERVICE WORKERS INTERNATIONAL UNION",
+     "Innovation, Science and Economic Development Canada (ISED)",
+     "Monthly Communication",
+     "",
+     "https://www.lobbycanada.gc.ca…"
+    ],
+    [
+     "2026-09-17",
+     "Stelco Inc.",
+     "Innovation, Science and Economic Development Canada (ISED)",
+     "Monthly Communication",
+     "",
+     "https://www.lobbycanada.gc.ca…"
+    ],
+    [
+     "2026-09-10",
+     "Stelco Inc.",
+     "Innovation, Science and Economic Development Canada (ISED)",
+     "Monthly Communication",
+     "",
+     "https://www.lobbycanada.gc.ca…"
+    ],
+    [
+     "2026-09-09",
+     "Stelco Inc.",
+     "3 institutions VIEW ALL",
+     "Monthly Communication",
+     "",
+     "https://www.lobbycanada.gc.ca…"
+    ],
+    [
+     "2026-09-01",
+     "UNITED STEEL, PAPER AND FORESTRY, RUBBER, MANUFACTURING, ENERGY, ALLIED INDUSTRIAL AND SERVICE WORKERS INTERNATIONAL UNION",
+     "23 institutions VIEW ALL",
+     "Lobbying Registration",
+     "951927-292-53",
+     "https://www.lobbycanada.gc.ca…"
+    ],
+    [
+     "2026-05-27",
+     "Stelco Inc.",
+     "Innovation, Science and Economic Development Canada (ISED)",
+     "Monthly Communication",
+     "",
+     "https://www.lobbycanada.gc.ca…"
+    ],
+    [
+     "2026-05-27",
+     "Stelco Inc.",
+     "Canada Border Services Agency (CBSA)",
+     "Monthly Communication",
+     "",
+     "https://www.lobbycanada.gc.ca…"
+    ],
+    [
+     "2026-05-27",
+     "Stelco Inc.",
+     "2 institutions VIEW ALL",
+     "Monthly Communication",
+     "",
+     "https://www.lobbycanada.gc.ca…"
+    ],
+    [
+     "2026-05-27",
+     "Stelco Inc.",
+     "Privy Council Office (PCO)",
+     "Monthly Communication",
+     "",
+     "https://www.lobbycanada.gc.ca…"
+    ],
+    [
+     "2026-05-27",
+     "Stelco Inc.",
+     "Finance Canada (FIN)",
+     "Monthly Communication",
+     "",
+     "https://www.lobbycanada.gc.ca…"
+    ],
+    [
+     "2026-05-27",
+     "Stelco Inc.",
+     "Public Services and Procurement Canada (PSPC)",
+     "Monthly Communication",
+     "",
+     "https://www.lobbycanada.gc.ca…"
+    ],
+    [
+     "2026-05-27",
+     "Stelco Inc.",
+     "13 institutions VIEW ALL",
+     "Lobbying Registration",
+     "959974-17105-20",
+     "https://www.lobbycanada.gc.ca…"
+    ]
+   ],
+   "total_rows": 15,
+   "file": "Stelco - 2026 - Lobbying Records.xlsx",
+   "size": "19 KB"
   }
  ]
 }
