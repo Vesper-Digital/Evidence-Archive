@@ -124,14 +124,32 @@ def read_xlsx(path):
     def cell(r, c=2):
         return clean(ws.cell(r, c).value)
 
-    subject = cell(2)
-    strap = cell(3)
+    def row_text(r):
+        """The heading sits in column A on some exports and column B on others."""
+        for c in range(1, 4):
+            v = clean(ws.cell(r, c).value)
+            if v:
+                return v
+        return ""
+
+    def labelled(label):
+        """A label like DATE RANGE, whether its value is in the same cell or the next."""
+        for r in range(4, 10):
+            t = row_text(r)
+            if t.upper().startswith(label):
+                rest = t[len(label):].strip(" :")
+                if rest:
+                    return rest
+                for c in range(2, 5):
+                    v = clean(ws.cell(r, c).value)
+                    if v:
+                        return v
+        return ""
+
+    subject = row_text(2)
+    strap = row_text(3)
     kind = strap.split("•")[0].strip() if strap else ""
-    date_range = ""
-    for r in range(4, 10):
-        if clean(ws.cell(r, 1).value).upper().startswith("DATE RANGE"):
-            date_range = cell(r)
-            break
+    date_range = labelled("DATE RANGE")
 
     # the data grid starts at the first row that has 3+ filled cells after row 8
     start = None
