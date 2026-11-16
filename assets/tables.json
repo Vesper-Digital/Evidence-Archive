@@ -18,6 +18,128 @@
    "added": "2026-11-11T22:48:11-05:00"
   },
   {
+   "logo": "assets/tablelogos/Interest-on-Debt---Public-Accounts-Federal-Financial-Statements-Volume-I-2025-26.jpg",
+   "shot": "",
+   "pdf": false,
+   "unit": "rows",
+   "subject": "",
+   "kind": "",
+   "date_range": "",
+   "year": "",
+   "note": "",
+   "head": [
+    "What the money covers",
+    "Money type",
+    "Amount (CAD)",
+    "Fiscal year",
+    "Government wording (click for source)"
+   ],
+   "rows": [
+    [
+     "CALCULATED TOTAL · Cost of servicing government debt",
+     "Debt interest & costs",
+     "53541000000",
+     "2025–26",
+     "Expenses · Public debt charges"
+    ],
+    [
+     "Debt not yet due for repayment",
+     "Debt interest & costs",
+     "42869000000",
+     "2025–26",
+     "Unmatured debt"
+    ],
+    [
+     "Interest on government bonds",
+     "Debt interest & costs",
+     "42570000000",
+     "2025–26",
+     "Expenses · Public debt charges · Unmatured debt"
+    ],
+    [
+     "Interest on lease-related debts",
+     "Debt interest & costs",
+     "139000000",
+     "2025–26",
+     "Expenses · Public debt charges · Unmatured debt"
+    ],
+    [
+     "Interest on public-private partnership obligations",
+     "Debt interest & costs",
+     "125000000",
+     "2025–26",
+     "Expenses · Public debt charges · Unmatured debt"
+    ],
+    [
+     "Net interest on currency-swap contracts",
+     "Debt interest & costs",
+     "35000000",
+     "2025–26",
+     "Expenses · Public debt charges · Unmatured debt"
+    ],
+    [
+     "Pensions and future benefit obligations",
+     "Debt interest & costs",
+     "9594000000",
+     "2025–26",
+     "Pensions and other future benefits"
+    ],
+    [
+     "Veterans' disability and other future benefits",
+     "Debt interest & costs",
+     "5676000000",
+     "2025–26",
+     "Expenses · Public debt charges · Pensions and other future benefits"
+    ],
+    [
+     "Federal public-service pension accounts",
+     "Debt interest & costs",
+     "4412000000",
+     "2025–26",
+     "Expenses · Public debt charges · Pensions and other future benefits"
+    ],
+    [
+     "RCMP disability and other future benefits",
+     "Debt interest & costs",
+     "1368000000",
+     "2025–26",
+     "Expenses · Public debt charges · Pensions and other future benefits"
+    ],
+    [
+     "Public-service health and pensioner dental benefits",
+     "Debt interest & costs",
+     "949000000",
+     "2025–26",
+     "Expenses · Public debt charges · Pensions and other future benefits"
+    ],
+    [
+     "Workplace injury compensation",
+     "Debt interest & costs",
+     "88000000",
+     "2025–26",
+     "Expenses · Public debt charges · Pensions and other future benefits"
+    ],
+    [
+     "Unused sick-leave benefits owed",
+     "Debt interest & costs",
+     "70000000",
+     "2025–26",
+     "Expenses · Public debt charges · Pensions and other future benefits"
+    ],
+    [
+     "Severance pay and other employee benefits",
+     "Debt interest & costs",
+     "62000000",
+     "2025–26",
+     "Expenses · Public debt charges · Pensions and other future benefits"
+    ]
+   ],
+   "total_rows": 26,
+   "file": "Interest on Debt - Public Accounts  Federal Financial Statements (Volume I) 2025-26.xlsx",
+   "size": "15 KB",
+   "added": "2026-11-16T18:41:31-05:00"
+  },
+  {
    "logo": "assets/tablelogos/Lobbying-Registry---Drones---2026.jpg",
    "shot": "",
    "pdf": false,
