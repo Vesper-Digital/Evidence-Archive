@@ -28,110 +28,505 @@
    "year": "2026",
    "note": "PUBLIC ACCOUNTS / FEDERAL FINANCIAL STATEMENTS (VOLUME I) • 22 matching records • November 16, 2026 18:33",
    "head": [
-    "What the money covers",
-    "Money type",
-    "Amount (CAD)",
-    "Fiscal year",
-    "Government wording (click for source)"
+    {
+     "t": "What the money covers",
+     "bg": "#1C5D9A",
+     "b": 1,
+     "fg": "#FFFFFF",
+     "a": "center"
+    },
+    {
+     "t": "Money type",
+     "bg": "#1C5D9A",
+     "b": 1,
+     "fg": "#FFFFFF",
+     "a": "center"
+    },
+    {
+     "t": "Amount (CAD)",
+     "bg": "#1C5D9A",
+     "b": 1,
+     "fg": "#FFFFFF",
+     "a": "center"
+    },
+    {
+     "t": "Fiscal year",
+     "bg": "#1C5D9A",
+     "b": 1,
+     "fg": "#FFFFFF",
+     "a": "center"
+    },
+    {
+     "t": "Government wording (click for source)",
+     "bg": "#1C5D9A",
+     "b": 1,
+     "fg": "#FFFFFF",
+     "a": "center"
+    }
    ],
    "rows": [
     [
-     "CALCULATED TOTAL · Cost of servicing government debt",
-     "Debt interest & costs",
-     "53541000000",
-     "2025–26",
-     "Expenses · Public debt charges"
+     {
+      "t": "CALCULATED TOTAL · Cost of servicing government debt",
+      "bg": "#A91F24",
+      "b": 1,
+      "fg": "#FFFFFF",
+      "a": "center"
+     },
+     {
+      "t": "Debt interest & costs",
+      "bg": "#A91F24",
+      "b": 1,
+      "fg": "#FFFFFF",
+      "a": "center"
+     },
+     {
+      "t": "$53,541,000,000",
+      "bg": "#A91F24",
+      "b": 1,
+      "fg": "#FFFFFF",
+      "a": "center"
+     },
+     {
+      "t": "2025–26",
+      "bg": "#A91F24",
+      "b": 1,
+      "fg": "#FFFFFF",
+      "a": "center"
+     },
+     {
+      "t": "Expenses · Public debt charges",
+      "bg": "#A91F24",
+      "b": 1,
+      "fg": "#FFFFFF",
+      "a": "center"
+     }
     ],
     [
-     "Debt not yet due for repayment",
-     "Debt interest & costs",
-     "42869000000",
-     "2025–26",
-     "Unmatured debt"
+     {
+      "t": "Debt not yet due for repayment",
+      "bg": "#F8DBDD",
+      "b": 1,
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "Debt interest & costs",
+      "bg": "#F8DBDD",
+      "b": 1,
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "$42,869,000,000",
+      "bg": "#F8DBDD",
+      "b": 1,
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "2025–26",
+      "bg": "#F8DBDD",
+      "b": 1,
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "Unmatured debt",
+      "bg": "#F8DBDD",
+      "b": 1,
+      "fg": "#17212F",
+      "a": "center"
+     }
     ],
     [
-     "Interest on government bonds",
-     "Debt interest & costs",
-     "42570000000",
-     "2025–26",
-     "Expenses · Public debt charges · Unmatured debt"
+     {
+      "t": "Interest on government bonds",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "Debt interest & costs",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "$42,570,000,000",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "2025–26",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "Expenses · Public debt charges · Unmatured debt",
+      "bg": "#FFFFFF",
+      "fg": "#145D9B",
+      "a": "center"
+     }
     ],
     [
-     "Interest on lease-related debts",
-     "Debt interest & costs",
-     "139000000",
-     "2025–26",
-     "Expenses · Public debt charges · Unmatured debt"
+     {
+      "t": "Interest on lease-related debts",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "Debt interest & costs",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "$139,000,000",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "2025–26",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "Expenses · Public debt charges · Unmatured debt",
+      "bg": "#FFFFFF",
+      "fg": "#145D9B",
+      "a": "center"
+     }
     ],
     [
-     "Interest on public-private partnership obligations",
-     "Debt interest & costs",
-     "125000000",
-     "2025–26",
-     "Expenses · Public debt charges · Unmatured debt"
+     {
+      "t": "Interest on public-private partnership obligations",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "Debt interest & costs",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "$125,000,000",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "2025–26",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "Expenses · Public debt charges · Unmatured debt",
+      "bg": "#FFFFFF",
+      "fg": "#145D9B",
+      "a": "center"
+     }
     ],
     [
-     "Net interest on currency-swap contracts",
-     "Debt interest & costs",
-     "35000000",
-     "2025–26",
-     "Expenses · Public debt charges · Unmatured debt"
+     {
+      "t": "Net interest on currency-swap contracts",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "Debt interest & costs",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "$35,000,000",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "2025–26",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "Expenses · Public debt charges · Unmatured debt",
+      "bg": "#FFFFFF",
+      "fg": "#145D9B",
+      "a": "center"
+     }
     ],
     [
-     "Pensions and future benefit obligations",
-     "Debt interest & costs",
-     "9594000000",
-     "2025–26",
-     "Pensions and other future benefits"
+     {
+      "t": "Pensions and future benefit obligations",
+      "bg": "#F8DBDD",
+      "b": 1,
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "Debt interest & costs",
+      "bg": "#F8DBDD",
+      "b": 1,
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "$9,594,000,000",
+      "bg": "#F8DBDD",
+      "b": 1,
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "2025–26",
+      "bg": "#F8DBDD",
+      "b": 1,
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "Pensions and other future benefits",
+      "bg": "#F8DBDD",
+      "b": 1,
+      "fg": "#17212F",
+      "a": "center"
+     }
     ],
     [
-     "Veterans' disability and other future benefits",
-     "Debt interest & costs",
-     "5676000000",
-     "2025–26",
-     "Expenses · Public debt charges · Pensions and other future benefits"
+     {
+      "t": "Veterans' disability and other future benefits",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "Debt interest & costs",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "$5,676,000,000",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "2025–26",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "Expenses · Public debt charges · Pensions and other future benefits",
+      "bg": "#FFFFFF",
+      "fg": "#145D9B",
+      "a": "center"
+     }
     ],
     [
-     "Federal public-service pension accounts",
-     "Debt interest & costs",
-     "4412000000",
-     "2025–26",
-     "Expenses · Public debt charges · Pensions and other future benefits"
+     {
+      "t": "Federal public-service pension accounts",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "Debt interest & costs",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "$4,412,000,000",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "2025–26",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "Expenses · Public debt charges · Pensions and other future benefits",
+      "bg": "#FFFFFF",
+      "fg": "#145D9B",
+      "a": "center"
+     }
     ],
     [
-     "RCMP disability and other future benefits",
-     "Debt interest & costs",
-     "1368000000",
-     "2025–26",
-     "Expenses · Public debt charges · Pensions and other future benefits"
+     {
+      "t": "RCMP disability and other future benefits",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "Debt interest & costs",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "$1,368,000,000",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "2025–26",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "Expenses · Public debt charges · Pensions and other future benefits",
+      "bg": "#FFFFFF",
+      "fg": "#145D9B",
+      "a": "center"
+     }
     ],
     [
-     "Public-service health and pensioner dental benefits",
-     "Debt interest & costs",
-     "949000000",
-     "2025–26",
-     "Expenses · Public debt charges · Pensions and other future benefits"
+     {
+      "t": "Public-service health and pensioner dental benefits",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "Debt interest & costs",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "$949,000,000",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "2025–26",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "Expenses · Public debt charges · Pensions and other future benefits",
+      "bg": "#FFFFFF",
+      "fg": "#145D9B",
+      "a": "center"
+     }
     ],
     [
-     "Workplace injury compensation",
-     "Debt interest & costs",
-     "88000000",
-     "2025–26",
-     "Expenses · Public debt charges · Pensions and other future benefits"
+     {
+      "t": "Workplace injury compensation",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "Debt interest & costs",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "$88,000,000",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "2025–26",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "Expenses · Public debt charges · Pensions and other future benefits",
+      "bg": "#FFFFFF",
+      "fg": "#145D9B",
+      "a": "center"
+     }
     ],
     [
-     "Unused sick-leave benefits owed",
-     "Debt interest & costs",
-     "70000000",
-     "2025–26",
-     "Expenses · Public debt charges · Pensions and other future benefits"
+     {
+      "t": "Unused sick-leave benefits owed",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "Debt interest & costs",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "$70,000,000",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "2025–26",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "Expenses · Public debt charges · Pensions and other future benefits",
+      "bg": "#FFFFFF",
+      "fg": "#145D9B",
+      "a": "center"
+     }
     ],
     [
-     "Severance pay and other employee benefits",
-     "Debt interest & costs",
-     "62000000",
-     "2025–26",
-     "Expenses · Public debt charges · Pensions and other future benefits"
+     {
+      "t": "Severance pay and other employee benefits",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "Debt interest & costs",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "$62,000,000",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "2025–26",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "Expenses · Public debt charges · Pensions and other future benefits",
+      "bg": "#FFFFFF",
+      "fg": "#145D9B",
+      "a": "center"
+     }
     ]
    ],
    "total_rows": 26,
@@ -150,125 +545,543 @@
    "year": "2026",
    "note": "LOBBYING REGISTRY • 45 matching records • November 09, 2026 00:07",
    "head": [
-    "Date",
-    "Client / Organization",
-    "Record Type",
-    "Government Institutions",
-    "Public Office Holders",
-    "Description"
+    {
+     "t": "Date",
+     "bg": "#193B65",
+     "b": 1,
+     "fg": "#FFFFFF",
+     "a": "center"
+    },
+    {
+     "t": "Client / Organization",
+     "bg": "#193B65",
+     "b": 1,
+     "fg": "#FFFFFF",
+     "a": "center"
+    },
+    {
+     "t": "Record Type",
+     "bg": "#193B65",
+     "b": 1,
+     "fg": "#FFFFFF",
+     "a": "center"
+    },
+    {
+     "t": "Government Institutions",
+     "bg": "#193B65",
+     "b": 1,
+     "fg": "#FFFFFF",
+     "a": "center"
+    },
+    {
+     "t": "Public Office Holders",
+     "bg": "#193B65",
+     "b": 1,
+     "fg": "#FFFFFF",
+     "a": "center"
+    },
+    {
+     "t": "Description",
+     "bg": "#193B65",
+     "b": 1,
+     "fg": "#FFFFFF",
+     "a": "center"
+    }
    ],
    "rows": [
     [
-     "2026-10-13",
-     "Jaunt Air Mobility Canada",
-     "Lobbying Registration",
-     "7 institutions VIEW ALL",
-     "",
-     "Seeking a government contract to pro… VIEW FULL"
+     {
+      "t": "2026-10-13",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Jaunt Air Mobility Canada",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Lobbying Registration",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "7 institutions VIEW ALL",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "",
+      "fg": "#20344B"
+     },
+     {
+      "t": "Seeking a government contract to pro… VIEW FULL",
+      "fg": "#1269AF",
+      "a": "center"
+     }
     ],
     [
-     "2026-09-30",
-     "Volatus Aerospace Corp.",
-     "Lobbying Registration",
-     "17 institutions VIEW ALL",
-     "",
-     "Communicating with government offici… VIEW FULL"
+     {
+      "t": "2026-09-30",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Volatus Aerospace Corp.",
+      "bg": "#F1F5FA",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Lobbying Registration",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "17 institutions VIEW ALL",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "",
+      "fg": "#20344B"
+     },
+     {
+      "t": "Communicating with government offici… VIEW FULL",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     }
     ],
     [
-     "2026-09-24",
-     "SkyCan Systems Inc.",
-     "Monthly Communication",
-     "House of Commons",
-     "John Brassard, Member of Parliament",
-     "High-level discussions to advise on… VIEW FULL"
+     {
+      "t": "2026-09-24",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "SkyCan Systems Inc.",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Monthly Communication",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "House of Commons",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "John Brassard, Member of Parliament",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "High-level discussions to advise on… VIEW FULL",
+      "fg": "#1269AF",
+      "a": "center"
+     }
     ],
     [
-     "2026-09-23",
-     "Jaunt Air Mobility Canada",
-     "Monthly Communication",
-     "National Research Council (NRC)",
-     "Kevin Hayes, Military liaison - Automotive Research NRC",
-     "Seeking a government contract to pro… VIEW FULL"
+     {
+      "t": "2026-09-23",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Jaunt Air Mobility Canada",
+      "bg": "#F1F5FA",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Monthly Communication",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "National Research Council (NRC)",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Kevin Hayes, Military liaison - Automotive Research NRC",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Seeking a government contract to pro… VIEW FULL",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     }
     ],
     [
-     "2026-09-23",
-     "Jaunt Air Mobility Canada",
-     "Monthly Communication",
-     "House of Commons",
-     "Tim Watchorn, Member of Parliament",
-     "Seeking a government contract to pro… VIEW FULL"
+     {
+      "t": "2026-09-23",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Jaunt Air Mobility Canada",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Monthly Communication",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "House of Commons",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Tim Watchorn, Member of Parliament",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Seeking a government contract to pro… VIEW FULL",
+      "fg": "#1269AF",
+      "a": "center"
+     }
     ],
     [
-     "2026-09-22",
-     "Jaunt Air Mobility Canada",
-     "Monthly Communication",
-     "Public Safety Canada (PS)",
-     "Dan Lussier, Director of Policy",
-     "Seeking a government contract to pro… VIEW FULL"
+     {
+      "t": "2026-09-22",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Jaunt Air Mobility Canada",
+      "bg": "#F1F5FA",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Monthly Communication",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Public Safety Canada (PS)",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Dan Lussier, Director of Policy",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Seeking a government contract to pro… VIEW FULL",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     }
     ],
     [
-     "2026-09-22",
-     "Jaunt Air Mobility Canada",
-     "Monthly Communication",
-     "House of Commons",
-     "Jean-Denis Garon, MP; Xavier Barsalou-Duval, MP",
-     "Seeking a government contract to pro… VIEW FULL"
+     {
+      "t": "2026-09-22",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Jaunt Air Mobility Canada",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Monthly Communication",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "House of Commons",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Jean-Denis Garon, MP; Xavier Barsalou-Duval, MP",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Seeking a government contract to pro… VIEW FULL",
+      "fg": "#1269AF",
+      "a": "center"
+     }
     ],
     [
-     "2026-09-22",
-     "Jaunt Air Mobility Canada",
-     "Lobbying Registration",
-     "10 institutions VIEW ALL",
-     "",
-     "Help the company to secure federal a… VIEW FULL"
+     {
+      "t": "2026-09-22",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Jaunt Air Mobility Canada",
+      "bg": "#F1F5FA",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Lobbying Registration",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "10 institutions VIEW ALL",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "",
+      "fg": "#20344B"
+     },
+     {
+      "t": "Help the company to secure federal a… VIEW FULL",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     }
     ],
     [
-     "2026-09-19",
-     "Jaunt Air Mobility Canada",
-     "Lobbying Registration",
-     "7 institutions VIEW ALL",
-     "",
-     "Engage with federal government on de… VIEW FULL"
+     {
+      "t": "2026-09-19",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Jaunt Air Mobility Canada",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Lobbying Registration",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "7 institutions VIEW ALL",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "",
+      "fg": "#20344B"
+     },
+     {
+      "t": "Engage with federal government on de… VIEW FULL",
+      "fg": "#1269AF",
+      "a": "center"
+     }
     ],
     [
-     "2026-09-10",
-     "SkyCan Systems Inc.",
-     "Lobbying Registration",
-     "12 institutions VIEW ALL",
-     "",
-     "FedDev Ontario funding under the Reg… VIEW FULL"
+     {
+      "t": "2026-09-10",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "SkyCan Systems Inc.",
+      "bg": "#F1F5FA",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Lobbying Registration",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "12 institutions VIEW ALL",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "",
+      "fg": "#20344B"
+     },
+     {
+      "t": "FedDev Ontario funding under the Reg… VIEW FULL",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     }
     ],
     [
-     "2026-09-03",
-     "Volatus Aerospace Corp.",
-     "Lobbying Registration",
-     "16 institutions VIEW ALL",
-     "",
-     "Communicating with government offici… VIEW FULL"
+     {
+      "t": "2026-09-03",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Volatus Aerospace Corp.",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Lobbying Registration",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "16 institutions VIEW ALL",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "",
+      "fg": "#20344B"
+     },
+     {
+      "t": "Communicating with government offici… VIEW FULL",
+      "fg": "#1269AF",
+      "a": "center"
+     }
     ],
     [
-     "2026-08-28",
-     "Robotics Centre, Inc.",
-     "Monthly Communication",
-     "Public Services and Procurement Canada (PSPC)",
-     "James Cudmore, Chief of Staff",
-     "Defence Industrial Strategy and Capa… VIEW FULL"
+     {
+      "t": "2026-08-28",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Robotics Centre, Inc.",
+      "bg": "#F1F5FA",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Monthly Communication",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Public Services and Procurement Canada (PSPC)",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "James Cudmore, Chief of Staff",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Defence Industrial Strategy and Capa… VIEW FULL",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     }
     ],
     [
-     "2026-08-21",
-     "Volatus Aerospace Corp.",
-     "Lobbying Registration",
-     "16 institutions VIEW ALL",
-     "",
-     "Communicating with government offici… VIEW FULL"
+     {
+      "t": "2026-08-21",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Volatus Aerospace Corp.",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Lobbying Registration",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "16 institutions VIEW ALL",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "",
+      "fg": "#20344B"
+     },
+     {
+      "t": "Communicating with government offici… VIEW FULL",
+      "fg": "#1269AF",
+      "a": "center"
+     }
     ],
     [
-     "2026-08-18",
-     "Jaunt Air Mobility Canada",
-     "Monthly Communication",
-     "Innovation, Science and Economic Development Canada (ISED)",
-     "Kendal Hembroff, Sous-ministre adjoint(e) délégué(e)",
-     "Seeking a government contract to pro… VIEW FULL"
+     {
+      "t": "2026-08-18",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Jaunt Air Mobility Canada",
+      "bg": "#F1F5FA",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Monthly Communication",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Innovation, Science and Economic Development Canada (ISED)",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Kendal Hembroff, Sous-ministre adjoint(e) délégué(e)",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Seeking a government contract to pro… VIEW FULL",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     }
     ]
    ],
    "total_rows": 45,
@@ -287,125 +1100,553 @@
    "year": "2026",
    "note": "LOBBYING REGISTRY • 15 matching records • November 08, 2026 01:00",
    "head": [
-    "Date",
-    "Client / Organization",
-    "Record Type",
-    "Government Institutions",
-    "Description",
-    "Registrant / Lobbyist"
+    {
+     "t": "Date",
+     "bg": "#193B65",
+     "b": 1,
+     "fg": "#FFFFFF",
+     "a": "center"
+    },
+    {
+     "t": "Client / Organization",
+     "bg": "#193B65",
+     "b": 1,
+     "fg": "#FFFFFF",
+     "a": "center"
+    },
+    {
+     "t": "Record Type",
+     "bg": "#193B65",
+     "b": 1,
+     "fg": "#FFFFFF",
+     "a": "center"
+    },
+    {
+     "t": "Government Institutions",
+     "bg": "#193B65",
+     "b": 1,
+     "fg": "#FFFFFF",
+     "a": "center"
+    },
+    {
+     "t": "Description",
+     "bg": "#193B65",
+     "b": 1,
+     "fg": "#FFFFFF",
+     "a": "center"
+    },
+    {
+     "t": "Registrant / Lobbyist",
+     "bg": "#193B65",
+     "b": 1,
+     "fg": "#FFFFFF",
+     "a": "center"
+    }
    ],
    "rows": [
     [
-     "2026-09-16",
-     "Ligado Networks Corp.",
-     "Lobbying Registration",
-     "27 institutions VIEW ALL",
-     "Discussions with federal government… VIEW FULL",
-     "Liam O'Toole"
+     {
+      "t": "2026-09-16",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Ligado Networks Corp.",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Lobbying Registration",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "27 institutions VIEW ALL",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "Discussions with federal government… VIEW FULL",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "Liam O'Toole",
+      "fg": "#20344B",
+      "a": "center"
+     }
     ],
     [
-     "2026-08-17",
-     "Ligado Networks Corp.",
-     "Lobbying Registration",
-     "25 institutions VIEW ALL",
-     "Engaging in discussions with governm… VIEW FULL",
-     "Laurel Sallie"
+     {
+      "t": "2026-08-17",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Ligado Networks Corp.",
+      "bg": "#F1F5FA",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Lobbying Registration",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "25 institutions VIEW ALL",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "Engaging in discussions with governm… VIEW FULL",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "Laurel Sallie",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     }
     ],
     [
-     "2026-06-16",
-     "Telesat Corporation",
-     "Lobbying Registration",
-     "14 institutions VIEW ALL",
-     "Work with Government of Canada to pr… VIEW FULL",
-     "Adam Bolek"
+     {
+      "t": "2026-06-16",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Telesat Corporation",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Lobbying Registration",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "14 institutions VIEW ALL",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "Work with Government of Canada to pr… VIEW FULL",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "Adam Bolek",
+      "fg": "#20344B",
+      "a": "center"
+     }
     ],
     [
-     "2026-06-01",
-     "Ligado Networks Corp",
-     "Lobbying Registration",
-     "25 institutions VIEW ALL",
-     "Engaging in discussions with governm… VIEW FULL",
-     "Belinda Hewitt"
+     {
+      "t": "2026-06-01",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Ligado Networks Corp",
+      "bg": "#F1F5FA",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Lobbying Registration",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "25 institutions VIEW ALL",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "Engaging in discussions with governm… VIEW FULL",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "Belinda Hewitt",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     }
     ],
     [
-     "2026-06-01",
-     "Ligado Networks Corp.",
-     "Lobbying Registration",
-     "27 institutions VIEW ALL",
-     "Engaging in discussions with governm… VIEW FULL",
-     "Sabrina Grover"
+     {
+      "t": "2026-06-01",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Ligado Networks Corp.",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Lobbying Registration",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "27 institutions VIEW ALL",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "Engaging in discussions with governm… VIEW FULL",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "Sabrina Grover",
+      "fg": "#20344B",
+      "a": "center"
+     }
     ],
     [
-     "2026-05-14",
-     "Ligado Networks Corp.",
-     "Lobbying Registration",
-     "27 institutions VIEW ALL",
-     "Discussions with federal government… VIEW FULL",
-     "Greg MacNeil"
+     {
+      "t": "2026-05-14",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Ligado Networks Corp.",
+      "bg": "#F1F5FA",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Lobbying Registration",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "27 institutions VIEW ALL",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "Discussions with federal government… VIEW FULL",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "Greg MacNeil",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     }
     ],
     [
-     "2026-05-10",
-     "Telesat Corporation",
-     "Lobbying Registration",
-     "28 institutions VIEW ALL",
-     "Work with Government of Canada to pr… VIEW FULL",
-     "Hugo Delorme"
+     {
+      "t": "2026-05-10",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Telesat Corporation",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Lobbying Registration",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "28 institutions VIEW ALL",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "Work with Government of Canada to pr… VIEW FULL",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "Hugo Delorme",
+      "fg": "#20344B",
+      "a": "center"
+     }
     ],
     [
-     "2026-05-06",
-     "Telesat Corporation",
-     "Lobbying Registration",
-     "11 institutions VIEW ALL",
-     "Work with the Government of Canada t… VIEW FULL",
-     "Colin Keiver"
+     {
+      "t": "2026-05-06",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Telesat Corporation",
+      "bg": "#F1F5FA",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Lobbying Registration",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "11 institutions VIEW ALL",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "Work with the Government of Canada t… VIEW FULL",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "Colin Keiver",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     }
     ],
     [
-     "2026-05-04",
-     "Telesat Corporation",
-     "Lobbying Registration",
-     "11 institutions VIEW ALL",
-     "Work with the Government of Canada t… VIEW FULL",
-     "PETER STUDER"
+     {
+      "t": "2026-05-04",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Telesat Corporation",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Lobbying Registration",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "11 institutions VIEW ALL",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "Work with the Government of Canada t… VIEW FULL",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "PETER STUDER",
+      "fg": "#20344B",
+      "a": "center"
+     }
     ],
     [
-     "2026-05-01",
-     "Ligado Networks Corp.",
-     "Lobbying Registration",
-     "25 institutions VIEW ALL",
-     "Engaging in discussions with governm… VIEW FULL",
-     "Sabrina Grover"
+     {
+      "t": "2026-05-01",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Ligado Networks Corp.",
+      "bg": "#F1F5FA",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Lobbying Registration",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "25 institutions VIEW ALL",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "Engaging in discussions with governm… VIEW FULL",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "Sabrina Grover",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     }
     ],
     [
-     "2026-04-27",
-     "Telesat Corporation",
-     "Lobbying Registration",
-     "37 institutions VIEW ALL",
-     "Work with the Government of Canada o… VIEW FULL",
-     "Daniel Goldberg"
+     {
+      "t": "2026-04-27",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Telesat Corporation",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Lobbying Registration",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "37 institutions VIEW ALL",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "Work with the Government of Canada o… VIEW FULL",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "Daniel Goldberg",
+      "fg": "#20344B",
+      "a": "center"
+     }
     ],
     [
-     "2026-04-01",
-     "Telesat Canada",
-     "Lobbying Registration",
-     "11 institutions VIEW ALL",
-     "Work with the Government of Canada t… VIEW FULL",
-     "Colin Keiver"
+     {
+      "t": "2026-04-01",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Telesat Canada",
+      "bg": "#F1F5FA",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Lobbying Registration",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "11 institutions VIEW ALL",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "Work with the Government of Canada t… VIEW FULL",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "Colin Keiver",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     }
     ],
     [
-     "2026-02-22",
-     "TELESAT Canada",
-     "Lobbying Registration",
-     "28 institutions VIEW ALL",
-     "Work with Government of Canada to pr… VIEW FULL",
-     "Hugo Delorme"
+     {
+      "t": "2026-02-22",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "TELESAT Canada",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Lobbying Registration",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "28 institutions VIEW ALL",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "Work with Government of Canada to pr… VIEW FULL",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "Hugo Delorme",
+      "fg": "#20344B",
+      "a": "center"
+     }
     ],
     [
-     "2026-01-09",
-     "Telesat Canada",
-     "Lobbying Registration",
-     "11 institutions VIEW ALL",
-     "Work with the Government of Canada t… VIEW FULL",
-     "PETER STUDER"
+     {
+      "t": "2026-01-09",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Telesat Canada",
+      "bg": "#F1F5FA",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Lobbying Registration",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "11 institutions VIEW ALL",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "Work with the Government of Canada t… VIEW FULL",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "PETER STUDER",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     }
     ]
    ],
    "total_rows": 15,
@@ -424,125 +1665,540 @@
    "year": "2026",
    "note": "LOBBYING REGISTRY • 30 matching records • November 12, 2026 22:37",
    "head": [
-    "Date",
-    "Client / Organization",
-    "Government Institutions",
-    "Record Type",
-    "Registration ID",
-    "Source URL"
+    {
+     "t": "Date",
+     "bg": "#193B65",
+     "b": 1,
+     "fg": "#FFFFFF",
+     "a": "center"
+    },
+    {
+     "t": "Client / Organization",
+     "bg": "#193B65",
+     "b": 1,
+     "fg": "#FFFFFF",
+     "a": "center"
+    },
+    {
+     "t": "Government Institutions",
+     "bg": "#193B65",
+     "b": 1,
+     "fg": "#FFFFFF",
+     "a": "center"
+    },
+    {
+     "t": "Record Type",
+     "bg": "#193B65",
+     "b": 1,
+     "fg": "#FFFFFF",
+     "a": "center"
+    },
+    {
+     "t": "Registration ID",
+     "bg": "#193B65",
+     "b": 1,
+     "fg": "#FFFFFF",
+     "a": "center"
+    },
+    {
+     "t": "Source URL",
+     "bg": "#193B65",
+     "b": 1,
+     "fg": "#FFFFFF",
+     "a": "center"
+    }
    ],
    "rows": [
     [
-     "2026-09-22",
-     "Roshel",
-     "House of Commons",
-     "Monthly Communication",
-     "",
-     "https://www.lobbycanada.gc.ca…"
+     {
+      "t": "2026-09-22",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Roshel",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "House of Commons",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Monthly Communication",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "",
+      "fg": "#20344B"
+     },
+     {
+      "t": "https://www.lobbycanada.gc.ca…",
+      "fg": "#1269AF",
+      "a": "center"
+     }
     ],
     [
-     "2026-09-22",
-     "Roshel",
-     "12 institutions VIEW ALL",
-     "Lobbying Registration",
-     "966718-388232-1",
-     "https://www.lobbycanada.gc.ca…"
+     {
+      "t": "2026-09-22",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Roshel",
+      "bg": "#F1F5FA",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "12 institutions VIEW ALL",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "Lobbying Registration",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "966718-388232-1",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "https://www.lobbycanada.gc.ca…",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     }
     ],
     [
-     "2026-09-02",
-     "Roshel",
-     "Innovation, Science and Economic Development Canada (ISED)",
-     "Monthly Communication",
-     "",
-     "https://www.lobbycanada.gc.ca…"
+     {
+      "t": "2026-09-02",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Roshel",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Innovation, Science and Economic Development Canada (ISED)",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Monthly Communication",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "",
+      "fg": "#20344B"
+     },
+     {
+      "t": "https://www.lobbycanada.gc.ca…",
+      "fg": "#1269AF",
+      "a": "center"
+     }
     ],
     [
-     "2026-08-25",
-     "Roshel",
-     "House of Commons",
-     "Monthly Communication",
-     "",
-     "https://www.lobbycanada.gc.ca…"
+     {
+      "t": "2026-08-25",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Roshel",
+      "bg": "#F1F5FA",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "House of Commons",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Monthly Communication",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "",
+      "fg": "#20344B"
+     },
+     {
+      "t": "https://www.lobbycanada.gc.ca…",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     }
     ],
     [
-     "2026-08-21",
-     "Roshel",
-     "Innovation, Science and Economic Development Canada (ISED)",
-     "Monthly Communication",
-     "",
-     "https://www.lobbycanada.gc.ca…"
+     {
+      "t": "2026-08-21",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Roshel",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Innovation, Science and Economic Development Canada (ISED)",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Monthly Communication",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "",
+      "fg": "#20344B"
+     },
+     {
+      "t": "https://www.lobbycanada.gc.ca…",
+      "fg": "#1269AF",
+      "a": "center"
+     }
     ],
     [
-     "2026-08-15",
-     "Roshel",
-     "15 institutions VIEW ALL",
-     "Lobbying Registration",
-     "933292-380869-12",
-     "https://www.lobbycanada.gc.ca…"
+     {
+      "t": "2026-08-15",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Roshel",
+      "bg": "#F1F5FA",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "15 institutions VIEW ALL",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "Lobbying Registration",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "933292-380869-12",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "https://www.lobbycanada.gc.ca…",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     }
     ],
     [
-     "2026-08-13",
-     "Roshel",
-     "Global Affairs Canada (GAC)",
-     "Monthly Communication",
-     "",
-     "https://www.lobbycanada.gc.ca…"
+     {
+      "t": "2026-08-13",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Roshel",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Global Affairs Canada (GAC)",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Monthly Communication",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "",
+      "fg": "#20344B"
+     },
+     {
+      "t": "https://www.lobbycanada.gc.ca…",
+      "fg": "#1269AF",
+      "a": "center"
+     }
     ],
     [
-     "2026-07-10",
-     "Roshel",
-     "15 institutions VIEW ALL",
-     "Lobbying Registration",
-     "963555-387026-1",
-     "https://www.lobbycanada.gc.ca…"
+     {
+      "t": "2026-07-10",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Roshel",
+      "bg": "#F1F5FA",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "15 institutions VIEW ALL",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "Lobbying Registration",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "963555-387026-1",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "https://www.lobbycanada.gc.ca…",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     }
     ],
     [
-     "2026-07-02",
-     "Roshel",
-     "3 institutions VIEW ALL",
-     "Monthly Communication",
-     "",
-     "https://www.lobbycanada.gc.ca…"
+     {
+      "t": "2026-07-02",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Roshel",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "3 institutions VIEW ALL",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "Monthly Communication",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "",
+      "fg": "#20344B"
+     },
+     {
+      "t": "https://www.lobbycanada.gc.ca…",
+      "fg": "#1269AF",
+      "a": "center"
+     }
     ],
     [
-     "2026-06-15",
-     "Roshel",
-     "15 institutions VIEW ALL",
-     "Lobbying Registration",
-     "933292-380869-11",
-     "https://www.lobbycanada.gc.ca…"
+     {
+      "t": "2026-06-15",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Roshel",
+      "bg": "#F1F5FA",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "15 institutions VIEW ALL",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "Lobbying Registration",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "933292-380869-11",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "https://www.lobbycanada.gc.ca…",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     }
     ],
     [
-     "2026-06-08",
-     "Roshel",
-     "Innovation, Science and Economic Development Canada (ISED)",
-     "Monthly Communication",
-     "",
-     "https://www.lobbycanada.gc.ca…"
+     {
+      "t": "2026-06-08",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Roshel",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Innovation, Science and Economic Development Canada (ISED)",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Monthly Communication",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "",
+      "fg": "#20344B"
+     },
+     {
+      "t": "https://www.lobbycanada.gc.ca…",
+      "fg": "#1269AF",
+      "a": "center"
+     }
     ],
     [
-     "2026-05-15",
-     "Roshel",
-     "Global Affairs Canada (GAC)",
-     "Monthly Communication",
-     "",
-     "https://www.lobbycanada.gc.ca…"
+     {
+      "t": "2026-05-15",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Roshel",
+      "bg": "#F1F5FA",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Global Affairs Canada (GAC)",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Monthly Communication",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "",
+      "fg": "#20344B"
+     },
+     {
+      "t": "https://www.lobbycanada.gc.ca…",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     }
     ],
     [
-     "2026-05-13",
-     "Roshel",
-     "National Defence (DND)",
-     "Monthly Communication",
-     "",
-     "https://www.lobbycanada.gc.ca…"
+     {
+      "t": "2026-05-13",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Roshel",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "National Defence (DND)",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Monthly Communication",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "",
+      "fg": "#20344B"
+     },
+     {
+      "t": "https://www.lobbycanada.gc.ca…",
+      "fg": "#1269AF",
+      "a": "center"
+     }
     ],
     [
-     "2026-05-13",
-     "Roshel",
-     "National Defence (DND)",
-     "Monthly Communication",
-     "",
-     "https://www.lobbycanada.gc.ca…"
+     {
+      "t": "2026-05-13",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Roshel",
+      "bg": "#F1F5FA",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "National Defence (DND)",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Monthly Communication",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "",
+      "fg": "#20344B"
+     },
+     {
+      "t": "https://www.lobbycanada.gc.ca…",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     }
     ]
    ],
    "total_rows": 30,
@@ -561,125 +2217,535 @@
    "year": "2026",
    "note": "LOBBYING REGISTRY • 15 matching records • November 12, 2026 22:40",
    "head": [
-    "Date",
-    "Client / Organization",
-    "Government Institutions",
-    "Record Type",
-    "Registration ID",
-    "Source URL"
+    {
+     "t": "Date",
+     "bg": "#193B65",
+     "b": 1,
+     "fg": "#FFFFFF",
+     "a": "center"
+    },
+    {
+     "t": "Client / Organization",
+     "bg": "#193B65",
+     "b": 1,
+     "fg": "#FFFFFF",
+     "a": "center"
+    },
+    {
+     "t": "Government Institutions",
+     "bg": "#193B65",
+     "b": 1,
+     "fg": "#FFFFFF",
+     "a": "center"
+    },
+    {
+     "t": "Record Type",
+     "bg": "#193B65",
+     "b": 1,
+     "fg": "#FFFFFF",
+     "a": "center"
+    },
+    {
+     "t": "Registration ID",
+     "bg": "#193B65",
+     "b": 1,
+     "fg": "#FFFFFF",
+     "a": "center"
+    },
+    {
+     "t": "Source URL",
+     "bg": "#193B65",
+     "b": 1,
+     "fg": "#FFFFFF",
+     "a": "center"
+    }
    ],
    "rows": [
     [
-     "2026-09-29",
-     "UNITED STEEL, PAPER AND FORESTRY, RUBBER, MANUFACTURING, ENERGY, ALLIED INDUSTRIAL AND SERVICE WORKERS INTERNATIONAL UNION",
-     "Employment and Social Development Canada (ESDC)",
-     "Monthly Communication",
-     "",
-     "https://www.lobbycanada.gc.ca…"
+     {
+      "t": "2026-09-29",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "UNITED STEEL, PAPER AND FORESTRY, RUBBER, MANUFACTURING, ENERGY, ALLIED INDUSTRIAL AND SERVICE WORKERS INTERNATIONAL UNION",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Employment and Social Development Canada (ESDC)",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Monthly Communication",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "",
+      "fg": "#20344B"
+     },
+     {
+      "t": "https://www.lobbycanada.gc.ca…",
+      "fg": "#1269AF",
+      "a": "center"
+     }
     ],
     [
-     "2026-09-24",
-     "UNITED STEEL, PAPER AND FORESTRY, RUBBER, MANUFACTURING, ENERGY, ALLIED INDUSTRIAL AND SERVICE WORKERS INTERNATIONAL UNION",
-     "Innovation, Science and Economic Development Canada (ISED)",
-     "Monthly Communication",
-     "",
-     "https://www.lobbycanada.gc.ca…"
+     {
+      "t": "2026-09-24",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "UNITED STEEL, PAPER AND FORESTRY, RUBBER, MANUFACTURING, ENERGY, ALLIED INDUSTRIAL AND SERVICE WORKERS INTERNATIONAL UNION",
+      "bg": "#F1F5FA",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Innovation, Science and Economic Development Canada (ISED)",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Monthly Communication",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "",
+      "fg": "#20344B"
+     },
+     {
+      "t": "https://www.lobbycanada.gc.ca…",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     }
     ],
     [
-     "2026-09-23",
-     "UNITED STEEL, PAPER AND FORESTRY, RUBBER, MANUFACTURING, ENERGY, ALLIED INDUSTRIAL AND SERVICE WORKERS INTERNATIONAL UNION",
-     "Innovation, Science and Economic Development Canada (ISED)",
-     "Monthly Communication",
-     "",
-     "https://www.lobbycanada.gc.ca…"
+     {
+      "t": "2026-09-23",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "UNITED STEEL, PAPER AND FORESTRY, RUBBER, MANUFACTURING, ENERGY, ALLIED INDUSTRIAL AND SERVICE WORKERS INTERNATIONAL UNION",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Innovation, Science and Economic Development Canada (ISED)",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Monthly Communication",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "",
+      "fg": "#20344B"
+     },
+     {
+      "t": "https://www.lobbycanada.gc.ca…",
+      "fg": "#1269AF",
+      "a": "center"
+     }
     ],
     [
-     "2026-09-17",
-     "Stelco Inc.",
-     "Innovation, Science and Economic Development Canada (ISED)",
-     "Monthly Communication",
-     "",
-     "https://www.lobbycanada.gc.ca…"
+     {
+      "t": "2026-09-17",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Stelco Inc.",
+      "bg": "#F1F5FA",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Innovation, Science and Economic Development Canada (ISED)",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Monthly Communication",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "",
+      "fg": "#20344B"
+     },
+     {
+      "t": "https://www.lobbycanada.gc.ca…",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     }
     ],
     [
-     "2026-09-10",
-     "Stelco Inc.",
-     "Innovation, Science and Economic Development Canada (ISED)",
-     "Monthly Communication",
-     "",
-     "https://www.lobbycanada.gc.ca…"
+     {
+      "t": "2026-09-10",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Stelco Inc.",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Innovation, Science and Economic Development Canada (ISED)",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Monthly Communication",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "",
+      "fg": "#20344B"
+     },
+     {
+      "t": "https://www.lobbycanada.gc.ca…",
+      "fg": "#1269AF",
+      "a": "center"
+     }
     ],
     [
-     "2026-09-09",
-     "Stelco Inc.",
-     "3 institutions VIEW ALL",
-     "Monthly Communication",
-     "",
-     "https://www.lobbycanada.gc.ca…"
+     {
+      "t": "2026-09-09",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Stelco Inc.",
+      "bg": "#F1F5FA",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "3 institutions VIEW ALL",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "Monthly Communication",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "",
+      "fg": "#20344B"
+     },
+     {
+      "t": "https://www.lobbycanada.gc.ca…",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     }
     ],
     [
-     "2026-09-01",
-     "UNITED STEEL, PAPER AND FORESTRY, RUBBER, MANUFACTURING, ENERGY, ALLIED INDUSTRIAL AND SERVICE WORKERS INTERNATIONAL UNION",
-     "23 institutions VIEW ALL",
-     "Lobbying Registration",
-     "951927-292-53",
-     "https://www.lobbycanada.gc.ca…"
+     {
+      "t": "2026-09-01",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "UNITED STEEL, PAPER AND FORESTRY, RUBBER, MANUFACTURING, ENERGY, ALLIED INDUSTRIAL AND SERVICE WORKERS INTERNATIONAL UNION",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "23 institutions VIEW ALL",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "Lobbying Registration",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "951927-292-53",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "https://www.lobbycanada.gc.ca…",
+      "fg": "#1269AF",
+      "a": "center"
+     }
     ],
     [
-     "2026-05-27",
-     "Stelco Inc.",
-     "Innovation, Science and Economic Development Canada (ISED)",
-     "Monthly Communication",
-     "",
-     "https://www.lobbycanada.gc.ca…"
+     {
+      "t": "2026-05-27",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Stelco Inc.",
+      "bg": "#F1F5FA",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Innovation, Science and Economic Development Canada (ISED)",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Monthly Communication",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "",
+      "fg": "#20344B"
+     },
+     {
+      "t": "https://www.lobbycanada.gc.ca…",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     }
     ],
     [
-     "2026-05-27",
-     "Stelco Inc.",
-     "Canada Border Services Agency (CBSA)",
-     "Monthly Communication",
-     "",
-     "https://www.lobbycanada.gc.ca…"
+     {
+      "t": "2026-05-27",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Stelco Inc.",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Canada Border Services Agency (CBSA)",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Monthly Communication",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "",
+      "fg": "#20344B"
+     },
+     {
+      "t": "https://www.lobbycanada.gc.ca…",
+      "fg": "#1269AF",
+      "a": "center"
+     }
     ],
     [
-     "2026-05-27",
-     "Stelco Inc.",
-     "2 institutions VIEW ALL",
-     "Monthly Communication",
-     "",
-     "https://www.lobbycanada.gc.ca…"
+     {
+      "t": "2026-05-27",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Stelco Inc.",
+      "bg": "#F1F5FA",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "2 institutions VIEW ALL",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "Monthly Communication",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "",
+      "fg": "#20344B"
+     },
+     {
+      "t": "https://www.lobbycanada.gc.ca…",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     }
     ],
     [
-     "2026-05-27",
-     "Stelco Inc.",
-     "Privy Council Office (PCO)",
-     "Monthly Communication",
-     "",
-     "https://www.lobbycanada.gc.ca…"
+     {
+      "t": "2026-05-27",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Stelco Inc.",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Privy Council Office (PCO)",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Monthly Communication",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "",
+      "fg": "#20344B"
+     },
+     {
+      "t": "https://www.lobbycanada.gc.ca…",
+      "fg": "#1269AF",
+      "a": "center"
+     }
     ],
     [
-     "2026-05-27",
-     "Stelco Inc.",
-     "Finance Canada (FIN)",
-     "Monthly Communication",
-     "",
-     "https://www.lobbycanada.gc.ca…"
+     {
+      "t": "2026-05-27",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Stelco Inc.",
+      "bg": "#F1F5FA",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Finance Canada (FIN)",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Monthly Communication",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "",
+      "fg": "#20344B"
+     },
+     {
+      "t": "https://www.lobbycanada.gc.ca…",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     }
     ],
     [
-     "2026-05-27",
-     "Stelco Inc.",
-     "Public Services and Procurement Canada (PSPC)",
-     "Monthly Communication",
-     "",
-     "https://www.lobbycanada.gc.ca…"
+     {
+      "t": "2026-05-27",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Stelco Inc.",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Public Services and Procurement Canada (PSPC)",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Monthly Communication",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "",
+      "fg": "#20344B"
+     },
+     {
+      "t": "https://www.lobbycanada.gc.ca…",
+      "fg": "#1269AF",
+      "a": "center"
+     }
     ],
     [
-     "2026-05-27",
-     "Stelco Inc.",
-     "13 institutions VIEW ALL",
-     "Lobbying Registration",
-     "959974-17105-20",
-     "https://www.lobbycanada.gc.ca…"
+     {
+      "t": "2026-05-27",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Stelco Inc.",
+      "bg": "#F1F5FA",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "13 institutions VIEW ALL",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "Lobbying Registration",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "959974-17105-20",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "https://www.lobbycanada.gc.ca…",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     }
     ]
    ],
    "total_rows": 15,

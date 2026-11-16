@@ -116,6 +116,61 @@ def save_logo(path, stem):
     return "assets/tablelogos/" + name
 
 
+def hex_colour(c):
+    """An ARGB colour from the sheet as plain #rrggbb, or nothing if it isn't one."""
+    try:
+        v = c.rgb if c is not None else None
+    except Exception:                                     # noqa: BLE001
+        return ""
+    if not isinstance(v, str) or len(v) != 8:
+        return ""
+    v = v[2:].upper()
+    return "" if v == "000000" and c.type == "theme" else "#" + v
+
+
+def show_number(v, nf):
+    """Write a number the way the sheet writes it: $53,541,000,000 and so on."""
+    if isinstance(v, bool) or not isinstance(v, (int, float)):
+        return None
+    part = (nf or "").split(";")[0].strip()
+    if not part or part.lower() == "general":
+        return None
+    plain = part.replace('"', "").replace("\\", "")
+    dec = 0
+    if "." in plain:
+        after = plain.split(".", 1)[1]
+        dec = len(re.match(r"[0#]*", after).group(0))
+    pct = "%" in plain
+    n = v * 100 if pct else v
+    body = "{:,.{d}f}".format(n, d=dec) if "," in plain else "{:.{d}f}".format(n, d=dec)
+    money = "$" if "$" in plain else ("€" if "€" in plain else ("£" if "£" in plain else ""))
+    return money + body + ("%" if pct else "")
+
+
+def styled(cell):
+    """One preview cell: its text plus the colours the sheet gave it."""
+    text = show_number(cell.value, cell.number_format)
+    if text is None:
+        text = clean(cell.value)
+    out = {"t": text}
+    fill = cell.fill
+    if fill is not None and fill.patternType == "solid":
+        bg = hex_colour(fill.start_color)
+        if bg:
+            out["bg"] = bg
+    font = cell.font
+    if font is not None:
+        if font.bold:
+            out["b"] = 1
+        fg = hex_colour(font.color)
+        if fg:
+            out["fg"] = fg
+    al = cell.alignment
+    if al is not None and al.horizontal in ("center", "right"):
+        out["a"] = al.horizontal
+    return out
+
+
 def read_xlsx(path):
     import openpyxl
     wb = openpyxl.load_workbook(path, data_only=True)
@@ -163,11 +218,11 @@ def read_xlsx(path):
         return None
 
     ncols = min(ws.max_column, PREVIEW_COLS)
-    head = [clean(ws.cell(start, c).value) for c in range(1, ncols + 1)]
+    head = [styled(ws.cell(start, c)) for c in range(1, ncols + 1)]
     rows = []
     for r in range(start + 1, min(ws.max_row, start + PREVIEW_ROWS) + 1):
-        row = [clean(ws.cell(r, c).value) for c in range(1, ncols + 1)]
-        if any(row):
+        row = [styled(ws.cell(r, c)) for c in range(1, ncols + 1)]
+        if any(c["t"] for c in row):
             rows.append(row)
 
     logo = save_logo(path, os.path.splitext(os.path.basename(path))[0])
