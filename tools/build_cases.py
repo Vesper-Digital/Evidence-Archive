@@ -408,7 +408,7 @@ CASE_PAGE = """<!doctype html>
   .back > *{position:relative;z-index:1}
   .back:hover::before{background:var(--red)}
   .back svg{width:22px;height:22px;flex:none;stroke:currentColor;fill:none;stroke-width:2.2}
-  h1{font-size:clamp(30px,4.2vw,52px);font-weight:700;letter-spacing:.2em;text-transform:uppercase;line-height:1.05;margin-bottom:10px}
+  h1{font-size:clamp(24px,2.5vw,34px);font-weight:700;letter-spacing:.2em;text-transform:uppercase;line-height:1.05;margin-bottom:10px}
   .rule{height:3px;background:var(--red);margin:16px 0 22px}
   /* ======================================================================
      PAGE TITLE — the banner's red/cyan split, a red edge, and a short
@@ -426,7 +426,7 @@ CASE_PAGE = """<!doctype html>
     background:repeating-linear-gradient(180deg,rgba(255,255,255,.045) 0 1px,transparent 1px 4px);
     clip-path:polygon(16px 0,100% 0,100% calc(100% - 17px),calc(100% - 17px) 100%,0 100%,0 16px)}
   h1.boxed span{
-    position:relative;z-index:1;display:block;padding:12px 30px 12px 26px;
+    position:relative;z-index:1;display:block;padding:8px 26px 8px 22px;
     color:#fff;text-shadow:-2px 0 rgba(255,31,45,.85), 2px 0 rgba(25,214,232,.7);
   }
   h1.boxed span.hit{animation:glitch .42s steps(2,end) both}
@@ -438,7 +438,7 @@ CASE_PAGE = """<!doctype html>
     100%{transform:none;text-shadow:-2px 0 rgba(255,31,45,.85), 2px 0 rgba(25,214,232,.7)}
   }
   @media (max-width:700px){
-    h1.boxed span{padding:10px 20px 10px 17px}
+    h1.boxed span{padding:7px 17px 7px 14px}
     h1.boxed,h1.boxed::before,h1.boxed::after{
       clip-path:polygon(13px 0,100% 0,100% calc(100% - 13px),calc(100% - 13px) 100%,0 100%,0 13px)}
   }
