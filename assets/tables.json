@@ -14,9 +14,10 @@
    "total_rows": 43,
    "unit": "pages",
    "file": "BROOKFIELD_CORPORATION.pdf",
+   "title": "BROOKFIELD CORPORATION",
    "size": "579 KB",
    "added": "2026-11-11T22:48:11-05:00",
-   "short": "s/brookfield-corporation-2025/"
+   "short": "s/brookfield-corporation/"
   },
   {
    "logo": "assets/tablelogos/Full-Public-Accounts-Vol1-2026.jpg",
@@ -532,9 +533,10 @@
    ],
    "total_rows": 112,
    "file": "Full Public Accounts-Vol1-2026.xlsx",
+   "title": "Full Public Accounts-Vol1-2026",
    "size": "20 KB",
    "added": "2026-11-17T12:47:31-05:00",
-   "short": "s/filtered-records-2026/"
+   "short": "s/full-public-accounts-vol1-2026/"
   },
   {
    "logo": "assets/tablelogos/Full-Public-Accounts-Vol2-2026.jpg",
@@ -1040,9 +1042,10 @@
    ],
    "total_rows": 1576,
    "file": "Full Public Accounts-Vol2-2026.xlsx",
+   "title": "Full Public Accounts-Vol2-2026",
    "size": "82 KB",
    "added": "2026-11-17T12:47:31-05:00",
-   "short": "s/tables-filtered-records-2026/"
+   "short": "s/full-public-accounts-vol2-2026/"
   },
   {
    "logo": "assets/tablelogos/Interest-on-Debt---Public-Accounts-Federal-Financial-Statements-Volume-I-2025-26.jpg",
@@ -1558,9 +1561,10 @@
    ],
    "total_rows": 26,
    "file": "Interest on Debt - Public Accounts  Federal Financial Statements (Volume I) 2025-26.xlsx",
+   "title": "Interest on Debt - Public Accounts  Federal Financial Statements (Volume I) 2025-26",
    "size": "15 KB",
    "added": "2026-11-16T18:41:31-05:00",
-   "short": "s/all-records-2026/"
+   "short": "s/interest-on-debt-public-accounts-federal-financial-statements-volume-i-2025-26/"
   },
   {
    "logo": "assets/tablelogos/Lobbying-Registry---Drones---2026.jpg",
@@ -2114,9 +2118,10 @@
    ],
    "total_rows": 45,
    "file": "Lobbying Registry - Drones - 2026.xlsx",
+   "title": "Lobbying Registry - Drones - 2026",
    "size": "29 KB",
    "added": "2026-11-09T05:15:38Z",
-   "short": "s/drones-2026/"
+   "short": "s/lobbying-registry-drones-2026/"
   },
   {
    "logo": "assets/tablelogos/Lobbying-Registry---Telesat---2026.jpg",
@@ -2680,9 +2685,10 @@
    ],
    "total_rows": 15,
    "file": "Lobbying Registry - Telesat - 2026.xlsx",
+   "title": "Lobbying Registry - Telesat - 2026",
    "size": "23 KB",
    "added": "2026-11-08T14:22:55Z",
-   "short": "s/telesat-2026/"
+   "short": "s/lobbying-registry-telesat-2026/"
   },
   {
    "logo": "assets/tablelogos/Roshel---2026--Lobbying-Records.jpg",
@@ -3233,9 +3239,10 @@
    ],
    "total_rows": 30,
    "file": "Roshel - 2026- Lobbying Records.xlsx",
+   "title": "Roshel - 2026- Lobbying Records",
    "size": "21 KB",
    "added": "2026-11-12T22:39:45-05:00",
-   "short": "s/roshel-2026/"
+   "short": "s/roshel-2026-lobbying-records/"
   },
   {
    "logo": "assets/tablelogos/Stelco---2026---Lobbying-Records.jpg",
@@ -3781,9 +3788,10 @@
    ],
    "total_rows": 15,
    "file": "Stelco - 2026 - Lobbying Records.xlsx",
+   "title": "Stelco - 2026 - Lobbying Records",
    "size": "19 KB",
    "added": "2026-11-12T22:41:58-05:00",
-   "short": "s/stelco-2026/"
+   "short": "s/stelco-2026-lobbying-records/"
   }
  ]
 }

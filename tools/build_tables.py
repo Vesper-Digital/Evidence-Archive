@@ -349,6 +349,8 @@ def collect():
             print(f"  skipped {n}: no data grid found")
             continue
         t["file"] = n
+        # the card is titled after the file itself, underscores read as spaces
+        t["title"] = os.path.splitext(n)[0].replace("_", " ").strip()
         t["size"] = human_size(os.path.getsize(path))
         t["added"] = added_on(path)
         out.append(t)

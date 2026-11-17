@@ -845,8 +845,8 @@ def register_front_links():
             if not fname:
                 continue
             if kind == "tables":
-                label = " ".join(x for x in (it.get("subject") or "",
-                                             str(it.get("year") or "")) if x)
+                label = it.get("title") or " ".join(
+                    x for x in (it.get("subject") or "", str(it.get("year") or "")) if x)
             else:
                 label = it.get("name") or ""
             label = label.strip() or os.path.splitext(fname)[0]
