@@ -789,6 +789,12 @@
   function shareLink(hash){
     return location.origin + location.pathname + hash;
   }
+  // the build gives each table and image a short address under /s/; fall back
+  // to the long one if the page loads before that build has run
+  function shortLink(item, hash){
+    return (item && item.short) ? new URL(item.short, location.href).href
+                                : shareLink(hash);
+  }
 
   function copy(text, btn){
     function done(){
@@ -978,7 +984,7 @@
       b.addEventListener('click', function(e){
         var sh = e.target.closest('.share');
         if (sh){
-          copy(shareLink('#tables=' + encodeURIComponent(t.file)), sh);
+          copy(shortLink(t, '#tables=' + encodeURIComponent(t.file)), sh);
           return;
         }
         if (e.target.closest('a')) return;
@@ -1021,7 +1027,7 @@
       b.addEventListener('click', function(e){
         var sh = e.target.closest('.share');
         if (sh){
-          copy(shareLink('#gallery=' + encodeURIComponent(g.file)), sh);
+          copy(shortLink(g, '#gallery=' + encodeURIComponent(g.file)), sh);
           return;
         }
         if (e.target.closest('a')) return;
