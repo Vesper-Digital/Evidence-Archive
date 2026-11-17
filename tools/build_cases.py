@@ -278,7 +278,7 @@ CASE_PAGE = """<!doctype html>
      NAV — one bar, sticky, on every page. Wide screens show the row;
      narrow screens collapse it into the slide-out panel.
      ====================================================================== */
-  .nav{position:sticky;top:0;z-index:60;background:rgba(0,0,0,.94);
+  .nav{position:sticky;top:0;z-index:60;padding-top:20px;background:rgba(0,0,0,.94);
     border-bottom:1px solid #151515;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
   .navin{max-width:var(--max);margin:0 auto;padding:11px 24px;
     display:flex;align-items:center;gap:12px}
@@ -294,8 +294,8 @@ CASE_PAGE = """<!doctype html>
     clip-path:polygon(calc(var(--cut) - 1px) 0,100% 0,100% calc(100% - var(--cut) + 1px),calc(100% - var(--cut) + 1px) 100%,0 100%,0 calc(var(--cut) - 1px));
     transition:background .16s ease}
   .links a span{position:relative;z-index:1;display:inline-flex;align-items:center;
-    gap:10px;padding:7px 25px;line-height:28px;
-    font-size:18px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+    gap:9px;padding:6px 22px;line-height:25px;
+    font-size:16px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
     color:#b9b9b9;white-space:nowrap;transition:color .16s ease}
   .links a:hover{background:var(--red)}
   .links a:hover span{color:#fff}
@@ -303,14 +303,16 @@ CASE_PAGE = """<!doctype html>
   .links a.on span{color:#fff}
   .links a.on::before{background:#140105}
 
-  .links a.donate{margin-left:50px;background:var(--yellow)}
+  .links a.donate{background:var(--yellow)}
   .links a.donate svg{width:22px;height:22px;flex:none;fill:none;
     stroke:currentColor;stroke-width:1.8}
 
-  /* X and YouTube carry an icon but otherwise match every other item */
-  .links a.ico b{font:inherit;font-size:inherit;letter-spacing:inherit}
-  .links a.ico svg{width:20px;height:20px;flex:none;fill:currentColor}
-  .links a.yt svg{width:27px;height:27px}
+  /* X and YouTube: icon only, set apart from the rest */
+  .links a.ico b{display:none}
+  .links a.ico span{padding:6px 15px;min-height:37px}
+  .links a.ico svg{width:19px;height:19px;flex:none;fill:currentColor}
+  .links a.yt svg{width:22px;height:22px}
+  .links a.x{margin-left:50px}
   .links a.donate span{color:var(--yellow);letter-spacing:.22em}
   .links a.donate:hover::before{background:var(--yellow)}
   .links a.donate:hover span{color:#000}
@@ -351,7 +353,9 @@ CASE_PAGE = """<!doctype html>
     .links a{width:100%}
     .links a span{width:100%;padding:16px 18px;font-size:16px}
     .links a.donate{margin-left:0;margin-top:6px}
-    .links a.ico span{padding:11px 18px}
+    .links a.ico span{padding:11px 18px;min-height:0}
+    .links a.ico b{display:inline;font:inherit;letter-spacing:inherit}
+    .links a.x{margin-left:0;margin-top:6px}
 
     .panelhead{display:flex;align-items:center;justify-content:space-between;
       padding-bottom:4px;border-bottom:1px solid #1d1d1d;margin-bottom:6px}
@@ -533,9 +537,9 @@ CASE_PAGE = """<!doctype html>
       <a href="__UP__#cases"><span>Cases</span></a>
       <a href="__UP__#tables"><span>DSX Tables</span></a>
       <a href="__UP__#gallery"><span>Gallery</span></a>
+      <a class="donate" href="https://buymeacoffee.com/vesperdigital" target="_blank" rel="noopener"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h13v6a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V8Z"/><path d="M17 10h1.6a2.4 2.4 0 0 1 0 4.8H17"/><path d="M8 2.6v2.2M12 2.6v2.2" stroke-linecap="round"/></svg>Support</span></a>
       <a class="ico x" href="https://x.com/vesperdigital" target="_blank" rel="noopener" aria-label="X"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-7 8.1L23.3 22h-6.6l-5.1-6.8L5.7 22H2.6l7.5-8.6L1.9 2h6.8l4.6 6.2L18.9 2Zm-1.1 18h1.7L7.3 3.7H5.5L17.8 20Z"/></svg><b>X.com</b></span></a>
       <a class="ico yt" href="https://www.youtube.com/@Vesperdigital" target="_blank" rel="noopener" aria-label="YouTube"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23 12s0-3.6-.5-5.3a2.8 2.8 0 0 0-2-2C18.8 4.2 12 4.2 12 4.2s-6.8 0-8.5.5a2.8 2.8 0 0 0-2 2C1 8.4 1 12 1 12s0 3.6.5 5.3a2.8 2.8 0 0 0 2 2c1.7.5 8.5.5 8.5.5s6.8 0 8.5-.5a2.8 2.8 0 0 0 2-2C23 15.6 23 12 23 12ZM9.8 15.3V8.7l5.7 3.3-5.7 3.3Z"/></svg><b>YouTube</b></span></a>
-      <a class="donate" href="https://buymeacoffee.com/vesperdigital" target="_blank" rel="noopener"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h13v6a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V8Z"/><path d="M17 10h1.6a2.4 2.4 0 0 1 0 4.8H17"/><path d="M8 2.6v2.2M12 2.6v2.2" stroke-linecap="round"/></svg>Support</span></a>
     </div>
   </div>
 </nav>
