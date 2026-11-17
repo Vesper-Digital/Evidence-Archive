@@ -33,7 +33,7 @@
   .links{display:flex;align-items:center;justify-content:flex-end;gap:10px;flex:1;min-width:0}
   .links a{
     position:relative;display:inline-flex;align-items:center;
-    background:#2b2b2b;text-decoration:none;flex:none;
+    background:#fff;text-decoration:none;flex:none;
     clip-path:polygon(var(--cut) 0,100% 0,100% calc(100% - var(--cut)),calc(100% - var(--cut)) 100%,0 100%,0 var(--cut));
     transition:background .16s ease;
   }
@@ -41,7 +41,7 @@
     clip-path:polygon(calc(var(--cut) - 1px) 0,100% 0,100% calc(100% - var(--cut) + 1px),calc(100% - var(--cut) + 1px) 100%,0 100%,0 calc(var(--cut) - 1px));
     transition:background .16s ease}
   .links a span{position:relative;z-index:1;display:inline-flex;align-items:center;
-    gap:10px;padding:12px 25px;
+    gap:10px;padding:12px 25px;line-height:29px;
     font-size:18px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
     color:#b9b9b9;white-space:nowrap;transition:color .16s ease}
   .links a:hover{background:var(--red)}
@@ -50,17 +50,20 @@
   .links a.on span{color:#fff}
   .links a.on::before{background:#140105}
 
-  .links a.donate{margin-left:100px;background:var(--yellow)}
+  .links a.donate{margin-left:50px;background:var(--yellow)}
+  .links a.donate svg{width:22px;height:22px;flex:none;fill:none;
+    stroke:currentColor;stroke-width:1.8}
 
   /* X and YouTube sit as filled icon buttons */
   .links a.ico{background:none}
-  .links a.ico span{padding:12px 20px}
+  .links a.ico span{padding:12px 20px;min-height:53px}   /* match the text rows */
   .links a.ico b{font:inherit;font-size:inherit;letter-spacing:inherit}
   .links a.ico svg{width:19px;height:19px;flex:none}
   .links a.x::before{background:#fff}
   .links a.x svg{fill:#000}
   .links a.x b{display:none}
   .links a.x:hover::before{background:#d8d8d8}
+  .links a.yt svg{width:29px;height:29px;margin:-5px 0}   /* 50% bigger, without making the row taller */
   .links a.yt::before{background:var(--red)}
   .links a.yt svg{fill:#fff}
   .links a.yt b{display:none}
@@ -292,7 +295,7 @@
       <a href="../../#gallery"><span>Gallery</span></a>
       <a class="ico x" href="https://x.com/vesperdigital" target="_blank" rel="noopener" aria-label="X"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-7 8.1L23.3 22h-6.6l-5.1-6.8L5.7 22H2.6l7.5-8.6L1.9 2h6.8l4.6 6.2L18.9 2Zm-1.1 18h1.7L7.3 3.7H5.5L17.8 20Z"/></svg><b>X</b></span></a>
       <a class="ico yt" href="https://www.youtube.com/@Vesperdigital" target="_blank" rel="noopener" aria-label="YouTube"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23 12s0-3.6-.5-5.3a2.8 2.8 0 0 0-2-2C18.8 4.2 12 4.2 12 4.2s-6.8 0-8.5.5a2.8 2.8 0 0 0-2 2C1 8.4 1 12 1 12s0 3.6.5 5.3a2.8 2.8 0 0 0 2 2c1.7.5 8.5.5 8.5.5s6.8 0 8.5-.5a2.8 2.8 0 0 0 2-2C23 15.6 23 12 23 12ZM9.8 15.3V8.7l5.7 3.3-5.7 3.3Z"/></svg><b>YouTube</b></span></a>
-      <a class="donate" href="https://buymeacoffee.com/vesperdigital" target="_blank" rel="noopener"><span>Donate</span></a>
+      <a class="donate" href="https://buymeacoffee.com/vesperdigital" target="_blank" rel="noopener"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h13v6a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V8Z"/><path d="M17 10h1.6a2.4 2.4 0 0 1 0 4.8H17"/><path d="M8 2.6v2.2M12 2.6v2.2" stroke-linecap="round"/></svg>Support</span></a>
     </div>
   </div>
 </nav>
