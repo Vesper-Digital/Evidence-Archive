@@ -200,7 +200,7 @@ def render(cases):
     for i, c in enumerate(cases):
         folder = html.escape(c["folder"], quote=True)
         base = 1080 + i * 320
-        tree = quote(c["folder"]) + "/"
+        tree = "s/" + SLUG_FOR[c["folder"] + "/"] + "/"
         vid = c.get("video") or ""
         thumb_href = html.escape(vid, quote=True) if vid else tree
         thumb_tgt = ' target="_blank" rel="noopener"' if vid else ""
@@ -226,7 +226,7 @@ def render(cases):
             btns.append(f'<a class="btn" href="{tree}">{FILES_SVG}<span>Open</span></a>')
         ncls = f' n{len(btns)}'
         share = (f'<button class="share casehare" type="button" title="Copy link" '
-                 f'data-share="s/{short_link(tree, [c["title"]])}/">{SHARE_SVG}</button>')
+                 f'data-share="{tree}">{SHARE_SVG}</button>')
 
         blurb = (f'\n      <p class="blurb">{html.escape(c["blurb"])}</p>'
                  if c["blurb"] else "")
@@ -507,6 +507,10 @@ padding:40px}a{color:#ff1f2d}</style>
 """
 
 
+TAKEN = set()        # slugs handed out already
+SLUG_FOR = {}        # thing  ->  its slug
+
+
 def slugify(text):
     s = unicodedata.normalize("NFKD", str(text)).encode("ascii", "ignore").decode()
     s = s.replace("'", "").replace("’", "")        # PDF'S -> PDFS, not pdf-s
@@ -514,32 +518,56 @@ def slugify(text):
     return s or "item"
 
 
-def short_link(target, names):
-    """Register a tidy address for a real path. names run outermost to innermost."""
+def claim(key, names):
+    """One tidy slug per thing. names run outermost to innermost, for clashes."""
+    if key in SLUG_FOR:
+        return SLUG_FOR[key]
     base = slugify(names[-1])
     parents = [slugify(n) for n in names[:-1]]
     slug, n = base, 1
-    while SHORTS.get(slug, target) != target:
+    while slug in TAKEN:
         if parents:
             slug = parents.pop() + "-" + base
         else:
             n += 1
             slug = base + "-" + str(n)
+    TAKEN.add(slug)
+    SLUG_FOR[key] = slug
+    return slug
+
+
+def short_link(target, names):
+    """A slug that only forwards somewhere: a file, or the front page."""
+    slug = claim(target, names)
     SHORTS[slug] = target
     return slug
 
 
-def write_shorts():
-    """Rebuild the /s folder from scratch so removed cases leave nothing behind."""
+def clear_shorts():
+    """Start the /s folder empty so removed cases leave nothing behind."""
     if os.path.isdir(SHORTS_DIR):
         shutil.rmtree(SHORTS_DIR)
+    os.makedirs(SHORTS_DIR, exist_ok=True)
+
+
+def write_shorts():
+    """Write the forwarding pages. The real pages are written as they're built."""
     for slug, target in SHORTS.items():
         d = os.path.join(SHORTS_DIR, slug)
         os.makedirs(d, exist_ok=True)
         url = html.escape("../../" + target, quote=True)
         with open(os.path.join(d, "index.html"), "w", encoding="utf-8") as f:
             f.write(REDIRECT.replace("__T__", url))
-    print(f"Short links: {len(SHORTS)}")
+    print(f"Short addresses: {len(TAKEN)}")
+
+
+def write_forward(real_dir, slug, depth):
+    """Leave a forward at the old long path, so links already shared keep working."""
+    url = html.escape("../" * depth + "s/" + slug + "/", quote=True)
+    page = (REDIRECT.replace("__T__", url)
+            .replace('location.replace("' + url + '");',
+                     'location.replace("' + url + '" + location.hash);'))
+    save(os.path.join(real_dir, "index.html"), page)
 
 
 def register_front_links():
@@ -610,9 +638,8 @@ def count_items(abs_dir):
     return total
 
 
-def folder_row(prefix, name, abs_sub, share):
+def folder_row(href, name, abs_sub, share):
     n = count_items(abs_sub)
-    href = (prefix + "/" if prefix else "") + quote(name) + "/"
     return (f'    <li><a href="{href}">'
             f'{FOLDER_SVG}'
             f'<span class="nm">{html.escape(name)}</span>'
@@ -620,8 +647,7 @@ def folder_row(prefix, name, abs_sub, share):
             f'<span class="dl">Open</span></a>{share}</li>')
 
 
-def file_row(prefix, name, size, share):
-    href = (prefix + "/" if prefix else "") + quote(name)
+def file_row(href, name, size, share):
     return (f'    <li><a href="{href}" download>'
             f'{DOWNLOAD_SVG}'
             f'<span class="nm">{html.escape(name)}</span>'
@@ -629,38 +655,34 @@ def file_row(prefix, name, size, share):
             f'<span class="dl">Download</span></a>{share}</li>')
 
 
-def listing(abs_dir, prefix, delay, gallery=False, base_url="", names=(), up=""):
+def listing(abs_dir, real_dir, delay, gallery=False):
     """Folders first, then files. Pictures become a grid when gallery is on.
 
-    base_url is the listed folder's address from the site root, used to mint
-    the short share link for each row. up is how far the PAGE showing this
-    listing sits from the site root, which is not always the same thing.
+    Every page is written at s/<slug>/, so a folder is linked by its own slug
+    and a file by its real path two levels up.
     """
     folders, files = scan(abs_dir)
     pics  = [f for f in files if f[0].lower().endswith(IMAGE_EXT)] if gallery else []
     plain = [f for f in files if f not in pics]
 
-    def share_for(name, is_dir):
-        if not base_url:
-            return ""
-        target = base_url + quote(name) + ("/" if is_dir else "")
-        label = name if is_dir else os.path.splitext(name)[0]
-        slug = short_link(target, list(names) + [label])
-        return share_btn(f"{up}s/{slug}/")
+    def file_href(name):
+        return "../../" + "/".join(quote(p) for p in real_dir) + "/" + quote(name)
 
     out = []
     if folders or plain:
         out.append(f'  <ul class="files rz" data-rz="{delay}">')
         for d in folders:
-            out.append(folder_row(prefix, d, os.path.join(abs_dir, d),
-                                  share_for(d, True)))
+            slug = SLUG_FOR["/".join(real_dir + [d]) + "/"]
+            out.append(folder_row(f"../{slug}/", d, os.path.join(abs_dir, d),
+                                  share_btn(f"../{slug}/")))
         for n, sz in plain:
-            out.append(file_row(prefix, n, sz, share_for(n, False)))
+            slug = SLUG_FOR["/".join(real_dir + [n])]
+            out.append(file_row(file_href(n), n, sz, share_btn(f"../{slug}/")))
         out.append("  </ul>")
     if pics:
         out.append(f'  <div class="shots rz" data-rz="{delay + 100}">')
         for n, _sz in pics:
-            href = (prefix + "/" if prefix else "") + quote(n)
+            href = file_href(n)
             out.append(f'    <a href="{href}"><img src="{href}" alt="" loading="lazy"></a>')
         out.append("  </div>")
     return out
@@ -680,6 +702,7 @@ def render_page(title, date, blurb, actions, body, up, back_label, back_href):
 
 
 def save(target, page):
+    os.makedirs(os.path.dirname(target), exist_ok=True)
     old = ""
     if os.path.exists(target):
         with open(target, encoding="utf-8") as f:
@@ -689,53 +712,73 @@ def save(target, page):
             f.write(page)
 
 
-def write_folder_pages(case_abs, rel_parts, case_title, depth_from_root,
-                       case_folder=""):
-    """A page for this folder and, recursively, for every folder inside it."""
-    abs_dir = os.path.join(case_abs, *rel_parts)
-    name = rel_parts[-1]
-    gallery = rel_parts[0].lower() == "images"
-    up = "../" * depth_from_root
+def plan_case(case):
+    """Hand out a slug to the case and to everything inside it, before building.
 
-    base_url = quote(case_folder) + "/" + "/".join(quote(p) for p in rel_parts) + "/"
-    names = [case_title] + list(rel_parts)
-    own = share_btn(up + "s/" + short_link(base_url, names) + "/")
+    A row has to know the slug of the folder it points at, so all the slugs
+    are decided first and the pages are written afterwards.
+    """
+    folder = case["folder"]
+    abs_folder = os.path.join(ROOT, folder)
+    claim(folder + "/", [case["title"]])
+
+    def walk(rel_parts):
+        abs_dir = os.path.join(abs_folder, *rel_parts)
+        here = [folder] + list(rel_parts)
+        names = [case["title"]] + list(rel_parts)
+        if len(rel_parts) > 1:                 # Files and Images have no page
+            claim("/".join(here) + "/", names)
+        folders, files = scan(abs_dir)
+        for n, _sz in files:
+            # a file has no page of its own, so its slug forwards to the file
+            s = claim("/".join(here + [n]), names + [os.path.splitext(n)[0]])
+            SHORTS[s] = "/".join(quote(p) for p in here + [n])
+        for d in folders:
+            walk(rel_parts + [d])
+
+    for sub in ("Files", "Images"):
+        if os.path.isdir(os.path.join(abs_folder, sub)):
+            walk([sub])
+
+
+def write_folder_pages(case, rel_parts):
+    """This folder's page, then every folder inside it. All of them live in /s."""
+    folder = case["folder"]
+    abs_folder = os.path.join(ROOT, folder)
+    abs_dir = os.path.join(abs_folder, *rel_parts)
+    real_dir = [folder] + list(rel_parts)
+    name = rel_parts[-1]
+    slug = SLUG_FOR["/".join(real_dir) + "/"]
 
     body = ['  <section class="panel rz" data-rz="320">',
-            f'    <div class="sec"><h2>{html.escape(name)}</h2>{own}</div>']
-    rendered = listing(abs_dir, "", 520, gallery=gallery,
-                       base_url=base_url, names=names, up=up)
+            f'    <div class="sec"><h2>{html.escape(name)}</h2>{share_btn("./")}</div>']
+    rendered = listing(abs_dir, real_dir, 520,
+                       gallery=(rel_parts[0].lower() == "images"))
     body += rendered if rendered else ['  <p class="blurb">This folder is empty.</p>']
     body.append('  </section>')
 
-    # one level in, the parent is the case page's own Files or Images section;
+    # one level in, back is the case page's own Files or Images section;
     # deeper than that, the parent folder has a page of its own
     if len(rel_parts) > 2:
-        back_label, back_href = rel_parts[-2], "../"
+        back_label = rel_parts[-2]
+        back_href = "../" + SLUG_FOR["/".join(real_dir[:-1]) + "/"] + "/"
     else:
         back_label = rel_parts[0]
-        back_href = "../../#" + rel_parts[0].lower()
+        back_href = "../" + SLUG_FOR[folder + "/"] + "/#" + rel_parts[0].lower()
 
-    page = render_page(
-        title=name,
-        date="",
-        blurb="",
-        actions="",
-        body=body,
-        up=up,
-        back_label=back_label,
-        back_href=back_href,
-    )
-    save(os.path.join(abs_dir, "index.html"), page)
+    save(os.path.join(SHORTS_DIR, slug, "index.html"),
+         render_page(name, "", "", "", body, up="../../",
+                     back_label=back_label, back_href=back_href))
+    write_forward(abs_dir, slug, len(real_dir))
 
     for d in scan(abs_dir)[0]:
-        write_folder_pages(case_abs, rel_parts + [d], case_title,
-                           depth_from_root + 1, case_folder)
+        write_folder_pages(case, list(rel_parts) + [d])
 
 
 def write_case_page(case):
     folder = case["folder"]
     abs_folder = os.path.join(ROOT, folder)
+    slug = SLUG_FOR[folder + "/"]
 
     body = []
     for sub, anchor, head, delay in (("Files", "files", "Files", 1180),
@@ -743,11 +786,8 @@ def write_case_page(case):
         abs_sub = os.path.join(abs_folder, sub)
         if not os.path.isdir(abs_sub):
             continue
-        rendered = listing(abs_sub, sub, delay + 220,
-                           gallery=(sub == "Images"),
-                           base_url=quote(folder) + "/" + sub + "/",
-                           names=[case["title"], sub],
-                           up="../")   # the case page sits one level down
+        rendered = listing(abs_sub, [folder, sub], delay + 220,
+                           gallery=(sub == "Images"))
         if not rendered:
             continue
         body.append(f'  <section class="panel rz" data-rz="{delay}" id="{anchor}">')
@@ -767,20 +807,20 @@ def write_case_page(case):
                     f'target="_blank" rel="noopener">{PLAY_SVG}'
                     f'<span>Watch the video</span></a>')
     if case.get("zip"):
-        acts.append(f'    <a class="alt" href="../{case["zip"]}" download>'
+        acts.append(f'    <a class="alt" href="../../{case["zip"]}" download>'
                     f'{ZIP_SVG}<span>Download all</span></a>')
     actions = ('  <div class="top rz" data-rz="900">\n' + "\n".join(acts) + '\n  </div>') if acts else ""
     date = case["date"].strftime("%B %-d, %Y") if case["date"] else ""
 
-    save(os.path.join(abs_folder, "index.html"),
+    save(os.path.join(SHORTS_DIR, slug, "index.html"),
          render_page(case["title"], date, blurb, actions, body,
-                     up="../", back_label="All cases", back_href="../"))
+                     up="../../", back_label="All cases", back_href="../../"))
+    write_forward(abs_folder, slug, 1)
 
     for sub in ("Files", "Images"):
         if os.path.isdir(os.path.join(abs_folder, sub)):
             for d in scan(os.path.join(abs_folder, sub))[0]:
-                write_folder_pages(abs_folder, [sub, d], case["title"], 3,
-                                   case_folder=folder)
+                write_folder_pages(case, [sub, d])
     return True
 
 
@@ -789,6 +829,9 @@ def main():
         page = f.read()
 
     cases = collect()
+    clear_shorts()
+    for c in cases:            # slugs for everything first, then the pages
+        plan_case(c)
     for c in cases:
         write_case_page(c)
 
