@@ -31,6 +31,9 @@ from datetime import datetime
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # GitHub Pages does not list folders, so folder links must point at the repo.
 REPO_TREE = "https://github.com/Vesper-Digital/Evidence-Archive/tree/main"
+# the live address, used for the link preview cards other sites draw
+SITE = "https://vesper-digital.github.io/Evidence-Archive/"
+DEFAULT_DESC = "The source documents behind every Vesper Digital video."
 INDEX = os.path.join(ROOT, "index.html")
 SKIP = {"assets", "tools", "node_modules", "docs", "Tables", "Gallery", "s"}
 IMAGE_EXT = (".jpg", ".jpeg", ".png", ".webp", ".gif", ".avif")
@@ -254,11 +257,124 @@ CASE_PAGE = """<!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>__TITLE__ — Vesper Digital Evidence Archive</title>
+<meta name="description" content="__OGDESC__">
+<!-- preview card. the image has to be a full https address or nothing shows -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Vesper Digital Investigative Archive">
+<meta property="og:title" content="__OGTITLE__">
+<meta property="og:description" content="__OGDESC__">
+<meta property="og:url" content="__OGURL__">
+<meta property="og:image" content="__OGIMG__">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="__OGTITLE__">
+<meta name="twitter:description" content="__OGDESC__">
+<meta name="twitter:image" content="__OGIMG__">
 <style>
   :root{--bg:#000;--line:#1c1c1c;--text:#e8e8e8;--muted:#8a8a8a;--red:#ff1f2d;--cyan:#19d6e8;--max:1480px}
   *{box-sizing:border-box;margin:0;padding:0}
   body{background:var(--bg);color:var(--text);font-family:"Barlow Condensed","Oswald","Archivo Narrow",Helvetica,Arial,sans-serif;font-size:20px;line-height:1.6;-webkit-font-smoothing:antialiased}
   .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+  /* ======================================================================
+     NAV — one bar, sticky, on every page. Wide screens show the row;
+     narrow screens collapse it into the slide-out panel.
+     ====================================================================== */
+  .nav{position:sticky;top:0;z-index:60;background:rgba(0,0,0,.94);
+    border-bottom:1px solid #151515;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+  .navin{max-width:var(--max);margin:0 auto;padding:11px 24px;
+    display:flex;align-items:center;gap:12px}
+
+  .links{display:flex;align-items:center;gap:10px;flex:1;min-width:0}
+  .links a{
+    position:relative;display:inline-flex;align-items:center;
+    background:#2b2b2b;text-decoration:none;flex:none;
+    clip-path:polygon(var(--cut) 0,100% 0,100% calc(100% - var(--cut)),calc(100% - var(--cut)) 100%,0 100%,0 var(--cut));
+    transition:background .16s ease;
+  }
+  .links a::before{content:"";position:absolute;inset:1px;background:#070707;
+    clip-path:polygon(calc(var(--cut) - 1px) 0,100% 0,100% calc(100% - var(--cut) + 1px),calc(100% - var(--cut) + 1px) 100%,0 100%,0 calc(var(--cut) - 1px));
+    transition:background .16s ease}
+  .links a span{position:relative;z-index:1;padding:10px 21px;
+    font-size:15px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+    color:#b9b9b9;white-space:nowrap;transition:color .16s ease}
+  .links a:hover{background:var(--red)}
+  .links a:hover span{color:#fff}
+  .links a.on{background:var(--red)}
+  .links a.on span{color:#fff}
+  .links a.on::before{background:#140105}
+
+  .links a.donate{margin-left:auto;background:var(--yellow)}
+  .links a.donate span{color:var(--yellow);letter-spacing:.22em}
+  .links a.donate:hover::before{background:var(--yellow)}
+  .links a.donate:hover span{color:#000}
+
+  /* the three-line button and the panel chrome, hidden on wide screens */
+  .burger,.navclose,.scrim,.panelhead{display:none}
+
+  /* ---- narrow, or a short landscape phone: slide-out panel ---- */
+  @media (max-width:900px), (max-height:520px) and (orientation:landscape){
+    /* a blurred ancestor would trap the fixed panel inside the bar, and the
+       bar's own stacking has to sit above the scrim or the panel is dimmed */
+    .nav{-webkit-backdrop-filter:none;backdrop-filter:none;background:#000;z-index:80}
+    .navin{padding:9px 16px;justify-content:flex-end}
+    .burger{
+      display:inline-flex;flex-direction:column;justify-content:center;gap:5px;
+      width:46px;height:40px;padding:0 11px;cursor:pointer;
+      background:#2b2b2b;border:0;position:relative;
+      clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px);
+    }
+    .burger::before{content:"";position:absolute;inset:1px;background:#070707;
+      clip-path:polygon(9px 0,100% 0,100% calc(100% - 9px),calc(100% - 9px) 100%,0 100%,0 9px)}
+    .burger i{position:relative;z-index:1;display:block;height:2px;background:#e8e8e8;
+      transition:transform .24s ease,opacity .18s ease}
+    .burger[aria-expanded="true"] i:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .burger[aria-expanded="true"] i:nth-child(2){opacity:0}
+    .burger[aria-expanded="true"] i:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+    .links{
+      position:fixed;top:0;right:0;bottom:0;width:min(84vw,350px);
+      flex-direction:column;align-items:stretch;justify-content:flex-start;
+      gap:12px;padding:20px 20px calc(20px + env(safe-area-inset-bottom));
+      background:linear-gradient(180deg,#0d0d0d 0%,#050505 100%);
+      border-left:2px solid var(--red);box-shadow:-24px 0 60px rgba(0,0,0,.8);
+      transform:translateX(100%);transition:transform .3s cubic-bezier(.33,1,.68,1);
+      overflow-y:auto;z-index:70;
+    }
+    .links.open{transform:none}
+    .links a{width:100%}
+    .links a span{width:100%;padding:16px 18px;font-size:16px}
+    .links a.donate{margin-left:0;margin-top:6px}
+
+    .panelhead{display:flex;align-items:center;justify-content:space-between;
+      padding-bottom:4px;border-bottom:1px solid #1d1d1d;margin-bottom:6px}
+    .panelhead b{font-size:13px;font-weight:700;letter-spacing:.24em;
+      text-transform:uppercase;color:var(--muted)}
+    .navclose{display:inline-flex;align-items:center;justify-content:center;
+      width:38px;height:38px;background:none;border:1px solid #2a2a2a;color:#cfcfcf;
+      cursor:pointer;padding:0}
+    .navclose:hover{background:#fff;color:#000;border-color:#fff}
+    .navclose svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:2.2}
+
+    /* items drift in behind the panel */
+    .links.open > *{animation:navin .34s both}
+    .links.open > *:nth-child(2){animation-delay:.05s}
+    .links.open > *:nth-child(3){animation-delay:.09s}
+    .links.open > *:nth-child(4){animation-delay:.13s}
+    .links.open > *:nth-child(5){animation-delay:.17s}
+    .links.open > *:nth-child(6){animation-delay:.21s}
+    @keyframes navin{from{opacity:0;transform:translateX(14px)}to{opacity:1;transform:none}}
+
+    .scrim{display:block;position:fixed;inset:0;z-index:65;background:rgba(0,0,0,.62);
+      -webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);
+      opacity:0;pointer-events:none;transition:opacity .3s ease}
+    .scrim.on{opacity:1;pointer-events:auto}
+  }
+
+  /* short landscape phones: the panel has to scroll, not stretch */
+  @media (max-height:460px) and (orientation:landscape){
+    .links a span{padding:11px 16px;font-size:15px}
+    .links{gap:9px;padding-top:14px}
+  }
+
   .banner{display:grid;grid-template-columns:auto 1fr;width:100%;max-width:var(--max);margin:0 auto;background:#000}
   .banner img{display:block;width:100%;height:clamp(140px,16vw,230px);object-fit:cover}
   .banner .portrait{height:clamp(140px,16vw,230px);width:clamp(140px,16vw,230px);object-fit:cover}
@@ -353,9 +469,66 @@ CASE_PAGE = """<!doctype html>
   footer{margin:70px 0 60px;padding-top:24px;border-top:1px solid var(--line);color:var(--muted);font-size:18px;display:flex;flex-wrap:wrap;gap:10px 26px;justify-content:space-between}
   footer a{color:var(--cyan);text-decoration:none}
   footer a:hover{text-decoration:underline}
+  /* ======================================================================
+     NARROW SCREENS — the title, the date and the buttons each get their
+     own line rather than being squeezed side by side and cut off.
+     ====================================================================== */
+  @media (max-width:700px){
+    .wrap{padding:0 16px}
+    .intro{padding:28px 0 0}
+    .case .head{flex-direction:column;align-items:flex-start;gap:10px}
+    .case .date{width:100%;justify-content:space-between;white-space:normal}
+    .case h3{font-size:clamp(21px,5.6vw,27px)}
+    .case .blurb{font-size:17px}
+    .btns,.btns.n2,.btns.n3{grid-template-columns:1fr;gap:10px}
+    .btn{padding:13px 16px}
+    .sortbar{flex-wrap:wrap;gap:8px}
+    .howto{margin-bottom:22px}
+    footer{font-size:16px}
+  }
+
+  /* ======================================================================
+     LANDSCAPE PHONES — the viewport is wide but very short, so the vw-based
+     sizes blow up. Pin them to something sane and let the page scroll.
+     ====================================================================== */
+  @media (max-height:520px) and (orientation:landscape){
+    body{font-size:17px}
+    .banner img,.banner .portrait{height:120px}
+    .banner .portrait{width:120px}
+    .intro{padding:22px 0 0}
+    .intro h1{font-size:30px}
+    .lede{font-size:20px}
+    .intro p{font-size:17px}
+    .case h3{font-size:22px}
+    .case .blurb{font-size:16px}
+    .case .date{font-size:13px}
+    .btn{padding:11px 14px;font-size:15px}
+    .tcard h3{font-size:19px}
+    .vw-inner{height:88vh}
+  }
+
+  /* nothing should ever be wider than the screen */
+  html,body{max-width:100%;overflow-x:hidden}
+  img,video,iframe{max-width:100%}
 </style>
 </head>
 <body>
+<nav class="nav">
+  <div class="navin">
+    <button class="burger" id="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="links"><i></i><i></i><i></i></button>
+    <div class="links" id="links">
+      <div class="panelhead"><b>Menu</b>
+        <button class="navclose" id="navclose" type="button" aria-label="Close menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      </div>
+      <a href="https://vesper-digital.github.io/"><span>Home</span></a>
+      <a href="__UP__#cases"><span>Cases</span></a>
+      <a href="__UP__#tables"><span>DSX Tables</span></a>
+      <a href="__UP__#gallery"><span>Gallery</span></a>
+      <a class="donate" href="https://buymeacoffee.com/vesperdigital" target="_blank" rel="noopener"><span>Donate</span></a>
+    </div>
+  </div>
+</nav>
+<div class="scrim" id="scrim"></div>
 <div class="banner rz" data-rz="0"><img class="portrait" src="__UP__assets/portrait.jpg" alt=""><img src="__UP__assets/banner.png" alt="Vesper Digital"></div>
 <div class="wrap">
   <div class="rz" data-rz="320">
@@ -372,6 +545,36 @@ __BODY__
     <div><a href="__UP__">Evidence Archive</a></div>
   </footer>
 </div>
+<script>
+(function(){
+  // ---- the menu ----------------------------------------------------------
+  var burger = document.getElementById('burger'),
+      navlinks = document.getElementById('links'),
+      scrim = document.getElementById('scrim'),
+      navclose = document.getElementById('navclose');
+  function openNav(){
+    navlinks.classList.add('open'); scrim.classList.add('on');
+    burger.setAttribute('aria-expanded','true');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeNav(){
+    if (!navlinks.classList.contains('open')) return;
+    navlinks.classList.remove('open'); scrim.classList.remove('on');
+    burger.setAttribute('aria-expanded','false');
+    document.body.style.overflow = '';
+  }
+  burger.addEventListener('click', function(){
+    navlinks.classList.contains('open') ? closeNav() : openNav();
+  });
+  navclose.addEventListener('click', closeNav);
+  scrim.addEventListener('click', closeNav);
+  navlinks.addEventListener('click', function(e){ if (e.target.closest('a')) closeNav(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeNav(); });
+  var wide = window.matchMedia('(min-width:901px) and (min-height:521px)');
+  (wide.addEventListener ? wide.addEventListener.bind(wide,'change') : wide.addListener.bind(wide))(
+    function(e){ if (e.matches) closeNav(); });
+})();
+</script>
 <script>
 (function(){
   // the Files / Images buttons each show only their own section
@@ -688,8 +891,14 @@ def listing(abs_dir, real_dir, delay, gallery=False):
     return out
 
 
-def render_page(title, date, blurb, actions, body, up, back_label, back_href):
+def render_page(title, date, blurb, actions, body, up, back_label, back_href,
+                og_title="", og_desc="", og_img="", og_url=""):
+    att = lambda s: html.escape(s or "", quote=True)
     return (CASE_PAGE
+            .replace("__OGTITLE__", att(og_title or title))
+            .replace("__OGDESC__", att(og_desc or DEFAULT_DESC))
+            .replace("__OGIMG__", att(og_img or SITE + "assets/share.png"))
+            .replace("__OGURL__", att(og_url))
             .replace("__TITLE__", html.escape(title))
             .replace("__DATE__", date)
             .replace("__BLURB__", blurb)
@@ -710,6 +919,14 @@ def save(target, page):
     if old != page:
         with open(target, "w", encoding="utf-8") as f:
             f.write(page)
+
+
+def case_share_image(case):
+    """The case's own thumbnail for the preview card, or the site banner."""
+    thumb = case.get("thumb")
+    if thumb:
+        return SITE + "/".join(quote(p) for p in thumb.split("/"))
+    return SITE + "assets/share.png"
 
 
 def plan_case(case):
@@ -768,7 +985,11 @@ def write_folder_pages(case, rel_parts):
 
     save(os.path.join(SHORTS_DIR, slug, "index.html"),
          render_page(name, "", "", "", body, up="../../",
-                     back_label=back_label, back_href=back_href))
+                     back_label=back_label, back_href=back_href,
+                     og_title=f"{name} — {case['title']}",
+                     og_desc=case["blurb"] or DEFAULT_DESC,
+                     og_img=case_share_image(case),
+                     og_url=SITE + "s/" + slug + "/"))
     write_forward(abs_dir, slug, len(real_dir))
 
     for d in scan(abs_dir)[0]:
@@ -814,7 +1035,11 @@ def write_case_page(case):
 
     save(os.path.join(SHORTS_DIR, slug, "index.html"),
          render_page(case["title"], date, blurb, actions, body,
-                     up="../../", back_label="All cases", back_href="../../"))
+                     up="../../", back_label="All cases", back_href="../../",
+                     og_title=case["title"],
+                     og_desc=case["blurb"] or DEFAULT_DESC,
+                     og_img=case_share_image(case),
+                     og_url=SITE + "s/" + slug + "/"))
     write_forward(abs_folder, slug, 1)
 
     for sub in ("Files", "Images"):
