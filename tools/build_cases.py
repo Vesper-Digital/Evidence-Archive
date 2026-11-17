@@ -629,16 +629,16 @@ def file_row(prefix, name, size, share):
             f'<span class="dl">Download</span></a>{share}</li>')
 
 
-def listing(abs_dir, prefix, delay, gallery=False, base_url="", names=()):
+def listing(abs_dir, prefix, delay, gallery=False, base_url="", names=(), up=""):
     """Folders first, then files. Pictures become a grid when gallery is on.
 
-    base_url is this folder's address from the site root, used to mint the
-    short share link for each row. up is how far this page sits from the root.
+    base_url is the listed folder's address from the site root, used to mint
+    the short share link for each row. up is how far the PAGE showing this
+    listing sits from the site root, which is not always the same thing.
     """
     folders, files = scan(abs_dir)
     pics  = [f for f in files if f[0].lower().endswith(IMAGE_EXT)] if gallery else []
     plain = [f for f in files if f not in pics]
-    up = "../" * (base_url.count("/") if base_url else 0)
 
     def share_for(name, is_dir):
         if not base_url:
@@ -704,7 +704,7 @@ def write_folder_pages(case_abs, rel_parts, case_title, depth_from_root,
     body = ['  <section class="panel rz" data-rz="320">',
             f'    <div class="sec"><h2>{html.escape(name)}</h2>{own}</div>']
     rendered = listing(abs_dir, "", 520, gallery=gallery,
-                       base_url=base_url, names=names)
+                       base_url=base_url, names=names, up=up)
     body += rendered if rendered else ['  <p class="blurb">This folder is empty.</p>']
     body.append('  </section>')
 
@@ -746,7 +746,8 @@ def write_case_page(case):
         rendered = listing(abs_sub, sub, delay + 220,
                            gallery=(sub == "Images"),
                            base_url=quote(folder) + "/" + sub + "/",
-                           names=[case["title"], sub])
+                           names=[case["title"], sub],
+                           up="../")   # the case page sits one level down
         if not rendered:
             continue
         body.append(f'  <section class="panel rz" data-rz="{delay}" id="{anchor}">')
