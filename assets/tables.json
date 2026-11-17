@@ -2691,6 +2691,573 @@
    "short": "s/lobbying-registry-telesat-2026/"
   },
   {
+   "logo": "assets/tablelogos/Public-Accounts-Vol3-2026-Claims-Against-the-Crown.jpg",
+   "shot": "",
+   "pdf": false,
+   "unit": "rows",
+   "subject": "CLAIMS AGAINST THE CROWN",
+   "kind": "PUBLIC ACCOUNTS / ADDITIONAL FINANCIAL DETAILS (VOLUME III)",
+   "date_range": "FROM JANUARY 1, 2026",
+   "year": "2026",
+   "note": "PUBLIC ACCOUNTS / ADDITIONAL FINANCIAL DETAILS (VOLUME III) • 1,144 matching records • November 17, 2026 13:23",
+   "head": [
+    {
+     "t": "Date",
+     "bg": "#193B65",
+     "b": 1,
+     "fg": "#FFFFFF",
+     "a": "center"
+    },
+    {
+     "t": "Amount (CAD)",
+     "bg": "#193B65",
+     "b": 1,
+     "fg": "#FFFFFF",
+     "a": "center"
+    },
+    {
+     "t": "Subject / Record",
+     "bg": "#193B65",
+     "b": 1,
+     "fg": "#FFFFFF",
+     "a": "center"
+    },
+    {
+     "t": "Department / Organization",
+     "bg": "#193B65",
+     "b": 1,
+     "fg": "#FFFFFF",
+     "a": "center"
+    },
+    {
+     "t": "Reference",
+     "bg": "#193B65",
+     "b": 1,
+     "fg": "#FFFFFF",
+     "a": "center"
+    },
+    {
+     "t": "Source URL",
+     "bg": "#193B65",
+     "b": 1,
+     "fg": "#FFFFFF",
+     "a": "center"
+    }
+   ],
+   "rows": [
+    [
+     {
+      "t": "2026-03-31",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "$303,000,000.00",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Okanagan Indian Band",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Department of National Defence",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Volume III, s.8, FY 2026",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "OPEN SOURCE ↗",
+      "fg": "#1269AF",
+      "a": "center"
+     }
+    ],
+    [
+     {
+      "t": "2026-03-31",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "$218,685,608.00",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Percival Class Action Members - Names withheld",
+      "bg": "#F1F5FA",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Department of Crown-Indigenous Relations and Northern Affairs",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Volume III, s.8, FY 2026",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "OPEN SOURCE ↗",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     }
+    ],
+    [
+     {
+      "t": "2026-03-31",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "$167,426,392.00",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Percival Class Action Members - Names withheld",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Department of Crown-Indigenous Relations and Northern Affairs",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Volume III, s.8, FY 2026",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "OPEN SOURCE ↗",
+      "fg": "#1269AF",
+      "a": "center"
+     }
+    ],
+    [
+     {
+      "t": "2026-03-31",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "$100,000,000.00",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Hardy Class Action Members - Names withheld",
+      "bg": "#F1F5FA",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Department of Crown-Indigenous Relations and Northern Affairs",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Volume III, s.8, FY 2026",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "OPEN SOURCE ↗",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     }
+    ],
+    [
+     {
+      "t": "2026-03-31",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "$97,435,326.00",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Names withheld",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Department of Veterans Affairs",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Volume III, s.8, FY 2026",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "OPEN SOURCE ↗",
+      "fg": "#1269AF",
+      "a": "center"
+     }
+    ],
+    [
+     {
+      "t": "2026-03-31",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "$45,169,807.00",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Koskie Minsky LLP",
+      "bg": "#F1F5FA",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Department of Crown-Indigenous Relations and Northern Affairs",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Volume III, s.8, FY 2026",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "OPEN SOURCE ↗",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     }
+    ],
+    [
+     {
+      "t": "2026-03-31",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "$34,414,905.00",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Names withheld",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Department of Employment and Social Development",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Volume III, s.8, FY 2026",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "OPEN SOURCE ↗",
+      "fg": "#1269AF",
+      "a": "center"
+     }
+    ],
+    [
+     {
+      "t": "2026-03-31",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "$20,610,866.00",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Klynveld Peat Marwick Goerdeler (KPMG) LLP",
+      "bg": "#F1F5FA",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Department of Veterans Affairs",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Volume III, s.8, FY 2026",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "OPEN SOURCE ↗",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     }
+    ],
+    [
+     {
+      "t": "2026-03-31",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "$17,162,766.00",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Montana First Nation",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Department of Indigenous Services",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Volume III, s.8, FY 2026",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "OPEN SOURCE ↗",
+      "fg": "#1269AF",
+      "a": "center"
+     }
+    ],
+    [
+     {
+      "t": "2026-03-31",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "$10,000,000.00",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Deloitte LLP",
+      "bg": "#F1F5FA",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Department of Crown-Indigenous Relations and Northern Affairs",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Volume III, s.8, FY 2026",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "OPEN SOURCE ↗",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     }
+    ],
+    [
+     {
+      "t": "2026-03-31",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "$8,355,414.00",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Samson Cree Nation",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Department of Indigenous Services",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Volume III, s.8, FY 2026",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "OPEN SOURCE ↗",
+      "fg": "#1269AF",
+      "a": "center"
+     }
+    ],
+    [
+     {
+      "t": "2026-03-31",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "$4,487,875.00",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Friday A, Friday C, Friday I, Inishinapay J, Ontario Ministry of Health, Shisheesh J, Wallbridge, Wallbridge",
+      "bg": "#F1F5FA",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Department of Indigenous Services",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Volume III, s.8, FY 2026",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "OPEN SOURCE ↗",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     }
+    ],
+    [
+     {
+      "t": "2026-03-31",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "$4,405,355.00",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Names withheld (2)",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Department of Foreign Affairs, Trade and Development",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Volume III, s.8, FY 2026",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "OPEN SOURCE ↗",
+      "fg": "#1269AF",
+      "a": "center"
+     }
+    ],
+    [
+     {
+      "t": "2026-03-31",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "$3,390,000.00",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Gowling WLG LLP",
+      "bg": "#F1F5FA",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Department of Crown-Indigenous Relations and Northern Affairs",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Volume III, s.8, FY 2026",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "OPEN SOURCE ↗",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     }
+    ]
+   ],
+   "total_rows": 1144,
+   "file": "Public Accounts-Vol3-2026-Claims Against the Crown.xlsx",
+   "title": "Public Accounts-Vol3-2026-Claims Against the Crown",
+   "size": "68 KB",
+   "added": "2026-11-17T13:24:49-05:00",
+   "short": "s/public-accounts-vol3-2026-claims-against-the-crown/"
+  },
+  {
    "logo": "assets/tablelogos/Roshel---2026--Lobbying-Records.jpg",
    "shot": "",
    "pdf": false,
