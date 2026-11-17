@@ -17,7 +17,10 @@ Everything else is worked out automatically.
 
 import hashlib
 import html
+import json
 import os
+import shutil
+import unicodedata
 import zipfile
 from urllib.parse import quote
 import re
@@ -29,7 +32,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # GitHub Pages does not list folders, so folder links must point at the repo.
 REPO_TREE = "https://github.com/Vesper-Digital/Evidence-Archive/tree/main"
 INDEX = os.path.join(ROOT, "index.html")
-SKIP = {"assets", "tools", "node_modules", "docs", "Tables", "Gallery"}
+SKIP = {"assets", "tools", "node_modules", "docs", "Tables", "Gallery", "s"}
 IMAGE_EXT = (".jpg", ".jpeg", ".png", ".webp", ".gif", ".avif")
 
 FILES_SVG = ('<svg viewBox="0 0 24 24" aria-hidden="true">'
@@ -223,7 +226,7 @@ def render(cases):
             btns.append(f'<a class="btn" href="{tree}">{FILES_SVG}<span>Open</span></a>')
         ncls = f' n{len(btns)}'
         share = (f'<button class="share casehare" type="button" title="Copy link" '
-                 f'data-share="{tree}">{SHARE_SVG}</button>')
+                 f'data-share="s/{short_link(tree, [c["title"]])}/">{SHARE_SVG}</button>')
 
         blurb = (f'\n      <p class="blurb">{html.escape(c["blurb"])}</p>'
                  if c["blurb"] else "")
@@ -290,6 +293,17 @@ CASE_PAGE = """<!doctype html>
   .sec h2{font-size:clamp(22px,2.4vw,30px);font-weight:800;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap}
   .sec:after{content:"";flex:1;height:1px;background:var(--line)}
   ul.files{list-style:none;display:grid;gap:14px}
+  ul.files li{display:flex;align-items:stretch;gap:10px}
+  ul.files li > a{flex:1;min-width:0}
+  .rshare{flex:none;width:58px;cursor:pointer;background:#0b0b0b;
+    border:2px solid #3a3a3a;color:#cfcfcf;display:flex;align-items:center;
+    justify-content:center;padding:0}
+  .rshare:hover{background:#fff;color:#000;border-color:#fff}
+  .rshare.done{background:var(--red);border-color:var(--red);color:#fff}
+  ul.files .rshare svg,.sec .rshare svg{width:21px;height:21px;
+    stroke:currentColor;fill:none;stroke-width:2}
+  .sec .rshare{width:52px;height:44px}
+  @media (max-width:720px){ .rshare{width:48px} }
   ul.files a{position:relative;display:grid;grid-template-columns:auto 1fr auto auto;
     align-items:center;gap:20px;padding:22px 24px;border:0;background:var(--red);
     color:#fff;text-decoration:none;
@@ -377,6 +391,33 @@ __BODY__
 </script>
 <script>
 (function(){
+  function done(btn){
+    btn.classList.add('done');
+    setTimeout(function(){ btn.classList.remove('done'); }, 1400);
+  }
+  function fallback(text, btn){
+    var a = document.createElement('textarea');
+    a.value = text; a.style.position = 'fixed'; a.style.opacity = '0';
+    document.body.appendChild(a); a.select();
+    try { document.execCommand('copy'); done(btn); } catch (e) {}
+    document.body.removeChild(a);
+  }
+  document.addEventListener('click', function(e){
+    var sh = e.target.closest('.rshare');
+    if (!sh) return;
+    e.preventDefault();
+    var url = new URL(sh.getAttribute('data-share'), location.href).href;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(url).then(function(){ done(sh); },
+                                             function(){ fallback(url, sh); });
+    } else {
+      fallback(url, sh);
+    }
+  });
+})();
+</script>
+<script>
+(function(){
   var items = document.querySelectorAll('.rz');
   if (!items.length) return;
 
@@ -440,6 +481,107 @@ FOLDER_SVG = ('<svg viewBox="0 0 24 24" aria-hidden="true">'
               '</svg>')
 
 
+# ---------------------------------------------------------------------------
+# Short share links.
+#
+# The real address of a nested folder is a wall of %20s. Every case, folder
+# and file also gets a tidy address under /s/, which is a one-line page that
+# sends the browser on to the real one:
+#
+#   .../Evidence-Archive/s/nsira-pdfs/
+#
+SHORTS_DIR = os.path.join(ROOT, "s")
+SHORTS = {}
+
+REDIRECT = """<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Opening…</title>
+<meta http-equiv="refresh" content="0; url=__T__">
+<link rel="canonical" href="__T__">
+<script>location.replace("__T__");</script>
+<style>body{background:#000;color:#e8e8e8;font:16px/1.5 Helvetica,Arial,sans-serif;
+padding:40px}a{color:#ff1f2d}</style>
+</head><body><p>Opening the archive. <a href="__T__">Go there now.</a></p></body></html>
+"""
+
+
+def slugify(text):
+    s = unicodedata.normalize("NFKD", str(text)).encode("ascii", "ignore").decode()
+    s = s.replace("'", "").replace("’", "")        # PDF'S -> PDFS, not pdf-s
+    s = re.sub(r"[^A-Za-z0-9]+", "-", s).strip("-").lower()
+    return s or "item"
+
+
+def short_link(target, names):
+    """Register a tidy address for a real path. names run outermost to innermost."""
+    base = slugify(names[-1])
+    parents = [slugify(n) for n in names[:-1]]
+    slug, n = base, 1
+    while SHORTS.get(slug, target) != target:
+        if parents:
+            slug = parents.pop() + "-" + base
+        else:
+            n += 1
+            slug = base + "-" + str(n)
+    SHORTS[slug] = target
+    return slug
+
+
+def write_shorts():
+    """Rebuild the /s folder from scratch so removed cases leave nothing behind."""
+    if os.path.isdir(SHORTS_DIR):
+        shutil.rmtree(SHORTS_DIR)
+    for slug, target in SHORTS.items():
+        d = os.path.join(SHORTS_DIR, slug)
+        os.makedirs(d, exist_ok=True)
+        url = html.escape("../../" + target, quote=True)
+        with open(os.path.join(d, "index.html"), "w", encoding="utf-8") as f:
+            f.write(REDIRECT.replace("__T__", url))
+    print(f"Short links: {len(SHORTS)}")
+
+
+def register_front_links():
+    """Tidy addresses for the DSX tables and the gallery images as well.
+
+    Those live on the front page behind a #tables= or #gallery= address, so
+    the short page forwards to the front page with that address attached. The
+    slug is written back into the json for the page to use.
+    """
+    for name, key, kind in (("tables.json", "tables", "tables"),
+                            ("gallery.json", "images", "gallery")):
+        path = os.path.join(ROOT, "assets", name)
+        if not os.path.exists(path):
+            continue
+        try:
+            with open(path, encoding="utf-8") as f:
+                data = json.load(f)
+        except Exception as e:                            # noqa: BLE001
+            print(f"  could not read {name}: {e}")
+            continue
+        items = data.get(key) or []
+        for it in items:
+            fname = it.get("file")
+            if not fname:
+                continue
+            if kind == "tables":
+                label = " ".join(x for x in (it.get("subject") or "",
+                                             str(it.get("year") or "")) if x)
+            else:
+                label = it.get("name") or ""
+            label = label.strip() or os.path.splitext(fname)[0]
+            target = "#" + kind + "=" + quote(fname)
+            it["short"] = "s/" + short_link(target, [kind, label]) + "/"
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(data, f, indent=1, ensure_ascii=False)
+
+
+def share_btn(rel_to_short):
+    return (f'<button class="share rshare" type="button" title="Copy link" '
+            f'data-share="{rel_to_short}">{SHARE_SVG}</button>')
+
+
 def scan(abs_dir):
     """One level: (folders, files). Hidden entries and generated pages skipped."""
     folders, files = [], []
@@ -468,38 +610,52 @@ def count_items(abs_dir):
     return total
 
 
-def folder_row(prefix, name, abs_sub):
+def folder_row(prefix, name, abs_sub, share):
     n = count_items(abs_sub)
     href = (prefix + "/" if prefix else "") + quote(name) + "/"
     return (f'    <li><a href="{href}">'
             f'{FOLDER_SVG}'
             f'<span class="nm">{html.escape(name)}</span>'
             f'<span class="sz">{n} item{"" if n == 1 else "s"}</span>'
-            f'<span class="dl">Open</span></a></li>')
+            f'<span class="dl">Open</span></a>{share}</li>')
 
 
-def file_row(prefix, name, size):
+def file_row(prefix, name, size, share):
     href = (prefix + "/" if prefix else "") + quote(name)
     return (f'    <li><a href="{href}" download>'
             f'{DOWNLOAD_SVG}'
             f'<span class="nm">{html.escape(name)}</span>'
             f'<span class="sz">{human_size(size)}</span>'
-            f'<span class="dl">Download</span></a></li>')
+            f'<span class="dl">Download</span></a>{share}</li>')
 
 
-def listing(abs_dir, prefix, delay, gallery=False):
-    """Folders first, then files. Pictures become a grid when gallery is on."""
+def listing(abs_dir, prefix, delay, gallery=False, base_url="", names=()):
+    """Folders first, then files. Pictures become a grid when gallery is on.
+
+    base_url is this folder's address from the site root, used to mint the
+    short share link for each row. up is how far this page sits from the root.
+    """
     folders, files = scan(abs_dir)
     pics  = [f for f in files if f[0].lower().endswith(IMAGE_EXT)] if gallery else []
     plain = [f for f in files if f not in pics]
+    up = "../" * (base_url.count("/") if base_url else 0)
+
+    def share_for(name, is_dir):
+        if not base_url:
+            return ""
+        target = base_url + quote(name) + ("/" if is_dir else "")
+        label = name if is_dir else os.path.splitext(name)[0]
+        slug = short_link(target, list(names) + [label])
+        return share_btn(f"{up}s/{slug}/")
 
     out = []
     if folders or plain:
         out.append(f'  <ul class="files rz" data-rz="{delay}">')
         for d in folders:
-            out.append(folder_row(prefix, d, os.path.join(abs_dir, d)))
+            out.append(folder_row(prefix, d, os.path.join(abs_dir, d),
+                                  share_for(d, True)))
         for n, sz in plain:
-            out.append(file_row(prefix, n, sz))
+            out.append(file_row(prefix, n, sz, share_for(n, False)))
         out.append("  </ul>")
     if pics:
         out.append(f'  <div class="shots rz" data-rz="{delay + 100}">')
@@ -533,33 +689,48 @@ def save(target, page):
             f.write(page)
 
 
-def write_folder_pages(case_abs, rel_parts, case_title, depth_from_root):
+def write_folder_pages(case_abs, rel_parts, case_title, depth_from_root,
+                       case_folder=""):
     """A page for this folder and, recursively, for every folder inside it."""
     abs_dir = os.path.join(case_abs, *rel_parts)
     name = rel_parts[-1]
     gallery = rel_parts[0].lower() == "images"
+    up = "../" * depth_from_root
+
+    base_url = quote(case_folder) + "/" + "/".join(quote(p) for p in rel_parts) + "/"
+    names = [case_title] + list(rel_parts)
+    own = share_btn(up + "s/" + short_link(base_url, names) + "/")
 
     body = ['  <section class="panel rz" data-rz="320">',
-            f'    <div class="sec"><h2>{html.escape(name)}</h2></div>']
-    rendered = listing(abs_dir, "", 520, gallery=gallery)
+            f'    <div class="sec"><h2>{html.escape(name)}</h2>{own}</div>']
+    rendered = listing(abs_dir, "", 520, gallery=gallery,
+                       base_url=base_url, names=names)
     body += rendered if rendered else ['  <p class="blurb">This folder is empty.</p>']
     body.append('  </section>')
 
-    back_label = rel_parts[-2] if len(rel_parts) > 1 else case_title
+    # one level in, the parent is the case page's own Files or Images section;
+    # deeper than that, the parent folder has a page of its own
+    if len(rel_parts) > 2:
+        back_label, back_href = rel_parts[-2], "../"
+    else:
+        back_label = rel_parts[0]
+        back_href = "../../#" + rel_parts[0].lower()
+
     page = render_page(
         title=name,
         date="",
         blurb="",
         actions="",
         body=body,
-        up="../" * depth_from_root,
+        up=up,
         back_label=back_label,
-        back_href="../",
+        back_href=back_href,
     )
     save(os.path.join(abs_dir, "index.html"), page)
 
     for d in scan(abs_dir)[0]:
-        write_folder_pages(case_abs, rel_parts + [d], case_title, depth_from_root + 1)
+        write_folder_pages(case_abs, rel_parts + [d], case_title,
+                           depth_from_root + 1, case_folder)
 
 
 def write_case_page(case):
@@ -573,7 +744,9 @@ def write_case_page(case):
         if not os.path.isdir(abs_sub):
             continue
         rendered = listing(abs_sub, sub, delay + 220,
-                           gallery=(sub == "Images"))
+                           gallery=(sub == "Images"),
+                           base_url=quote(folder) + "/" + sub + "/",
+                           names=[case["title"], sub])
         if not rendered:
             continue
         body.append(f'  <section class="panel rz" data-rz="{delay}" id="{anchor}">')
@@ -605,7 +778,8 @@ def write_case_page(case):
     for sub in ("Files", "Images"):
         if os.path.isdir(os.path.join(abs_folder, sub)):
             for d in scan(os.path.join(abs_folder, sub))[0]:
-                write_folder_pages(abs_folder, [sub, d], case["title"], 3)
+                write_folder_pages(abs_folder, [sub, d], case["title"], 3,
+                                   case_folder=folder)
     return True
 
 
@@ -625,6 +799,9 @@ def main():
     start_line_end = page.index("\n", start) + 1
     new_body = render(cases) + "\n  "
     updated = page[:start_line_end] + new_body + page[end:]
+
+    register_front_links()
+    write_shorts()   # last, so every link above is registered first
 
     if updated == page:
         print("No change.")

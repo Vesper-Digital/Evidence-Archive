@@ -43,6 +43,17 @@
   .sec h2{font-size:clamp(22px,2.4vw,30px);font-weight:800;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap}
   .sec:after{content:"";flex:1;height:1px;background:var(--line)}
   ul.files{list-style:none;display:grid;gap:14px}
+  ul.files li{display:flex;align-items:stretch;gap:10px}
+  ul.files li > a{flex:1;min-width:0}
+  .rshare{flex:none;width:58px;cursor:pointer;background:#0b0b0b;
+    border:2px solid #3a3a3a;color:#cfcfcf;display:flex;align-items:center;
+    justify-content:center;padding:0}
+  .rshare:hover{background:#fff;color:#000;border-color:#fff}
+  .rshare.done{background:var(--red);border-color:var(--red);color:#fff}
+  ul.files .rshare svg,.sec .rshare svg{width:21px;height:21px;
+    stroke:currentColor;fill:none;stroke-width:2}
+  .sec .rshare{width:52px;height:44px}
+  @media (max-width:720px){ .rshare{width:48px} }
   ul.files a{position:relative;display:grid;grid-template-columns:auto 1fr auto auto;
     align-items:center;gap:20px;padding:22px 24px;border:0;background:var(--red);
     color:#fff;text-decoration:none;
@@ -111,9 +122,9 @@
   <section class="panel rz" data-rz="1180" id="files">
     <div class="sec"><h2>Files</h2></div>
   <ul class="files rz" data-rz="1400">
-    <li><a href="Files/Government%20Questionaires%20and%20Findings.zip" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12"/><path d="M7 11l5 5 5-5"/><path d="M4 20h16"/></svg><span class="nm">Government Questionaires and Findings.zip</span><span class="sz">8 MB</span><span class="dl">Download</span></a></li>
-    <li><a href="Files/Misinformation%20During%20the%20COVID-19%20Pandemic-%20by%20Karine%20Garneau%20and%20Cl%C3%A9mence%20Zossou.pdf" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12"/><path d="M7 11l5 5 5-5"/><path d="M4 20h16"/></svg><span class="nm">Misinformation During the COVID-19 Pandemic- by Karine Garneau and Clémence Zossou.pdf</span><span class="sz">362 KB</span><span class="dl">Download</span></a></li>
-    <li><a href="Files/misinformation%20Statscan.xlsx" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12"/><path d="M7 11l5 5 5-5"/><path d="M4 20h16"/></svg><span class="nm">misinformation Statscan.xlsx</span><span class="sz">20 KB</span><span class="dl">Download</span></a></li>
+    <li><a href="Files/Government%20Questionaires%20and%20Findings.zip" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12"/><path d="M7 11l5 5 5-5"/><path d="M4 20h16"/></svg><span class="nm">Government Questionaires and Findings.zip</span><span class="sz">8 MB</span><span class="dl">Download</span></a><button class="share rshare" type="button" title="Copy link" data-share="../../s/government-questionaires-and-findings/"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="19" r="2.6"/><path d="M8.3 10.8l7.4-4.3M8.3 13.2l7.4 4.3"/></svg></button></li>
+    <li><a href="Files/Misinformation%20During%20the%20COVID-19%20Pandemic-%20by%20Karine%20Garneau%20and%20Cl%C3%A9mence%20Zossou.pdf" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12"/><path d="M7 11l5 5 5-5"/><path d="M4 20h16"/></svg><span class="nm">Misinformation During the COVID-19 Pandemic- by Karine Garneau and Clémence Zossou.pdf</span><span class="sz">362 KB</span><span class="dl">Download</span></a><button class="share rshare" type="button" title="Copy link" data-share="../../s/misinformation-during-the-covid-19-pandemic-by-karine-garneau-and-clemence-zossou/"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="19" r="2.6"/><path d="M8.3 10.8l7.4-4.3M8.3 13.2l7.4 4.3"/></svg></button></li>
+    <li><a href="Files/misinformation%20Statscan.xlsx" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12"/><path d="M7 11l5 5 5-5"/><path d="M4 20h16"/></svg><span class="nm">misinformation Statscan.xlsx</span><span class="sz">20 KB</span><span class="dl">Download</span></a><button class="share rshare" type="button" title="Copy link" data-share="../../s/misinformation-statscan/"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="19" r="2.6"/><path d="M8.3 10.8l7.4-4.3M8.3 13.2l7.4 4.3"/></svg></button></li>
   </ul>
   </section>
   <section class="panel rz" data-rz="1640" id="images">
@@ -142,6 +153,33 @@
   }
   apply();
   window.addEventListener('hashchange', apply);
+})();
+</script>
+<script>
+(function(){
+  function done(btn){
+    btn.classList.add('done');
+    setTimeout(function(){ btn.classList.remove('done'); }, 1400);
+  }
+  function fallback(text, btn){
+    var a = document.createElement('textarea');
+    a.value = text; a.style.position = 'fixed'; a.style.opacity = '0';
+    document.body.appendChild(a); a.select();
+    try { document.execCommand('copy'); done(btn); } catch (e) {}
+    document.body.removeChild(a);
+  }
+  document.addEventListener('click', function(e){
+    var sh = e.target.closest('.rshare');
+    if (!sh) return;
+    e.preventDefault();
+    var url = new URL(sh.getAttribute('data-share'), location.href).href;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(url).then(function(){ done(sh); },
+                                             function(){ fallback(url, sh); });
+    } else {
+      fallback(url, sh);
+    }
+  });
 })();
 </script>
 <script>
