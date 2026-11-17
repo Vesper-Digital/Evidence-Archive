@@ -5,9 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Vesper Digital — Investigative Archive</title>
 <meta name="description" content="The source documents behind every Vesper Digital video.">
-<meta property="og:title" content="Vesper Digital — Evidence Archive">
+<!-- preview card. the image has to be a full https address or nothing shows -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Vesper Digital Investigative Archive">
+<meta property="og:title" content="Vesper Digital — Investigative Archive">
 <meta property="og:description" content="The source documents behind every Vesper Digital video.">
-<meta property="og:image" content="assets/banner.png">
+<meta property="og:url" content="https://vesper-digital.github.io/Evidence-Archive/">
+<meta property="og:image" content="https://vesper-digital.github.io/Evidence-Archive/assets/share.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Vesper Digital — Investigative Archive">
+<meta name="twitter:description" content="The source documents behind every Vesper Digital video.">
+<meta name="twitter:image" content="https://vesper-digital.github.io/Evidence-Archive/assets/share.png">
 <link rel="icon" href="assets/banner.png">
 <style>
   :root{
@@ -20,6 +30,8 @@
     --cyan:#19d6e8;
     --max:1480px;
     --cardh:168px;
+    --yellow:#ffd60a;
+    --cut:12px;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{-webkit-text-size-adjust:100%}
@@ -32,6 +44,107 @@
     -webkit-font-smoothing:antialiased;
   }
   .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+
+  /* ======================================================================
+     NAV — one bar, sticky, on every page. Wide screens show the row;
+     narrow screens collapse it into the slide-out panel.
+     ====================================================================== */
+  .nav{position:sticky;top:0;z-index:60;background:rgba(0,0,0,.94);
+    border-bottom:1px solid #151515;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+  .navin{max-width:var(--max);margin:0 auto;padding:11px 24px;
+    display:flex;align-items:center;gap:12px}
+
+  .links{display:flex;align-items:center;gap:10px;flex:1;min-width:0}
+  .links a{
+    position:relative;display:inline-flex;align-items:center;
+    background:#2b2b2b;text-decoration:none;flex:none;
+    clip-path:polygon(var(--cut) 0,100% 0,100% calc(100% - var(--cut)),calc(100% - var(--cut)) 100%,0 100%,0 var(--cut));
+    transition:background .16s ease;
+  }
+  .links a::before{content:"";position:absolute;inset:1px;background:#070707;
+    clip-path:polygon(calc(var(--cut) - 1px) 0,100% 0,100% calc(100% - var(--cut) + 1px),calc(100% - var(--cut) + 1px) 100%,0 100%,0 calc(var(--cut) - 1px));
+    transition:background .16s ease}
+  .links a span{position:relative;z-index:1;padding:10px 21px;
+    font-size:15px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+    color:#b9b9b9;white-space:nowrap;transition:color .16s ease}
+  .links a:hover{background:var(--red)}
+  .links a:hover span{color:#fff}
+  .links a.on{background:var(--red)}
+  .links a.on span{color:#fff}
+  .links a.on::before{background:#140105}
+
+  .links a.donate{margin-left:auto;background:var(--yellow)}
+  .links a.donate span{color:var(--yellow);letter-spacing:.22em}
+  .links a.donate:hover::before{background:var(--yellow)}
+  .links a.donate:hover span{color:#000}
+
+  /* the three-line button and the panel chrome, hidden on wide screens */
+  .burger,.navclose,.scrim,.panelhead{display:none}
+
+  /* ---- narrow, or a short landscape phone: slide-out panel ---- */
+  @media (max-width:900px), (max-height:520px) and (orientation:landscape){
+    /* a blurred ancestor would trap the fixed panel inside the bar, and the
+       bar's own stacking has to sit above the scrim or the panel is dimmed */
+    .nav{-webkit-backdrop-filter:none;backdrop-filter:none;background:#000;z-index:80}
+    .navin{padding:9px 16px;justify-content:flex-end}
+    .burger{
+      display:inline-flex;flex-direction:column;justify-content:center;gap:5px;
+      width:46px;height:40px;padding:0 11px;cursor:pointer;
+      background:#2b2b2b;border:0;position:relative;
+      clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px);
+    }
+    .burger::before{content:"";position:absolute;inset:1px;background:#070707;
+      clip-path:polygon(9px 0,100% 0,100% calc(100% - 9px),calc(100% - 9px) 100%,0 100%,0 9px)}
+    .burger i{position:relative;z-index:1;display:block;height:2px;background:#e8e8e8;
+      transition:transform .24s ease,opacity .18s ease}
+    .burger[aria-expanded="true"] i:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .burger[aria-expanded="true"] i:nth-child(2){opacity:0}
+    .burger[aria-expanded="true"] i:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+    .links{
+      position:fixed;top:0;right:0;bottom:0;width:min(84vw,350px);
+      flex-direction:column;align-items:stretch;justify-content:flex-start;
+      gap:12px;padding:20px 20px calc(20px + env(safe-area-inset-bottom));
+      background:linear-gradient(180deg,#0d0d0d 0%,#050505 100%);
+      border-left:2px solid var(--red);box-shadow:-24px 0 60px rgba(0,0,0,.8);
+      transform:translateX(100%);transition:transform .3s cubic-bezier(.33,1,.68,1);
+      overflow-y:auto;z-index:70;
+    }
+    .links.open{transform:none}
+    .links a{width:100%}
+    .links a span{width:100%;padding:16px 18px;font-size:16px}
+    .links a.donate{margin-left:0;margin-top:6px}
+
+    .panelhead{display:flex;align-items:center;justify-content:space-between;
+      padding-bottom:4px;border-bottom:1px solid #1d1d1d;margin-bottom:6px}
+    .panelhead b{font-size:13px;font-weight:700;letter-spacing:.24em;
+      text-transform:uppercase;color:var(--muted)}
+    .navclose{display:inline-flex;align-items:center;justify-content:center;
+      width:38px;height:38px;background:none;border:1px solid #2a2a2a;color:#cfcfcf;
+      cursor:pointer;padding:0}
+    .navclose:hover{background:#fff;color:#000;border-color:#fff}
+    .navclose svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:2.2}
+
+    /* items drift in behind the panel */
+    .links.open > *{animation:navin .34s both}
+    .links.open > *:nth-child(2){animation-delay:.05s}
+    .links.open > *:nth-child(3){animation-delay:.09s}
+    .links.open > *:nth-child(4){animation-delay:.13s}
+    .links.open > *:nth-child(5){animation-delay:.17s}
+    .links.open > *:nth-child(6){animation-delay:.21s}
+    @keyframes navin{from{opacity:0;transform:translateX(14px)}to{opacity:1;transform:none}}
+
+    .scrim{display:block;position:fixed;inset:0;z-index:65;background:rgba(0,0,0,.62);
+      -webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);
+      opacity:0;pointer-events:none;transition:opacity .3s ease}
+    .scrim.on{opacity:1;pointer-events:auto}
+  }
+
+  /* short landscape phones: the panel has to scroll, not stretch */
+  @media (max-height:460px) and (orientation:landscape){
+    .links a span{padding:11px 16px;font-size:15px}
+    .links{gap:9px;padding-top:14px}
+  }
 
   /* BANNER */
   .banner{display:grid;grid-template-columns:auto 1fr;width:100%;max-width:var(--max);margin:0 auto;background:#000}
@@ -473,9 +586,68 @@
     .case .thumb img{height:auto;aspect-ratio:16/9}
     .case .body{height:auto;gap:14px}
   }
+
+  /* ======================================================================
+     NARROW SCREENS — the title, the date and the buttons each get their
+     own line rather than being squeezed side by side and cut off.
+     ====================================================================== */
+  @media (max-width:700px){
+    .wrap{padding:0 16px}
+    .intro{padding:28px 0 0}
+    .case .head{flex-direction:column;align-items:flex-start;gap:10px}
+    .case .date{width:100%;justify-content:space-between;white-space:normal}
+    .case h3{font-size:clamp(21px,5.6vw,27px)}
+    .case .blurb{font-size:17px}
+    .btns,.btns.n2,.btns.n3{grid-template-columns:1fr;gap:10px}
+    .btn{padding:13px 16px}
+    .sortbar{flex-wrap:wrap;gap:8px}
+    .howto{margin-bottom:22px}
+    footer{font-size:16px}
+  }
+
+  /* ======================================================================
+     LANDSCAPE PHONES — the viewport is wide but very short, so the vw-based
+     sizes blow up. Pin them to something sane and let the page scroll.
+     ====================================================================== */
+  @media (max-height:520px) and (orientation:landscape){
+    body{font-size:17px}
+    .banner img,.banner .portrait{height:120px}
+    .banner .portrait{width:120px}
+    .intro{padding:22px 0 0}
+    .intro h1{font-size:30px}
+    .lede{font-size:20px}
+    .intro p{font-size:17px}
+    .case h3{font-size:22px}
+    .case .blurb{font-size:16px}
+    .case .date{font-size:13px}
+    .btn{padding:11px 14px;font-size:15px}
+    .tcard h3{font-size:19px}
+    .vw-inner{height:88vh}
+  }
+
+  /* nothing should ever be wider than the screen */
+  html,body{max-width:100%;overflow-x:hidden}
+  img,video,iframe{max-width:100%}
 </style>
 </head>
 <body>
+
+<nav class="nav">
+  <div class="navin">
+    <button class="burger" id="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="links"><i></i><i></i><i></i></button>
+    <div class="links" id="links">
+      <div class="panelhead"><b>Menu</b>
+        <button class="navclose" id="navclose" type="button" aria-label="Close menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      </div>
+      <a href="https://vesper-digital.github.io/"><span>Home</span></a>
+      <a href="#cases" data-nav="cases"><span>Cases</span></a>
+      <a href="#tables" data-nav="tables"><span>DSX Tables</span></a>
+      <a href="#gallery" data-nav="gallery"><span>Gallery</span></a>
+      <a class="donate" href="https://buymeacoffee.com/vesperdigital" target="_blank" rel="noopener"><span>Donate</span></a>
+    </div>
+  </div>
+</nav>
+<div class="scrim" id="scrim"></div>
 
 <div class="banner rz" data-rz="0"><img class="portrait" src="assets/portrait.jpg" alt=""><img src="assets/banner.png" alt="Vesper Digital"></div>
 
@@ -488,12 +660,6 @@
     <p>Every claim in a Vesper Digital video is backed by a document. They are all here, in full, exactly as obtained, with no commentary and no editing, so you can read them and decide for yourself.</p>
   </section>
 
-  <div class="tabs rz" data-rz="640" role="tablist">
-    <button class="tab on" type="button" data-t="cases"><span>Cases</span></button>
-    <button class="tab" type="button" data-t="tables"><span>DSX Tables</span></button>
-    <button class="tab" type="button" data-t="gallery"><span>Gallery</span></button>
-  </div>
-
   <div class="tabwrap rz" data-rz="800">
 
     <section class="tp on" id="t-cases">
@@ -504,12 +670,12 @@
     <a class="thumb play rz" data-rz="1080" href="https://youtube.com/live/xce64xYGzL4" target="_blank" rel="noopener" data-embed="https://www.youtube.com/embed/xce64xYGzL4?autoplay=1&amp;rel=0&amp;cc_load_policy=0&amp;modestbranding=1"><img src="NSIRA%20-%20Reviews%20CSIS%20and%20the%20breach%20of%20laws/NSIRA.png" alt=""></a>
     <div class="body rz" data-rz="1280">
       <div class="head">
-        <h3><a href="s/nsira-reviews-csis-and-the-breach-of-laws/">NSIRA Reviews CSIS and the breach of laws</a></h3>
-        <div class="date">November 15, 2026<button class="share casehare" type="button" title="Copy link" data-share="s/nsira-reviews-csis-and-the-breach-of-laws/"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="19" r="2.6"/><path d="M8.3 10.8l7.4-4.3M8.3 13.2l7.4 4.3"/></svg></button></div>
+        <h3><a href="NSIRA%20-%20Reviews%20CSIS%20and%20the%20breach%20of%20laws/">NSIRA Reviews CSIS and the breach of laws</a></h3>
+        <div class="date">November 15, 2026<button class="share casehare" type="button" title="Copy link" data-share="NSIRA%20-%20Reviews%20CSIS%20and%20the%20breach%20of%20laws/"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="19" r="2.6"/><path d="M8.3 10.8l7.4-4.3M8.3 13.2l7.4 4.3"/></svg></button></div>
       </div>
       <p class="blurb">REVIEWING THE FAILURE OF CANADA&#x27;S SPY AGENCY (CSIS), BREACHING LAWS</p>
       <div class="btns n2">
-        <a class="btn" href="s/nsira-reviews-csis-and-the-breach-of-laws/#files"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7z"/><path d="M14 2v5h5"/><path d="M9 13h6"/><path d="M9 17h6"/></svg><span>Files</span></a>
+        <a class="btn" href="NSIRA%20-%20Reviews%20CSIS%20and%20the%20breach%20of%20laws/#files"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7z"/><path d="M14 2v5h5"/><path d="M9 13h6"/><path d="M9 17h6"/></svg><span>Files</span></a>
         <a class="btn alt" href="assets/zips/NSIRA---Reviews-CSIS-and-the-breach-of-laws.zip" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12"/><path d="M7 11l5 5 5-5"/><path d="M4 20h16"/></svg><span>Download all</span></a>
       </div>
     </div>
@@ -518,12 +684,12 @@
     <a class="thumb play rz" data-rz="1400" href="https://youtu.be/PLFE1ziuf8g" target="_blank" rel="noopener" data-embed="https://www.youtube.com/embed/PLFE1ziuf8g?autoplay=1&amp;rel=0&amp;cc_load_policy=0&amp;modestbranding=1"><img src="Who%20Runs%20Canada_Brookfield%20Corp/Missing.jpg" alt=""></a>
     <div class="body rz" data-rz="1600">
       <div class="head">
-        <h3><a href="s/who-runs-canada-brookfield-corp/">Who Runs Canada Brookfield Corp</a></h3>
-        <div class="date">November 11, 2026<button class="share casehare" type="button" title="Copy link" data-share="s/who-runs-canada-brookfield-corp/"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="19" r="2.6"/><path d="M8.3 10.8l7.4-4.3M8.3 13.2l7.4 4.3"/></svg></button></div>
+        <h3><a href="Who%20Runs%20Canada_Brookfield%20Corp/">Who Runs Canada Brookfield Corp</a></h3>
+        <div class="date">November 11, 2026<button class="share casehare" type="button" title="Copy link" data-share="Who%20Runs%20Canada_Brookfield%20Corp/"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="19" r="2.6"/><path d="M8.3 10.8l7.4-4.3M8.3 13.2l7.4 4.3"/></svg></button></div>
       </div>
       <p class="blurb">Uncovering Canada&#x27;s Corporate Empire</p>
       <div class="btns n2">
-        <a class="btn" href="s/who-runs-canada-brookfield-corp/#files"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7z"/><path d="M14 2v5h5"/><path d="M9 13h6"/><path d="M9 17h6"/></svg><span>Files</span></a>
+        <a class="btn" href="Who%20Runs%20Canada_Brookfield%20Corp/#files"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7z"/><path d="M14 2v5h5"/><path d="M9 13h6"/><path d="M9 17h6"/></svg><span>Files</span></a>
         <a class="btn alt" href="assets/zips/Who-Runs-Canada_Brookfield-Corp.zip" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12"/><path d="M7 11l5 5 5-5"/><path d="M4 20h16"/></svg><span>Download all</span></a>
       </div>
     </div>
@@ -532,13 +698,13 @@
     <a class="thumb play rz" data-rz="1720" href="https://www.youtube.com/live/zCGAcQUOpS0" target="_blank" rel="noopener" data-embed="https://www.youtube.com/embed/zCGAcQUOpS0?autoplay=1&amp;rel=0&amp;cc_load_policy=0&amp;modestbranding=1"><img src="The%20Rules%20That%20Vanished%20_%20Dangerous%20A.I%20Military%20Drones/DRONES_converted.webp" alt=""></a>
     <div class="body rz" data-rz="1920">
       <div class="head">
-        <h3><a href="s/the-rules-that-vanished-dangerous-a-i-military-drones/">The Rules That Vanished Dangerous A.I Military Drones</a></h3>
-        <div class="date">November 8, 2026<button class="share casehare" type="button" title="Copy link" data-share="s/the-rules-that-vanished-dangerous-a-i-military-drones/"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="19" r="2.6"/><path d="M8.3 10.8l7.4-4.3M8.3 13.2l7.4 4.3"/></svg></button></div>
+        <h3><a href="The%20Rules%20That%20Vanished%20_%20Dangerous%20A.I%20Military%20Drones/">The Rules That Vanished Dangerous A.I Military Drones</a></h3>
+        <div class="date">November 8, 2026<button class="share casehare" type="button" title="Copy link" data-share="The%20Rules%20That%20Vanished%20_%20Dangerous%20A.I%20Military%20Drones/"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="19" r="2.6"/><path d="M8.3 10.8l7.4-4.3M8.3 13.2l7.4 4.3"/></svg></button></div>
       </div>
       <p class="blurb">A.I Military Drones &amp; Canada Voted For Less Security Rules At UN</p>
       <div class="btns n3">
-        <a class="btn" href="s/the-rules-that-vanished-dangerous-a-i-military-drones/#files"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7z"/><path d="M14 2v5h5"/><path d="M9 13h6"/><path d="M9 17h6"/></svg><span>Files</span></a>
-        <a class="btn alt" href="s/the-rules-that-vanished-dangerous-a-i-military-drones/#images"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.8"/><path d="M21 16l-5-5-6 6-3-3-4 4"/></svg><span>Images</span></a>
+        <a class="btn" href="The%20Rules%20That%20Vanished%20_%20Dangerous%20A.I%20Military%20Drones/#files"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7z"/><path d="M14 2v5h5"/><path d="M9 13h6"/><path d="M9 17h6"/></svg><span>Files</span></a>
+        <a class="btn alt" href="The%20Rules%20That%20Vanished%20_%20Dangerous%20A.I%20Military%20Drones/#images"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.8"/><path d="M21 16l-5-5-6 6-3-3-4 4"/></svg><span>Images</span></a>
         <a class="btn alt" href="assets/zips/The-Rules-That-Vanished-_-Dangerous-A.I-Military-Drones.zip" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12"/><path d="M7 11l5 5 5-5"/><path d="M4 20h16"/></svg><span>Download all</span></a>
       </div>
     </div>
@@ -547,13 +713,13 @@
     <a class="thumb play rz" data-rz="2040" href="https://youtube.com/live/zCGAcQUOpS0?feature=share" target="_blank" rel="noopener" data-embed="https://www.youtube.com/embed/zCGAcQUOpS0?autoplay=1&amp;rel=0&amp;cc_load_policy=0&amp;modestbranding=1"><img src="Immigration%20Policy-The%20U.N%20Agenda-%20IRCC%20Spending%20Billions/Agents.jpg" alt=""></a>
     <div class="body rz" data-rz="2240">
       <div class="head">
-        <h3><a href="s/canadas-immigration-policy-the-u-n-agenda-ircc-spending/">Canada&#x27;s Immigration Policy | The U.N Agenda | IRCC Spending</a></h3>
-        <div class="date">November 7, 2026<button class="share casehare" type="button" title="Copy link" data-share="s/canadas-immigration-policy-the-u-n-agenda-ircc-spending/"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="19" r="2.6"/><path d="M8.3 10.8l7.4-4.3M8.3 13.2l7.4 4.3"/></svg></button></div>
+        <h3><a href="Immigration%20Policy-The%20U.N%20Agenda-%20IRCC%20Spending%20Billions/">Canada&#x27;s Immigration Policy | The U.N Agenda | IRCC Spending</a></h3>
+        <div class="date">November 7, 2026<button class="share casehare" type="button" title="Copy link" data-share="Immigration%20Policy-The%20U.N%20Agenda-%20IRCC%20Spending%20Billions/"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="19" r="2.6"/><path d="M8.3 10.8l7.4-4.3M8.3 13.2l7.4 4.3"/></svg></button></div>
       </div>
       <p class="blurb">CARNEY&#x27;S MIGRANT AGENDA | The UN, The Money &amp; The Connections EXPOSED!</p>
       <div class="btns n3">
-        <a class="btn" href="s/canadas-immigration-policy-the-u-n-agenda-ircc-spending/#files"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7z"/><path d="M14 2v5h5"/><path d="M9 13h6"/><path d="M9 17h6"/></svg><span>Files</span></a>
-        <a class="btn alt" href="s/canadas-immigration-policy-the-u-n-agenda-ircc-spending/#images"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.8"/><path d="M21 16l-5-5-6 6-3-3-4 4"/></svg><span>Images</span></a>
+        <a class="btn" href="Immigration%20Policy-The%20U.N%20Agenda-%20IRCC%20Spending%20Billions/#files"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7z"/><path d="M14 2v5h5"/><path d="M9 13h6"/><path d="M9 17h6"/></svg><span>Files</span></a>
+        <a class="btn alt" href="Immigration%20Policy-The%20U.N%20Agenda-%20IRCC%20Spending%20Billions/#images"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.8"/><path d="M21 16l-5-5-6 6-3-3-4 4"/></svg><span>Images</span></a>
         <a class="btn alt" href="assets/zips/Immigration-Policy-The-U.N-Agenda--IRCC-Spending-Billions.zip" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12"/><path d="M7 11l5 5 5-5"/><path d="M4 20h16"/></svg><span>Download all</span></a>
       </div>
     </div>
@@ -562,13 +728,13 @@
     <a class="thumb play rz" data-rz="2360" href="https://youtu.be/ww2Jk5mrvro" target="_blank" rel="noopener" data-embed="https://www.youtube.com/embed/ww2Jk5mrvro?autoplay=1&amp;rel=0&amp;cc_load_policy=0&amp;modestbranding=1"><img src="Tim%20Caulfied%20%20Government%20Funded%20Misinformation%20Guru%20Who%20Got%20It%20Wrong/Tim.jpg" alt=""></a>
     <div class="body rz" data-rz="2560">
       <div class="head">
-        <h3><a href="s/tim-caulfied-government-funded-misinformation-guru/">Tim Caulfied Government Funded Misinformation Guru</a></h3>
-        <div class="date">November 7, 2026<button class="share casehare" type="button" title="Copy link" data-share="s/tim-caulfied-government-funded-misinformation-guru/"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="19" r="2.6"/><path d="M8.3 10.8l7.4-4.3M8.3 13.2l7.4 4.3"/></svg></button></div>
+        <h3><a href="Tim%20Caulfied%20%20Government%20Funded%20Misinformation%20Guru%20Who%20Got%20It%20Wrong/">Tim Caulfied Government Funded Misinformation Guru</a></h3>
+        <div class="date">November 7, 2026<button class="share casehare" type="button" title="Copy link" data-share="Tim%20Caulfied%20%20Government%20Funded%20Misinformation%20Guru%20Who%20Got%20It%20Wrong/"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="19" r="2.6"/><path d="M8.3 10.8l7.4-4.3M8.3 13.2l7.4 4.3"/></svg></button></div>
       </div>
       <p class="blurb">CANADA&#x27;S MISINFORMATION EXPERT | $3.38M in Federal Grants &amp; The His Stats Don&#x27;t Add Up!</p>
       <div class="btns n3">
-        <a class="btn" href="s/tim-caulfied-government-funded-misinformation-guru/#files"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7z"/><path d="M14 2v5h5"/><path d="M9 13h6"/><path d="M9 17h6"/></svg><span>Files</span></a>
-        <a class="btn alt" href="s/tim-caulfied-government-funded-misinformation-guru/#images"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.8"/><path d="M21 16l-5-5-6 6-3-3-4 4"/></svg><span>Images</span></a>
+        <a class="btn" href="Tim%20Caulfied%20%20Government%20Funded%20Misinformation%20Guru%20Who%20Got%20It%20Wrong/#files"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7z"/><path d="M14 2v5h5"/><path d="M9 13h6"/><path d="M9 17h6"/></svg><span>Files</span></a>
+        <a class="btn alt" href="Tim%20Caulfied%20%20Government%20Funded%20Misinformation%20Guru%20Who%20Got%20It%20Wrong/#images"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.8"/><path d="M21 16l-5-5-6 6-3-3-4 4"/></svg><span>Images</span></a>
         <a class="btn alt" href="assets/zips/Tim-Caulfied-Government-Funded-Misinformation-Guru-Who-Got-It-Wrong.zip" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12"/><path d="M7 11l5 5 5-5"/><path d="M4 20h16"/></svg><span>Download all</span></a>
       </div>
     </div>
@@ -577,12 +743,12 @@
     <a class="thumb play rz" data-rz="2680" href="https://youtube.com/live/kFPYXB-KUts?feature=share" target="_blank" rel="noopener" data-embed="https://www.youtube.com/embed/kFPYXB-KUts?autoplay=1&amp;rel=0&amp;cc_load_policy=0&amp;modestbranding=1"><img src="Deleted%20Federal%20Records/Files_converted.webp" alt=""></a>
     <div class="body rz" data-rz="2880">
       <div class="head">
-        <h3><a href="s/deleted-covid-federal-estimate-records-i-recovered-them/">Deleted COVID Federal Estimate Records | I Recovered Them!</a></h3>
-        <div class="date">November 6, 2026<button class="share casehare" type="button" title="Copy link" data-share="s/deleted-covid-federal-estimate-records-i-recovered-them/"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="19" r="2.6"/><path d="M8.3 10.8l7.4-4.3M8.3 13.2l7.4 4.3"/></svg></button></div>
+        <h3><a href="Deleted%20Federal%20Records/">Deleted COVID Federal Estimate Records | I Recovered Them!</a></h3>
+        <div class="date">November 6, 2026<button class="share casehare" type="button" title="Copy link" data-share="Deleted%20Federal%20Records/"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="19" r="2.6"/><path d="M8.3 10.8l7.4-4.3M8.3 13.2l7.4 4.3"/></svg></button></div>
       </div>
       <p class="blurb">The deleted federal estimates tables from 2019-2022 and the available tables up to 2026.</p>
       <div class="btns n2">
-        <a class="btn" href="s/deleted-covid-federal-estimate-records-i-recovered-them/#files"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7z"/><path d="M14 2v5h5"/><path d="M9 13h6"/><path d="M9 17h6"/></svg><span>Files</span></a>
+        <a class="btn" href="Deleted%20Federal%20Records/#files"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7z"/><path d="M14 2v5h5"/><path d="M9 13h6"/><path d="M9 17h6"/></svg><span>Files</span></a>
         <a class="btn alt" href="assets/zips/Deleted-Federal-Records.zip" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12"/><path d="M7 11l5 5 5-5"/><path d="M4 20h16"/></svg><span>Download all</span></a>
       </div>
     </div>
@@ -1060,9 +1226,40 @@
   }
 
   // ---- tabs ------------------------------------------------------------
-  var tabs = document.querySelectorAll('.tab');
+  // ---- the menu ----------------------------------------------------------
+  var burger = document.getElementById('burger'),
+      navlinks = document.getElementById('links'),
+      scrim = document.getElementById('scrim'),
+      navclose = document.getElementById('navclose');
+
+  function openNav(){
+    navlinks.classList.add('open');
+    scrim.classList.add('on');
+    burger.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeNav(){
+    if (!navlinks.classList.contains('open')) return;
+    navlinks.classList.remove('open');
+    scrim.classList.remove('on');
+    burger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+  burger.addEventListener('click', function(){
+    navlinks.classList.contains('open') ? closeNav() : openNav();
+  });
+  navclose.addEventListener('click', closeNav);
+  scrim.addEventListener('click', closeNav);
+  navlinks.addEventListener('click', function(e){ if (e.target.closest('a')) closeNav(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeNav(); });
+  // turning the phone can take the panel's width away from under it
+  var wide = window.matchMedia('(min-width:901px) and (min-height:521px)');
+  (wide.addEventListener ? wide.addEventListener.bind(wide,'change') : wide.addListener.bind(wide))(
+    function(e){ if (e.matches) closeNav(); });
+
+  var tabs = document.querySelectorAll('[data-nav]');
   function show(name){
-    [].forEach.call(tabs, function(t){ t.classList.toggle('on', t.dataset.t === name); });
+    [].forEach.call(tabs, function(t){ t.classList.toggle('on', t.dataset.nav === name); });
     [].forEach.call(document.querySelectorAll('.tp'), function(p){
       p.classList.toggle('on', p.id === 't-' + name);
     });
@@ -1072,7 +1269,12 @@
     }
   }
   [].forEach.call(tabs, function(t){
-    t.addEventListener('click', function(){ show(t.dataset.t); });
+    t.addEventListener('click', function(e){
+      e.preventDefault();
+      show(t.dataset.nav);
+      closeNav();
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    });
   });
 
   document.addEventListener('click', function(e){
@@ -1095,13 +1297,14 @@
   window.addEventListener('hashchange', function(){
     var h = (location.hash || '').replace('#','');
     var k = h.indexOf('=') > -1 ? h.slice(0, h.indexOf('=')) : h;
+    if (k === 'cases') show('cases');
     if (k === 'tables' || k === 'gallery') { show(k); openFromHash(); }
   });
 
   var start = (location.hash || '').replace('#','');
   var eq = start.indexOf('=');
   if (eq > -1) start = start.slice(0, eq);
-  if (start === 'tables' || start === 'gallery') show(start);
+  show((start === 'tables' || start === 'gallery') ? start : 'cases');
 })();
 </script>
 </body>
