@@ -202,7 +202,7 @@ def render(cases):
     out = []
     for i, c in enumerate(cases):
         folder = html.escape(c["folder"], quote=True)
-        base = 1080 + i * 320
+        base = 300 + i * 90
         tree = "s/" + SLUG_FOR[c["folder"] + "/"] + "/"
         vid = c.get("video") or ""
         thumb_href = html.escape(vid, quote=True) if vid else tree
@@ -212,9 +212,10 @@ def render(cases):
         thumb_data = f' data-embed="{html.escape(emb, quote=True)}"' if emb else ""
         title = html.escape(c["title"])
         date = c["date"].strftime("%B %-d, %Y") if c["date"] else ""
-        thumb = html.escape(quote(c["thumb"]), quote=True) if c["thumb"] else ""
+        small = web_thumb(c["thumb"], SLUG_FOR[c["folder"] + "/"]) if c["thumb"] else ""
+        thumb = html.escape(quote(small or c["thumb"]), quote=True) if c["thumb"] else ""
 
-        img = (f'<img src="{thumb}" alt="">' if thumb
+        img = (f'<img src="{thumb}" alt="" loading="lazy" decoding="async">' if thumb
                else '<span class="noimg"></span>')
 
         btns = []
@@ -237,7 +238,7 @@ def render(cases):
         out.append(
             f'  <article class="case">\n'
             f'    <a class="thumb{thumb_cls} rz" data-rz="{base}" href="{thumb_href}"{thumb_tgt}{thumb_data}>{img}</a>\n'
-            f'    <div class="body rz" data-rz="{base + 200}">\n'
+            f'    <div class="body rz" data-rz="{base + 60}">\n'
             f'      <div class="head">\n'
             f'        <h3><a href="{tree}">{title}</a></h3>\n'
             f'        <div class="date">{date}{share}</div>\n'
@@ -407,8 +408,22 @@ CASE_PAGE = """<!doctype html>
   .back > *{position:relative;z-index:1}
   .back:hover::before{background:var(--red)}
   .back svg{width:22px;height:22px;flex:none;stroke:currentColor;fill:none;stroke-width:2.2}
-  h1{font-size:clamp(30px,4.2vw,52px);font-weight:800;letter-spacing:.045em;text-transform:uppercase;line-height:1.05}
+  h1{font-size:clamp(30px,4.2vw,52px);font-weight:700;letter-spacing:.2em;text-transform:uppercase;line-height:1.05;margin-bottom:10px}
   .rule{height:3px;background:var(--red);margin:16px 0 22px}
+  /* the page title wears the same box as the menu items */
+  h1.boxed{
+    position:relative;display:table;background:#fff;
+    clip-path:polygon(18px 0,100% 0,100% calc(100% - 18px),calc(100% - 18px) 100%,0 100%,0 18px);
+    margin-bottom:10px;
+  }
+  h1.boxed::before{content:"";position:absolute;inset:1px;background:#070707;
+    clip-path:polygon(17px 0,100% 0,100% calc(100% - 17px),calc(100% - 17px) 100%,0 100%,0 17px)}
+  h1.boxed span{position:relative;z-index:1;display:block;padding:12px 28px}
+  @media (max-width:700px){
+    h1.boxed span{padding:10px 18px}
+    h1.boxed,h1.boxed::before{clip-path:polygon(13px 0,100% 0,100% calc(100% - 13px),calc(100% - 13px) 100%,0 100%,0 13px)}
+  }
+
   .meta{color:var(--red);font-size:clamp(16px,1.25vw,20px);letter-spacing:.16em;text-transform:uppercase;font-weight:700;margin-bottom:14px}
   .blurb{color:#d2d2d2;font-size:clamp(19px,1.5vw,25px);max-width:80ch;margin-bottom:12px}
   .panel{
@@ -544,11 +559,11 @@ CASE_PAGE = """<!doctype html>
   </div>
 </nav>
 <div class="scrim" id="scrim"></div>
-<div class="banner rz" data-rz="0"><img class="portrait" src="__UP__assets/portrait.jpg" alt=""><img src="__UP__assets/banner.png" alt="Vesper Digital"></div>
+<div class="banner rz" data-rz="0"><img class="portrait" src="__UP__assets/portrait.webp" alt=""><img src="__UP__assets/banner.webp" alt="Vesper Digital"></div>
 <div class="wrap">
   <div class="rz" data-rz="320">
     <a class="back" href="__UP__"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H4M10 6l-6 6 6 6"/></svg><span>All cases</span></a>
-    <h1>__TITLE__</h1>
+    <h1 class="boxed"><span>__TITLE__</span></h1>
     <div class="meta">__DATE__</div>
   </div>
 __BLURB__
@@ -933,6 +948,48 @@ def save(target, page):
     if old != page:
         with open(target, "w", encoding="utf-8") as f:
             f.write(page)
+
+
+def web_thumb(rel_path, slug):
+    """A small copy of the case picture for the card.
+
+    The originals are full-size exports, a couple of megabytes each, which is
+    what makes the front page crawl. The card only ever shows it a few hundred
+    pixels wide, so the build writes a light copy and points the card at that.
+    The original stays where it is and is still what gets shared.
+    """
+    src = os.path.join(ROOT, rel_path)
+    if not os.path.isfile(src):
+        return ""
+    try:
+        try:
+            import pymupdf
+        except ImportError:
+            import fitz as pymupdf
+        pix = pymupdf.Pixmap(src)
+        n = 0
+        while pix.width > 900 and n < 5:
+            pix.shrink(1)
+            n += 1
+        if pix.alpha:
+            pix = pymupdf.Pixmap(pix, 0)
+        data = pix.tobytes("jpeg", jpg_quality=82)
+    except Exception as e:                                # noqa: BLE001
+        print(f"  could not shrink {rel_path}: {e}")
+        return ""
+    if len(data) >= os.path.getsize(src):
+        return ""                                         # already small
+    out_dir = os.path.join(ROOT, "assets", "thumbs")
+    os.makedirs(out_dir, exist_ok=True)
+    out = os.path.join(out_dir, slug + ".jpg")
+    old = b""
+    if os.path.exists(out):
+        with open(out, "rb") as f:
+            old = f.read()
+    if old != data:
+        with open(out, "wb") as f:
+            f.write(data)
+    return "assets/thumbs/" + slug + ".jpg"
 
 
 def case_share_image(case):
