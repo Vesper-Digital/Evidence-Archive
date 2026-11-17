@@ -2,7 +2,7 @@
  "tables": [
   {
    "logo": "",
-   "shot": "assets/tableshots/BROOKFIELD_CORPORATION.jpg",
+   "shot": "assets/tableshots/BROOKFIELD_CORPORATION---Company-Subsidiary-Structure.jpg",
    "pdf": true,
    "subject": "BROOKFIELD CORPORATION",
    "kind": "Corp & Finance | Inter-Corporate Ownership",
@@ -13,11 +13,11 @@
    "rows": [],
    "total_rows": 43,
    "unit": "pages",
-   "file": "BROOKFIELD_CORPORATION.pdf",
-   "title": "BROOKFIELD CORPORATION",
+   "file": "BROOKFIELD_CORPORATION - Company Subsidiary Structure.pdf",
+   "title": "BROOKFIELD CORPORATION - Company Subsidiary Structure",
    "size": "579 KB",
-   "added": "2026-11-11T22:48:11-05:00",
-   "short": "s/brookfield-corporation/"
+   "added": "2026-11-17T13:29:31-05:00",
+   "short": "s/brookfield-corporation-company-subsidiary-structure/"
   },
   {
    "logo": "assets/tablelogos/Full-Public-Accounts-Vol1-2026.jpg",
