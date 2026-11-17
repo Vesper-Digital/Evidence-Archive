@@ -927,8 +927,7 @@ def listing(abs_dir, real_dir, delay, gallery=False):
             out.append(folder_row(f"../{slug}/", d, os.path.join(abs_dir, d),
                                   share_btn(f"../{slug}/")))
         for n, sz in plain:
-            slug = SLUG_FOR["/".join(real_dir + [n])]
-            out.append(file_row(file_href(n), n, sz, share_btn(f"../{slug}/")))
+            out.append(file_row(file_href(n), n, sz, share_btn(file_href(n))))
         out.append("  </ul>")
     if pics:
         out.append(f'  <div class="shots rz" data-rz="{delay + 100}">')
@@ -1035,12 +1034,10 @@ def plan_case(case):
         names = [case["title"]] + list(rel_parts)
         if len(rel_parts) > 1:                 # Files and Images have no page
             claim("/".join(here) + "/", names)
-        folders, files = scan(abs_dir)
-        for n, _sz in files:
-            # a file has no page of its own, so its slug forwards to the file
-            s = claim("/".join(here + [n]), names + [os.path.splitext(n)[0]])
-            SHORTS[s] = "/".join(quote(p) for p in here + [n])
-        for d in folders:
+        # only things with a page of their own get a short address. A file's
+        # share button points straight at the file, so it opens the document
+        # instead of bouncing through a forwarding page.
+        for d in scan(abs_dir)[0]:
             walk(rel_parts + [d])
 
     for sub in ("Files", "Images"):
