@@ -2691,6 +2691,525 @@
    "short": "s/lobbying-registry-telesat-2026/"
   },
   {
+   "logo": "assets/tablelogos/Public-Accounts-Vol1-2026-Tax-Revenue.jpg",
+   "shot": "",
+   "pdf": false,
+   "unit": "rows",
+   "subject": "TAX REVENUE",
+   "kind": "PUBLIC ACCOUNTS / VOL 1",
+   "date_range": "January 1, 2026 - December 31, 2026",
+   "year": "2026",
+   "note": "PUBLIC ACCOUNTS / VOL 1 • 12 matching records • November 17, 2026 18:28",
+   "head": [
+    {
+     "t": "What the money covers",
+     "bg": "#1C5D9A",
+     "b": 1,
+     "fg": "#FFFFFF",
+     "a": "center"
+    },
+    {
+     "t": "Money type",
+     "bg": "#1C5D9A",
+     "b": 1,
+     "fg": "#FFFFFF",
+     "a": "center"
+    },
+    {
+     "t": "Amount (CAD)",
+     "bg": "#1C5D9A",
+     "b": 1,
+     "fg": "#FFFFFF",
+     "a": "center"
+    },
+    {
+     "t": "Fiscal year",
+     "bg": "#1C5D9A",
+     "b": 1,
+     "fg": "#FFFFFF",
+     "a": "center"
+    },
+    {
+     "t": "Government wording (click for source)",
+     "bg": "#1C5D9A",
+     "b": 1,
+     "fg": "#FFFFFF",
+     "a": "center"
+    }
+   ],
+   "rows": [
+    [
+     {
+      "t": "CALCULATED TOTAL · Taxes collected / tax revenue",
+      "bg": "#087443",
+      "b": 1,
+      "fg": "#FFFFFF",
+      "a": "center"
+     },
+     {
+      "t": "Tax revenue",
+      "bg": "#087443",
+      "b": 1,
+      "fg": "#FFFFFF",
+      "a": "center"
+     },
+     {
+      "t": "$441,628,000,000",
+      "bg": "#087443",
+      "b": 1,
+      "fg": "#FFFFFF",
+      "a": "center"
+     },
+     {
+      "t": "2025–26",
+      "bg": "#087443",
+      "b": 1,
+      "fg": "#FFFFFF",
+      "a": "center"
+     },
+     {
+      "t": "Revenues · Tax revenues",
+      "bg": "#087443",
+      "b": 1,
+      "fg": "#FFFFFF",
+      "a": "center"
+     }
+    ],
+    [
+     {
+      "t": "Income taxes",
+      "bg": "#DBF0E5",
+      "b": 1,
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "Tax revenue",
+      "bg": "#DBF0E5",
+      "b": 1,
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "$366,473,000,000",
+      "bg": "#DBF0E5",
+      "b": 1,
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "2025–26",
+      "bg": "#DBF0E5",
+      "b": 1,
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "Income tax revenues",
+      "bg": "#DBF0E5",
+      "b": 1,
+      "fg": "#17212F",
+      "a": "center"
+     }
+    ],
+    [
+     {
+      "t": "Personal income tax",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "Tax revenue",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "$247,735,000,000",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "2025–26",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "Revenues · Tax revenues · Income tax revenues",
+      "bg": "#FFFFFF",
+      "fg": "#145D9B",
+      "a": "center"
+     }
+    ],
+    [
+     {
+      "t": "Corporate income tax",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "Tax revenue",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "$104,241,000,000",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "2025–26",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "Revenues · Tax revenues · Income tax revenues",
+      "bg": "#FFFFFF",
+      "fg": "#145D9B",
+      "a": "center"
+     }
+    ],
+    [
+     {
+      "t": "Non-resident taxpayers",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "Tax revenue",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "$14,497,000,000",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "2025–26",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "Revenues · Tax revenues · Income tax revenues",
+      "bg": "#FFFFFF",
+      "fg": "#145D9B",
+      "a": "center"
+     }
+    ],
+    [
+     {
+      "t": "Other taxes and duties",
+      "bg": "#DBF0E5",
+      "b": 1,
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "Tax revenue",
+      "bg": "#DBF0E5",
+      "b": 1,
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "$75,155,000,000",
+      "bg": "#DBF0E5",
+      "b": 1,
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "2025–26",
+      "bg": "#DBF0E5",
+      "b": 1,
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "Other taxes and duties",
+      "bg": "#DBF0E5",
+      "b": 1,
+      "fg": "#17212F",
+      "a": "center"
+     }
+    ],
+    [
+     {
+      "t": "GST",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "Tax revenue",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "$65,274,000,000",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "2025–26",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "Revenues · Tax revenues · Other taxes and duties",
+      "bg": "#FFFFFF",
+      "fg": "#145D9B",
+      "a": "center"
+     }
+    ],
+    [
+     {
+      "t": "Taxes on imported goods",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "Tax revenue",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "$10,261,000,000",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "2025–26",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "Revenues · Tax revenues · Other taxes and duties",
+      "bg": "#FFFFFF",
+      "fg": "#145D9B",
+      "a": "center"
+     }
+    ],
+    [
+     {
+      "t": "Excise taxes on specified goods",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "Tax revenue",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "$5,441,000,000",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "2025–26",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "Revenues · Tax revenues · Other taxes and duties",
+      "bg": "#FFFFFF",
+      "fg": "#145D9B",
+      "a": "center"
+     }
+    ],
+    [
+     {
+      "t": "Gasoline excise tax",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "Tax revenue",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "$4,465,000,000",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "2025–26",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "Revenues · Tax revenues · Other taxes and duties",
+      "bg": "#FFFFFF",
+      "fg": "#145D9B",
+      "a": "center"
+     }
+    ],
+    [
+     {
+      "t": "Aviation fuel and diesel excise taxes",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "Tax revenue",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "$1,254,000,000",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "2025–26",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "Revenues · Tax revenues · Other taxes and duties",
+      "bg": "#FFFFFF",
+      "fg": "#145D9B",
+      "a": "center"
+     }
+    ],
+    [
+     {
+      "t": "Air passenger security fees",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "Tax revenue",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "$1,244,000,000",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "2025–26",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "Revenues · Tax revenues · Other taxes and duties",
+      "bg": "#FFFFFF",
+      "fg": "#145D9B",
+      "a": "center"
+     }
+    ],
+    [
+     {
+      "t": "Other excise taxes and duties",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "Tax revenue",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "$680,000,000",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "2025–26",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "Revenues · Tax revenues · Other taxes and duties",
+      "bg": "#FFFFFF",
+      "fg": "#145D9B",
+      "a": "center"
+     }
+    ],
+    [
+     {
+      "t": "GST refunds or cancellations for government purchases",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "Tax revenue",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "$-3,937,000,000",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "2025–26",
+      "bg": "#FFFFFF",
+      "fg": "#17212F",
+      "a": "center"
+     },
+     {
+      "t": "Revenues · Tax revenues · Other taxes and duties",
+      "bg": "#FFFFFF",
+      "fg": "#145D9B",
+      "a": "center"
+     }
+    ]
+   ],
+   "total_rows": 15,
+   "file": "Public Accounts-Vol1-2026-Tax Revenue.xlsx",
+   "title": "Public Accounts-Vol1-2026-Tax Revenue",
+   "size": "14 KB",
+   "added": "2026-11-17T23:34:09.266191+00:00",
+   "short": "s/public-accounts-vol1-2026-tax-revenue/"
+  },
+  {
    "logo": "assets/tablelogos/Public-Accounts-Vol3-2026-Claims-Against-the-Crown.jpg",
    "shot": "",
    "pdf": false,
