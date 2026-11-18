@@ -513,6 +513,11 @@
     border:1px solid #2a2a2a;
   }
 
+  .tcard .shot.ziprow{background:#0d0404;display:flex;align-items:center;justify-content:center}
+  .tcard .shot.ziprow svg.zipicon{
+    width:96px;height:96px;stroke:var(--red);fill:none;stroke-width:1.5;
+    stroke-linejoin:round;stroke-linecap:round;
+  }
   .tcard .shot img.page{display:block;width:100%;height:100%;object-fit:cover;object-position:top center}
   .tcard .shot .mini{
     transform-origin:top left;
@@ -998,6 +1003,10 @@
   var DOWN = '<svg viewBox="0 0 24 24" aria-hidden="true">'
       + '<path d="M12 3v12M7 11l5 5 5-5M4 20h16"/></svg>';
 
+  var ZIPICON = '<svg class="zipicon" viewBox="0 0 24 24" aria-hidden="true">'
+      + '<path d="M3 7.2V19a1.8 1.8 0 0 0 1.8 1.8h14.4A1.8 1.8 0 0 0 21 19V8.4a1.8 1.8 0 0 0-1.8-1.8h-7.2L10.2 4.2H4.8A1.8 1.8 0 0 0 3 6v1.2z"/>'
+      + '<path d="M13.6 6.6v3.2M13.6 11.4v1.6M13.6 14.6v1.6M13.6 18.2v1.4"/></svg>';
+
   function esc(t){
     return String(t == null ? '' : t)
       .replace(/[<>&"]/g, function(c){
@@ -1185,12 +1194,14 @@
         '<span class="inner">' +
           '<h3>' + esc(title) + '</h3>' +
           (t.year ? '<div class="yr">Calendar year: ' + esc(t.year) + '</div>' : '') +
-          (t.pdf
+          (t.zip
+            ? '<div class="shot ziprow">' + ZIPICON + '</div>'
+            : t.pdf
             ? '<div class="shot pdf"><img class="page" src="' + esc(t.shot) + '" alt=""></div>'
             : '<div class="shot"><div class="mini">' + headHtml(t) + sheetHtml(t, true, 3, 6) + '</div></div>') +
           '<div class="foot"><span>' + esc(t.total_rows) + ' ' + esc(t.unit || 'rows') + '</span>' +
             '<span class="acts">' +
-              '<span class="x" title="Open">' + EXPAND + '</span>' +
+              (t.zip ? '' : '<span class="x" title="Open">' + EXPAND + '</span>') +
               '<a href="Tables/' + encodeURIComponent(t.file) + '" download title="Download">' + DOWN + '</a>' +
               '<span class="share" title="Copy link">' + SHARE + '</span>' +
             '</span>' +
@@ -1198,7 +1209,11 @@
         '</span>';
       function open(){
         var href = 'Tables/' + encodeURIComponent(t.file);
-        if (t.pdf) {
+        if (t.zip) {
+          var a = document.createElement('a');
+          a.href = href; a.download = t.file;
+          document.body.appendChild(a); a.click(); a.remove();
+        } else if (t.pdf) {
           openViewer('<iframe class="pdf" src="' + href + '#view=FitH" title="' +
                      esc(t.subject) + '"></iframe>', href, t.file);
         } else {
@@ -1216,7 +1231,7 @@
       });
       t._open = open;
       tgrid.appendChild(b);
-      if (!t.pdf) fitMini(b);
+      if (!t.pdf && !t.zip) fitMini(b);
     });
     if (!drawTables._resize){
       drawTables._resize = true;
