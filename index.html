@@ -1130,7 +1130,8 @@
     var a = list.slice();
     a.sort(function(x, y){
       if (state.key === 'az') return label(x).localeCompare(label(y)) * state.dir;
-      var dx = x.added || '', dy = y.added || '';
+      // stamps arrive in mixed forms (…Z and …-05:00), so compare real times
+      var dx = Date.parse(x.added || '') || 0, dy = Date.parse(y.added || '') || 0;
       return (dx < dy ? -1 : dx > dy ? 1 : 0) * state.dir;
     });
     return a;
