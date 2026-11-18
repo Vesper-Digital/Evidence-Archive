@@ -322,6 +322,32 @@ def read_csv(path):
     }
 
 
+def read_zip(path):
+    """A zip is listed, never previewed: a card with an icon and a download."""
+    import zipfile
+    try:
+        with zipfile.ZipFile(path) as z:
+            n = len([i for i in z.infolist() if not i.is_dir()])
+    except Exception:                                # noqa: BLE001
+        n = 0
+    name = os.path.splitext(os.path.basename(path))[0]
+    return {
+        "logo": "",
+        "shot": "",
+        "pdf": False,
+        "zip": True,
+        "unit": "files" if n != 1 else "file",
+        "subject": name,
+        "kind": "",
+        "date_range": "",
+        "year": "",
+        "note": "",
+        "head": [],
+        "rows": [],
+        "total_rows": n,
+    }
+
+
 def collect():
     if not os.path.isdir(TABLES):
         return []
@@ -340,6 +366,8 @@ def collect():
                 t = read_pdf(path)
             elif low.endswith((".csv", ".tsv")):
                 t = read_csv(path)
+            elif low.endswith(".zip"):
+                t = read_zip(path)
             else:
                 continue
         except Exception as e:                       # noqa: BLE001
