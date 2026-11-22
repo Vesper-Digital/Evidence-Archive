@@ -1048,6 +1048,573 @@
    "short": "s/full-public-accounts-vol2-2026/"
   },
   {
+   "logo": "assets/tablelogos/Grants-ContributionsAI-GRANTS-2025-2026.jpg",
+   "shot": "",
+   "pdf": false,
+   "unit": "rows",
+   "subject": "AI",
+   "kind": "GRANTS & CONTRIBUTIONS",
+   "date_range": "JANUARY 1, 2025 - DECEMBER 31, 2026",
+   "year": "2025",
+   "note": "GRANTS & CONTRIBUTIONS • 2,516 matching records • November 22, 2026 13:41",
+   "head": [
+    {
+     "t": "Date",
+     "bg": "#193B65",
+     "b": 1,
+     "fg": "#FFFFFF",
+     "a": "center"
+    },
+    {
+     "t": "Amount (CAD)",
+     "bg": "#193B65",
+     "b": 1,
+     "fg": "#FFFFFF",
+     "a": "center"
+    },
+    {
+     "t": "Recipient",
+     "bg": "#193B65",
+     "b": 1,
+     "fg": "#FFFFFF",
+     "a": "center"
+    },
+    {
+     "t": "Department",
+     "bg": "#193B65",
+     "b": 1,
+     "fg": "#FFFFFF",
+     "a": "center"
+    },
+    {
+     "t": "Purpose",
+     "bg": "#193B65",
+     "b": 1,
+     "fg": "#FFFFFF",
+     "a": "center"
+    },
+    {
+     "t": "Program",
+     "bg": "#193B65",
+     "b": 1,
+     "fg": "#FFFFFF",
+     "a": "center"
+    }
+   ],
+   "rows": [
+    [
+     {
+      "t": "2025-04-01",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "$258,179,500.00",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "11593765 Canada Association",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Innovation, Science and Economic Development Canada",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "This project will continue supporting the implementation of the DRI Strategy to… ↗ FULL",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "Digital Research Infrastructure Strategy",
+      "fg": "#20344B",
+      "a": "center"
+     }
+    ],
+    [
+     {
+      "t": "2025-03-10",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "$240,000,000.00",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Cohere Inc.",
+      "bg": "#F1F5FA",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Innovation, Science and Economic Development Canada",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "This investment will support Cohere to scale up its operations and expand its… ↗ FULL",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "SIF Stream2- Growth",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     }
+    ],
+    [
+     {
+      "t": "2025-04-01",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "$83,558,934.00",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "11593765 Canada Association",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Innovation, Science and Economic Development Canada",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Expand national AI compute capacity to address urgent AI research needs across… ↗ FULL",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "Canadian Sovereign AI Compute Strategy",
+      "fg": "#20344B",
+      "a": "center"
+     }
+    ],
+    [
+     {
+      "t": "2026-01-09",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "$79,000,000.00",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Aspect Biosystems",
+      "bg": "#F1F5FA",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Innovation, Science and Economic Development Canada",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "This project will commercialize bioprinted tissue therapeutics, expand AI-enabled… ↗ FULL",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "Strategic Response Fund",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     }
+    ],
+    [
+     {
+      "t": "2026-01-09",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "$79,000,000.00",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Aspect Biosystems Ltd.",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Innovation, Science and Economic Development Canada",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "This project will commercialize bioprinted tissue therapeutics, expand AI-enabled… ↗ FULL",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "SIF Stream 2- Growth",
+      "fg": "#20344B",
+      "a": "center"
+     }
+    ],
+    [
+     {
+      "t": "2026-02-12",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "$47,962,000.00",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Providence Health Care Society",
+      "bg": "#F1F5FA",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Innovation, Science and Economic Development Canada",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "The project will support Providence Health Care Society's (PHCS) objective to… ↗ FULL",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "Strategic Response Fund",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     }
+    ],
+    [
+     {
+      "t": "2026-02-12",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "$47,962,000.00",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Providence Health Care Society",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Innovation, Science and Economic Development Canada",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "The project will support Providence Health Care Society's (PHCS) objective to… ↗ FULL",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "SIF Stream 2- Growth",
+      "fg": "#20344B",
+      "a": "center"
+     }
+    ],
+    [
+     {
+      "t": "2025-10-10",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "$35,950,000.00",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "OmniaBio Inc.",
+      "bg": "#F1F5FA",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Innovation, Science and Economic Development Canada",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "This project will establish automated good manufacturing practice (GMP)… ↗ FULL",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "SIF Stream2- Growth",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     }
+    ],
+    [
+     {
+      "t": "2025-04-01",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "$29,519,644.00",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Unity Health Toronto",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Innovation, Science and Economic Development Canada",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "A $29.5M investment in VITAL, a secure digital AI health infrastructure to leverage… ↗ FULL",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "AI Compute Infrastructure Program",
+      "fg": "#20344B",
+      "a": "center"
+     }
+    ],
+    [
+     {
+      "t": "2025-04-01",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "$19,728,023.00",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Alberta Machine Intelligence Institute",
+      "bg": "#F1F5FA",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Innovation, Science and Economic Development Canada",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Expand national AI compute capacity to address urgent AI research needs across… ↗ FULL",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "AI Compute Infrastructure Program",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     }
+    ],
+    [
+     {
+      "t": "2025-04-01",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "$19,728,023.00",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Vector Institute Institut Vecteur",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Innovation, Science and Economic Development Canada",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Expand national AI compute capacity to address urgent AI research needs across… ↗ FULL",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "AI Compute Infrastructure Program",
+      "fg": "#20344B",
+      "a": "center"
+     }
+    ],
+    [
+     {
+      "t": "2025-04-01",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "$19,728,023.00",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "MILA - Institut québécois d'intelligence artificielle",
+      "bg": "#F1F5FA",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Innovation, Science and Economic Development Canada",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Expand national AI compute capacity to address urgent AI research needs across… ↗ FULL",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "AI Compute Infrastructure Program",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     }
+    ],
+    [
+     {
+      "t": "2025-04-28",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "$10,539,716.00",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Alberta Machine Intelligence Institute",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Employment and Social Development Canada",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "The objective of the Sectoral Workforce Solutions Program is to help employers… ↗ FULL",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "Sectoral Workforce Solutions Program",
+      "fg": "#20344B",
+      "a": "center"
+     }
+    ],
+    [
+     {
+      "t": "2025-04-28",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "$9,139,716.00",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Alberta Machine Intelligence Institute",
+      "bg": "#F1F5FA",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Employment and Social Development Canada",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "The objective of the Sectoral Workforce Solutions Program is to help employers… ↗ FULL",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "Sectoral Workforce Solutions Program",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     }
+    ]
+   ],
+   "total_rows": 2516,
+   "file": "Grants & ContributionsAI GRANTS-2025-2026.xlsx",
+   "title": "Grants & ContributionsAI GRANTS-2025-2026",
+   "size": "678 KB",
+   "added": "2026-11-22T13:45:05-05:00",
+   "short": "s/grants-contributionsai-grants-2025-2026/"
+  },
+  {
    "logo": "assets/tablelogos/Interest-on-Debt---Public-Accounts-Federal-Financial-Statements-Volume-I-2025-26.jpg",
    "shot": "",
    "pdf": false,
