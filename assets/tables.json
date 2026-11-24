@@ -3258,6 +3258,580 @@
    "short": "s/lobbying-registry-telesat-2026/"
   },
   {
+   "logo": "assets/tablelogos/Lobbying-Registry-2025-2026-Ecostrat.jpg",
+   "shot": "",
+   "pdf": false,
+   "unit": "rows",
+   "subject": "ECOSTRAT",
+   "kind": "LOBBYING REGISTRY",
+   "date_range": "JANUARY 1, 2025 - DECEMBER 31, 2026",
+   "year": "2025",
+   "note": "LOBBYING REGISTRY • 63 matching records • 47 COMMUNICATIONS / 16 REGISTRATIONS • November 23, 2026 22:47",
+   "head": [
+    {
+     "t": "Date",
+     "bg": "#193B65",
+     "b": 1,
+     "fg": "#FFFFFF",
+     "a": "center"
+    },
+    {
+     "t": "Record Type",
+     "bg": "#193B65",
+     "b": 1,
+     "fg": "#FFFFFF",
+     "a": "center"
+    },
+    {
+     "t": "Client / Organization",
+     "bg": "#193B65",
+     "b": 1,
+     "fg": "#FFFFFF",
+     "a": "center"
+    },
+    {
+     "t": "Government Institutions",
+     "bg": "#193B65",
+     "b": 1,
+     "fg": "#FFFFFF",
+     "a": "center"
+    },
+    {
+     "t": "Public Office Holders",
+     "bg": "#193B65",
+     "b": 1,
+     "fg": "#FFFFFF",
+     "a": "center"
+    },
+    {
+     "t": "Lobbying Subject",
+     "bg": "#193B65",
+     "b": 1,
+     "fg": "#FFFFFF",
+     "a": "center"
+    }
+   ],
+   "rows": [
+    [
+     {
+      "t": "2026-11-09",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Communication",
+      "b": 1,
+      "fg": "#2563EB",
+      "a": "center"
+     },
+     {
+      "t": "Ecostrat",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Rural Economic Development (Minister’s Office)",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "Frannie Sobcov, Director of Policy",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "2 entries VIEW ALL",
+      "fg": "#1269AF",
+      "a": "center"
+     }
+    ],
+    [
+     {
+      "t": "2026-10-28",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Communication",
+      "b": 1,
+      "fg": "#2563EB",
+      "a": "center"
+     },
+     {
+      "t": "Ecostrat",
+      "bg": "#F1F5FA",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Natural Resources Canada (NRCan)",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "France Tartaix, Program Manager",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "2 entries VIEW ALL",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     }
+    ],
+    [
+     {
+      "t": "2026-10-15",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Communication",
+      "b": 1,
+      "fg": "#2563EB",
+      "a": "center"
+     },
+     {
+      "t": "Ecostrat Inc.",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Finance Canada (FIN)",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "2 entries VIEW ALL",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "2 entries VIEW ALL",
+      "fg": "#1269AF",
+      "a": "center"
+     }
+    ],
+    [
+     {
+      "t": "2026-10-15",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Communication",
+      "b": 1,
+      "fg": "#2563EB",
+      "a": "center"
+     },
+     {
+      "t": "Ecostrat",
+      "bg": "#F1F5FA",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Finance Canada (FIN)",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "Sean Collins, Director",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "2 entries VIEW ALL",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     }
+    ],
+    [
+     {
+      "t": "2026-10-15",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Communication",
+      "b": 1,
+      "fg": "#2563EB",
+      "a": "center"
+     },
+     {
+      "t": "Ecostrat",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Finance Canada (FIN)",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "2 entries VIEW ALL",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "2 entries VIEW ALL",
+      "fg": "#1269AF",
+      "a": "center"
+     }
+    ],
+    [
+     {
+      "t": "2026-10-15",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Communication",
+      "b": 1,
+      "fg": "#2563EB",
+      "a": "center"
+     },
+     {
+      "t": "Ecostrat Inc.",
+      "bg": "#F1F5FA",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Finance Canada (FIN)",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "Sean Collins, Director",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "2 entries VIEW ALL",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     }
+    ],
+    [
+     {
+      "t": "2026-05-29",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Communication",
+      "b": 1,
+      "fg": "#2563EB",
+      "a": "center"
+     },
+     {
+      "t": "Ecostrat",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "House of Commons",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "Jacob Alho, Member's Assistant",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "2 entries VIEW ALL",
+      "fg": "#1269AF",
+      "a": "center"
+     }
+    ],
+    [
+     {
+      "t": "2026-05-13",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Communication",
+      "b": 1,
+      "fg": "#2563EB",
+      "a": "center"
+     },
+     {
+      "t": "Ecostrat Inc.",
+      "bg": "#F1F5FA",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "House of Commons",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "Pauline Rochefort, Member of Parliament",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "2 entries VIEW ALL",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     }
+    ],
+    [
+     {
+      "t": "2026-05-13",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Communication",
+      "b": 1,
+      "fg": "#2563EB",
+      "a": "center"
+     },
+     {
+      "t": "Ecostrat",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "House of Commons",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "Pauline Rochefort, Member of Parliament",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "2 entries VIEW ALL",
+      "fg": "#1269AF",
+      "a": "center"
+     }
+    ],
+    [
+     {
+      "t": "2026-05-12",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Communication",
+      "b": 1,
+      "fg": "#2563EB",
+      "a": "center"
+     },
+     {
+      "t": "Ecostrat",
+      "bg": "#F1F5FA",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "House of Commons",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "Marilyn Gladu, Member of Parliament",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "2 entries VIEW ALL",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     }
+    ],
+    [
+     {
+      "t": "2026-05-12",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Communication",
+      "b": 1,
+      "fg": "#2563EB",
+      "a": "center"
+     },
+     {
+      "t": "Ecostrat Inc.",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "House of Commons",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "Marilyn Gladu, Member of Parliament",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "2 entries VIEW ALL",
+      "fg": "#1269AF",
+      "a": "center"
+     }
+    ],
+    [
+     {
+      "t": "2026-05-07",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Communication",
+      "b": 1,
+      "fg": "#2563EB",
+      "a": "center"
+     },
+     {
+      "t": "Ecostrat Inc.",
+      "bg": "#F1F5FA",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "House of Commons",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "Gord Johns, Member of Parliament",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "2 entries VIEW ALL",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     }
+    ],
+    [
+     {
+      "t": "2026-05-07",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Communication",
+      "b": 1,
+      "fg": "#2563EB",
+      "a": "center"
+     },
+     {
+      "t": "Ecostrat",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "House of Commons",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "Gord Johns, Member of Parliament",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "2 entries VIEW ALL",
+      "fg": "#1269AF",
+      "a": "center"
+     }
+    ],
+    [
+     {
+      "t": "2026-04-09",
+      "bg": "#F1F5FA",
+      "fg": "#20344B",
+      "a": "center"
+     },
+     {
+      "t": "Communication",
+      "b": 1,
+      "fg": "#2563EB",
+      "a": "center"
+     },
+     {
+      "t": "Ecostrat Inc.",
+      "bg": "#F1F5FA",
+      "b": 1,
+      "fg": "#173B68",
+      "a": "center"
+     },
+     {
+      "t": "Federal Economic Development Agency for Northern Ontario",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "2 entries VIEW ALL",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     },
+     {
+      "t": "2 entries VIEW ALL",
+      "bg": "#F1F5FA",
+      "fg": "#1269AF",
+      "a": "center"
+     }
+    ]
+   ],
+   "total_rows": 63,
+   "file": "Lobbying Registry-2025-2026-Ecostrat.xlsx",
+   "title": "Lobbying Registry-2025-2026-Ecostrat",
+   "size": "40 KB",
+   "added": "2026-11-23T22:47:53-05:00",
+   "short": "s/lobbying-registry-2025-2026-ecostrat/"
+  },
+  {
    "logo": "",
    "shot": "",
    "pdf": false,
